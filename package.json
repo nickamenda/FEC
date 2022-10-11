@@ -1,17 +1,19 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
-  "engines": {
-    "node": ">=6.13.0"
-  },
+  "name": "2209fec-targaryen",
+  "version": "1.0.0",
+  "description": "Hack Reactor FEC project for team Targaryen",
+  "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RFCE2209Targaryen/FEC.git"
   },
-  "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
-  }
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RFCE2209Targaryen/FEC/issues"
+  },
+  "homepage": "https://github.com/RFCE2209Targaryen/FEC#readme"
 }
