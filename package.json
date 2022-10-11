@@ -4,7 +4,9 @@
   "description": "Hack Reactor FEC project for team Targaryen",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx live-server",
+    "start:dev": "npx live-server & webpack --config ./webpack.config.js  -w; fg",
+    "react-dev": "webpack --config ./webpack.config.js  -w"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,21 @@
   "bugs": {
     "url": "https://github.com/RFCE2209Targaryen/FEC/issues"
   },
-  "homepage": "https://github.com/RFCE2209Targaryen/FEC#readme"
+  "homepage": "https://github.com/RFCE2209Targaryen/FEC#readme",
+  "dependencies": {
+    "axios": "^1.1.2",
+    "express": "^4.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/plugin-transform-runtime": "^7.19.1",
+    "@babel/preset-env": "^7.19.4",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^8.2.5",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  }
 }
