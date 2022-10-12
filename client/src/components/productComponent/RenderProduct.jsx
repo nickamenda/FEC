@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import StarReview from "./StarReview.jsx"
+
 
 
 const RenderProduct = (props) => {
@@ -6,10 +8,11 @@ const RenderProduct = (props) => {
   console.log(item)
   return (
     <>
-    <div>{item.name}</div>
-    <div>{item.category}</div>
-    <div>{item.description}</div>
-    <div>${item.default_price}</div>
+      <StarReview item={item} key={item.id} />
+      <div>{item.name}</div>
+      <div>{item.category}</div>
+      <div>{item.description}</div>
+      <div>${item.default_price}</div>
     </>
   )
 }

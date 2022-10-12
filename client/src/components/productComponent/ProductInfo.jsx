@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import RenderProduct from "./RenderProduct.jsx"
+import RenderProduct from "./RenderProduct.jsx";
 
 const ProductInfo = (props) => {
   const { products } = props
@@ -7,7 +7,9 @@ const ProductInfo = (props) => {
     <ul>
       {products.map(item => {
         return (
-          <RenderProduct item={item} key={item.id} />
+          <>
+          <RenderProduct item={item} key={item.id} /></>
+
         )
       })}
     </ul>
