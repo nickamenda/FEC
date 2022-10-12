@@ -22,10 +22,14 @@ const StarReview = (props) => {
   if (Object.keys(ratings).length === 5) {
     for (let key in ratings) {
       reviewAmt += Number(ratings[key])
+      reviewScores += (Number(key) * (ratings[key]))
     }
   }
   return (
+    <>
     <div>View all {reviewAmt} reviews...</div>
+    <div>Review avg = {(reviewScores / reviewAmt).toFixed(2)}</div>
+    </>
   )
 }
 
