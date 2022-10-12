@@ -3,7 +3,7 @@ import StarReview from "./StarReview.jsx"
 
 
 
-const RenderProduct = (props) => {
+const RenderProductList = (props) => {
   const { item } = props
   console.log(item)
   return (
@@ -18,4 +18,4 @@ const RenderProduct = (props) => {
 }
 
 
-export default RenderProduct;
+export default RenderProductList;
