@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProductInfo from './ProductInfo.jsx'
+import RenderProduct from './RenderProduct.jsx'
 
 const Product = () => {
   const [products, setProducts] = useState([
@@ -15,11 +15,12 @@ const Product = () => {
           "updated_at": "2022-03-31T21:13:15.875Z"
       }
   ])
+  const [currentProduct, setCurrentProduct] = useState(products[0])
 
   return (
     <>
       <div className="product-container"></div>
-      <ProductInfo products={products}/>
+      <RenderProduct currentProduct={currentProduct}/>
     </>
 
   )

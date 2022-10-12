@@ -3,19 +3,19 @@ import StarReview from "./StarReview.jsx"
 
 
 
-const RenderProductList = (props) => {
-  const { item } = props
-  console.log(item)
+const RenderProduct = (props) => {
+  const { currentProduct } = props
+  console.log()
   return (
     <>
-      <StarReview item={item} key={item.id} />
-      <div>{item.name}</div>
-      <div>{item.category}</div>
-      <div>{item.description}</div>
-      <div>${item.default_price}</div>
-    </>
+      <StarReview currentProduct={currentProduct} key={currentProduct.id} />
+      <div>{currentProduct.name}</div>
+      <div>{currentProduct.category}</div>
+      <div>{currentProduct.description}</div>
+      <div>${currentProduct.default_price}</div>
+      </>
   )
 }
 
 
-export default RenderProductList;
+export default RenderProduct;
