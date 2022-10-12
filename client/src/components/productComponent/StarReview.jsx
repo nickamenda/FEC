@@ -6,6 +6,7 @@ const StarReview = (props) => {
   const item = { "id": 66642 }
   const [ratings, setRatings] = useState({})
   var reviewAmt = 0;
+  var reviewScores = 0;
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${item.id}`, {
       headers: {
