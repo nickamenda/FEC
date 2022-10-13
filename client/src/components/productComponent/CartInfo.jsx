@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 const CartInfo = (props) => {
-  const { currentSkus } = props;
+  const { currentStyle } = props;
+  const currentSkus = currentStyle.skus;
   const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
   const [selectedSize, setSelectedSize] = useState(null)
   const [quantity, setQuantity] = useState(0);
+  const [selectedQuantity, setSelectedQuantity] = useState(null)
+
   useEffect(() => {
     for (let key in currentSkus) {
       if (currentSkus[key].size === selectedSize) {
@@ -19,7 +22,6 @@ const CartInfo = (props) => {
     <>
       <select name="size" className="product size" onChange={(e) => {
         e.preventDefault()
-        console.log(e.target.value)
         setSelectedSize(e.target.value)
       }}>
         <option key={'option'} value={0}>Select Size</option>
@@ -30,16 +32,19 @@ const CartInfo = (props) => {
         })}
       </select>
       <label htmlFor="quantity">Choose Quantity:</label>
-      {selectedSize === null ? (<select disabled name="quantity" className="product quantity"></select>) : (
-        <select name="quantity" className="product quantity">
+      <select disabled={selectedSize === null}name="quantity" className="product quantity" onChange={(e) => {
+          e.preventDefault()
+          setSelectedQuantity(e.target.value)
+        }}>
           {Array(quantity).fill(1).map((x, i) => {
-            return i <= 15 ? (
+            return i < 15 ? (
               <option key={i} value={i + 1}>{i + 1}</option>
             ) : null
           })}
         </select>
-      )
-      }
+        <button disabled={!selectedSize || !selectedQuantity} onClick={(e) => {
+          e.preventDefault()
+        }}>Add To Cart</button>
     </>
   )
 }

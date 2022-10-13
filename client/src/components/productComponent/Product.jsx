@@ -59,7 +59,7 @@ const Product = () => {
             <div className="product prices">{handleSales(currentStyle)}</div>
           <div className="product current-style">Current Style > {currentStyle.name}</div>
           <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto}/>
-          <CartInfo currentSkus={currentStyle.skus} />
+          <CartInfo currentStyle={currentStyle} />
           <div className="product current-slogan">{currentProduct.slogan}</div>
           <div className="product current-description">{currentProduct.description}</div>
         </div>
