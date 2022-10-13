@@ -17,12 +17,12 @@ const CartInfo = (props) => {
 
   return (
     <>
-      <label htmlFor="size">Choose Size:</label>
       <select name="size" className="product size" onChange={(e) => {
         e.preventDefault()
         console.log(e.target.value)
         setSelectedSize(e.target.value)
       }}>
+        <option key={'option'} value="size-selector">Select Size</option>
         {sizes.map((item, i) => {
           return (
             <option key={i} value={item}>{item}</option>
