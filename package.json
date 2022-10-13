@@ -4,6 +4,7 @@
   "description": "Hack Reactor FEC project for team Targaryen",
   "main": "index.js",
   "scripts": {
+    "client-dev": "npx webpack --watch",
     "start": "npx live-server",
     "start:dev": "npx live-server & webpack --config ./webpack.config.js  -w; fg",
     "react-dev": "webpack --config ./webpack.config.js  -w"
