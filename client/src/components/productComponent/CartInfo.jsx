@@ -29,11 +29,11 @@ const CartInfo = (props) => {
           )
         })}
       </select>
-      <label htmlFor="quantity">Choose Size:</label>
+      <label htmlFor="quantity">Choose Quantity:</label>
       <select name="quantity" className="product quantity">
-        {Array(quantity + 1).fill(1).map((x, i) => {
+        {Array(quantity).fill(1).map((x, i) => {
           return i <= 15 ? (
-            <option key={i} value={i}>{i}</option>
+            <option key={i} value={i + 1}>{i + 1}</option>
           ) : null
         })}
       </select>
