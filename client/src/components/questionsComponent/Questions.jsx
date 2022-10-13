@@ -2,9 +2,9 @@ import React from 'react';
 
 
 
-const QandA = () => {
+const Question = () => {
   return (
     <div>hello</div>
   )
 }
-export default QandA;
+export default Question;
