@@ -1,28 +1,31 @@
 import React, { useState } from 'react';
-import RenderProduct from './RenderProduct.jsx'
+import StarReview from './StarReview.jsx'
+import RenderStyles from './Styles.jsx'
+import productExample from './exampleData/product.js'
+import stylesExample from './exampleData/styles.js'
 
 const Product = () => {
-  const [products, setProducts] = useState([
-      {
-          "id": 66642,
-          "campus": "hr-rfc",
-          "name": "Camo Onesie",
-          "slogan": "Blend in to your crowd",
-          "description": "The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.",
-          "category": "Jackets",
-          "default_price": "140.00",
-          "created_at": "2022-03-31T21:13:15.875Z",
-          "updated_at": "2022-03-31T21:13:15.875Z"
-      }
-  ])
-  const [currentProduct, setCurrentProduct] = useState(products[0])
+  const [currentProduct, setCurrentProduct] = useState(productExample);
+  const [styles, setStyles] = useState(stylesExample.results);
+  const [currentStyle, setCurrentStyle] = useState(styles[1])
+  // styles.shift()
+
+  function handleStyles(style) {
+    setCurrentStyle(style)
+  }
 
   return (
     <>
-      <div className="product-container"></div>
-      <RenderProduct currentProduct={currentProduct}/>
+      <div className="product-container">
+      <StarReview currentProduct={currentProduct} key={currentProduct.id} />
+      <div className="current-name">{currentProduct.name}</div>
+      <div className="current-price">{currentStyle.sale_price ? currentStyle.sale_price : currentStyle.original_price}</div>
+      <div className="current-category">{currentProduct.category}</div>
+      <div className="current-slogan">{currentProduct.slogan}</div>
+      <div className="current-description">{currentProduct.description}</div>
+      <RenderStyles styles={styles} handleStyles={handleStyles}/>
+      </div>
     </>
-
   )
 }
 export default Product;
