@@ -10,9 +10,6 @@ const Product = () => {
   const [styles, setStyles] = useState(stylesExample.results);
   const [currentStyle, setCurrentStyle] = useState(styles[0])
   const [currentPhoto, setCurrentPhoto] = useState(currentStyle.photos[0].url)
-  console.log(currentPhoto)
-  console.log(currentStyle)
-  // styles.shift()
 
   function handleStyles(style) {
     setCurrentStyle(style)
