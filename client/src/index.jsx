@@ -10,9 +10,9 @@ import Reviews from  './components/reviewComponent/Reviews.jsx'
 const App = () => {
   return (
     <>
-    <Product />
-    <QandA />
-    <Related />
+    {/* <Product /> */}
+    {/* <QandA /> */}
+    {/* <Related /> */}
     <Reviews />
     </>
   )
