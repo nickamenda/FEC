@@ -23,25 +23,29 @@ const Product = () => {
     <>
       <div className="product-container">
         <div className="current-photos">
-         <img src={currentPhoto} alt={currentStyle.name}></img>
-          {currentStyle.photos.map((item, i) => {
-            return (
-              <img src={item.thumbnail_url} alt={currentStyle.style_id} key={i} onClick={(e) => {
-                e.preventDefault();
-                handleCurrentPhoto(item)
-              }}></img>
-            )
-          })}
+          <img className="product-mainPic" src={currentPhoto} alt={currentStyle.name}></img>
+          <div className="product-thumbnails">
+            {currentStyle.photos.map((item, i) => {
+              return (
+                <img className="product-itemThumbnail" src={item.thumbnail_url} alt={currentStyle.style_id} key={i} onClick={(e) => {
+                  e.preventDefault();
+                  handleCurrentPhoto(item)
+                }}></img>
+              )
+            })}
+          </div>
         </div>
         <div className="product-reviews">
           <StarReview currentProduct={currentProduct} key={currentProduct.id} />
         </div>
-        <div className="current-style">Current Style > {currentStyle.name}</div>
-        <div className="current-name">{currentProduct.name}</div>
-        <div className="current-price">{currentStyle.sale_price ? currentStyle.sale_price : currentStyle.original_price}</div>
-        <div className="current-category">{currentProduct.category}</div>
-        <div className="current-slogan">{currentProduct.slogan}</div>
-        <div className="current-description">{currentProduct.description}</div>
+        <div className="product current-info">
+          <div className="product current-style">Current Style > {currentStyle.name}</div>
+          <div className="product current-name">{currentProduct.name}</div>
+          <div className="product current-price">{currentStyle.sale_price ? currentStyle.sale_price : currentStyle.original_price}</div>
+          <div className="product current-category">{currentProduct.category}</div>
+          <div className="product current-slogan">{currentProduct.slogan}</div>
+          <div className="product current-description">{currentProduct.description}</div>
+        </div>
         <RenderStyles styles={styles} handleStyles={handleStyles} />
       </div>
     </>
