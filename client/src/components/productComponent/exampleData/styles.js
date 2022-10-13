@@ -56,7 +56,7 @@ var stylesData = {
                 },
                 "2390362": {
                     "quantity": 4,
-                    "size": "XL"
+                    "size": "XXL"
                 }
             }
         },

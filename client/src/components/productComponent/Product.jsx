@@ -45,7 +45,7 @@ const Product = () => {
           <div className="product current-price">{currentStyle.sale_price ? currentStyle.sale_price : currentStyle.original_price}</div>
           <div className="product current-style">Current Style > {currentStyle.name}</div>
           <RenderStyles styles={styles} handleStyles={handleStyles} />
-          <CartInfo currentStyle={currentStyle}/>
+          <CartInfo currentSkus={currentStyle.skus}/>
           <div className="product current-slogan">{currentProduct.slogan}</div>
           <div className="product current-description">{currentProduct.description}</div>
         </div>
