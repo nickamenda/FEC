@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import StarReview from './StarReview.jsx'
 import RenderStyles from './Styles.jsx'
+import CartInfo from './CartInfo.jsx'
 import productExample from './exampleData/product.js'
 import stylesExample from './exampleData/styles.js'
 
@@ -39,14 +40,15 @@ const Product = () => {
           <StarReview currentProduct={currentProduct} key={currentProduct.id} />
         </div>
         <div className="product current-info">
-          <div className="product current-style">Current Style > {currentStyle.name}</div>
+          <div className="product current-category">{currentProduct.category}</div>
           <div className="product current-name">{currentProduct.name}</div>
           <div className="product current-price">{currentStyle.sale_price ? currentStyle.sale_price : currentStyle.original_price}</div>
-          <div className="product current-category">{currentProduct.category}</div>
+          <div className="product current-style">Current Style > {currentStyle.name}</div>
+          <RenderStyles styles={styles} handleStyles={handleStyles} />
+          <CartInfo currentStyle={currentStyle}/>
           <div className="product current-slogan">{currentProduct.slogan}</div>
           <div className="product current-description">{currentProduct.description}</div>
         </div>
-        <RenderStyles styles={styles} handleStyles={handleStyles} />
       </div>
     </>
   )
