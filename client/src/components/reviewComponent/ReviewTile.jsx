@@ -1,12 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 import exampleData from './exampleData/exampleData.js';
+import './style.css';
 
 const ReviewsList = () => {
   return (
-   <ul>
+   <ul className="List">
     {exampleData.results.map(data => {
-      return <li>star rating: {data.rating}</li>
+      return <li>
+        <span>star rating: {data.rating}</span>
+        <p>reviewer name: {data.reviewer_name}</p>
+        </li>
     })}
    </ul>
   )
