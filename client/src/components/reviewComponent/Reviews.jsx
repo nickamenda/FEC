@@ -6,12 +6,11 @@ const Reviews = () => {
 
 
 
-  // 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
   // const api
   return (
     <div>
       <ReviewsList />
-      <p>hello</p>
+
     </div>
   )
 }
