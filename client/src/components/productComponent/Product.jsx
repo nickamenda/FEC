@@ -25,13 +25,13 @@ const Product = () => {
     if (item.sale_price) {
       return (
         <>
-          <div className="product old-price" style={{ textDecoration: item.sale_price ? 'line-through' : "none"}}>{item.original_price}</div>
-          <div className="product current-price">{item.sale_price}</div>
+          <div className="product old-price" style={{ textDecoration: item.sale_price ? 'line-through' : "none"}}>${item.original_price}</div>
+          <div className="product current-price">${item.sale_price}</div>
           </>
       )
     }
     return (
-      <div className="product old-price">{item.original_price}</div>
+      <div className="product old-price">${item.original_price}</div>
     )
   }
   return (
