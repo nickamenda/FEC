@@ -7,4 +7,4 @@ const Question = () => {
     <div>hello</div>
   )
 }
-export default QandA;
+export default Question;
