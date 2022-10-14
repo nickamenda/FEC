@@ -9,7 +9,7 @@ const ReviewsList = () => {
     {exampleData.results.map(data => {
       return <li>
         <span>star rating: {data.rating}</span>
-        <p>reviewer name: Hello{data.reviewer_name}</p>
+        <p>reviewer name: {data.reviewer_name}</p>
         </li>
     })}
    </ul>
