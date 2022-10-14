@@ -1,3 +1,7 @@
 .List {
   list-style-type: none;
 }
+
+.reviews {
+  border: 2px dashed red;
+}

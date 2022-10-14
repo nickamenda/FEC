@@ -5,7 +5,7 @@ import ReviewTile from './ReviewTile.jsx'
 
 const ReviewsList = () => {
   return (
-    <div>
+    <div className="reviews">
       <h1>Review List</h1>
       <Sorting />
       <ReviewTile />

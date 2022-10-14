@@ -8,7 +8,7 @@ const Reviews = () => {
 
   // const api
   return (
-    <div>
+    <div className="reviews">
       <ReviewsList />
 
     </div>
