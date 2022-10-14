@@ -6,7 +6,7 @@ const Sorting = () => {
     <div>
       <h3>reviews, sorted by DropDownMenu
       <select>
-        <option>Hello</option>
+        <option>Helloadas</option>
         <option>Hello</option>
         <option>Hello</option>
 
