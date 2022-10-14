@@ -1,0 +1,38 @@
+#root {
+  text-align: center;
+}
+.product {
+  border: 2px dashed red;
+}
+.product.container {
+  display: flex;
+  justify-content: space-evenly;
+
+}
+.product.current-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+
+}
+.product.current-info div.product.current-description {
+  max-width: 200px;
+
+}
+.product.mainPic {
+  max-width: 500px;
+  max-height: auto;
+  min-width: 50px;
+  min-height: 55px;
+}
+.product.thumbnails img {
+  height: 150px;
+  width: 100px;
+}
+.product.styles.all-styles img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
