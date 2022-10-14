@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Reviews from './reviewComponent/Reviews.jsx'
+import Product from './productComponent/Product.jsx'
+
 
 
 
@@ -8,7 +10,7 @@ const App = () => {
   return (
     <>
     {/* <h1 className="title">Shopping</h1>
-    <Product /> */}
+    <Product currentId={66642}/> */}
     {/* <QandA />
     <Related /> */}
     <Reviews />

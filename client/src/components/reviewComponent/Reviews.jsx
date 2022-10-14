@@ -4,19 +4,17 @@ import ReviewsList from './ReviewsList.jsx'
 
 const Reviews = () => {
 
-const getData = () => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products`, {
+
+
+useEffect(() => {
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/66642`, {
       headers: {
-        'Authorization': process.env.API_KEY
+        'Authorization': process.env.AUTH_KEY
       }
     })
     .then(data => {
-      console.log(data)
+      console.log(data.data)
     })
-}
-
-useEffect(() => {
-
 }, [])
 
   return (
