@@ -4,8 +4,14 @@ import axios from 'axios';
 const Sorting = () => {
   return (
     <div>
-      <h3>reviews, sorted by DropDownMenu</h3>
+      <h3>reviews, sorted by DropDownMenu
+      <select>
+        <option>Hello</option>
+        <option>Hello</option>
+        <option>Hello</option>
 
+      </select>
+      </h3>
     </div>
   )
 }

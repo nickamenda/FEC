@@ -6,7 +6,7 @@
   "scripts": {
     "client-dev": "npx webpack --watch",
     "start": "npx live-server",
-    "start:dev": "npx live-server & webpack --config ./webpack.config.js  -w; fg",
+    "start:dev": "npx live-server & webpack --config ./webpack.config.js  -w",
     "react-dev": "webpack --config ./webpack.config.js  -w"
   },
   "repository": {
