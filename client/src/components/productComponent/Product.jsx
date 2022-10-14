@@ -6,25 +6,19 @@ import CartInfo from './CartInfo.jsx'
 import productExample from './exampleData/product.js'
 import stylesExample from './exampleData/styles.js'
 
-const Product = ({ currentId }) => {
-  const [currentProduct, setCurrentProduct] = useState({});
-  const [styles, setStyles] = useState([]);
-  const [currentStyle, setCurrentStyle] = useState({})
-  const [currentPhoto, setCurrentPhoto] = useState('')
-  useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${currentId}`, {
-      headers: {
-        'Authorization': process.env.AUTH_KEY
-      }
-    })
-      .then((res) => {
-        setCurrentProduct(res.data)
+const Product = ({ product }) => {
+
+
+    const [currentProduct, setCurrentProduct] = useState(product);
+    const [styles, setStyles] = useState([]);
+    const [currentStyle, setCurrentStyle] = useState({})
+    const [currentPhoto, setCurrentPhoto] = useState('')
+    useEffect(() => {
+      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product.id}/styles`, {
+        headers: {
+          'Authorization': process.env.AUTH_KEY
+        }
       })
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${currentId}/styles`, {
-      headers: {
-        'Authorization': process.env.AUTH_KEY
-      }
-    })
       .then((res) => {
         setStyles(res.data.results)
         setCurrentStyle(res.data.results[0])
@@ -32,17 +26,17 @@ const Product = ({ currentId }) => {
       })
 
     }, [])
-  function handleStyles(style) {
-    setCurrentStyle(style)
-  }
+    function handleStyles(style) {
+      setCurrentStyle(style)
+    }
 
-  function handleCurrentPhoto(item) {
-    setCurrentPhoto(item.url)
-  }
-  function handleSales(item) {
-    if (item.sale_price) {
-      return (
-        <>
+    function handleCurrentPhoto(item) {
+      setCurrentPhoto(item.url)
+    }
+    function handleSales(item) {
+      if (item.sale_price) {
+        return (
+          <>
           <div className="product old-price" style={{ color: item.sale_price ? 'red' : 'black', textDecoration: item.sale_price ? 'line-through' : "none" }}>${item.original_price}</div>
           <div className="product current-price">${item.sale_price}</div>
         </>
@@ -50,10 +44,10 @@ const Product = ({ currentId }) => {
     }
     return (
       <div className="product old-price">${item.original_price}</div>
-    )
-  }
-  return Object.keys(currentStyle).length !== 0 ? (
-    <>
+      )
+    }
+    return Object.keys(currentStyle).length !== 0 ? (
+      <>
       <div className="product container">
         <div className="product current-photos">
           <div className="product thumbnails">
@@ -63,14 +57,14 @@ const Product = ({ currentId }) => {
                   e.preventDefault();
                   handleCurrentPhoto(item)
                 }}></img>
-              )
-            })}
+                )
+              })}
           </div>
           <img className="product mainPic" src={currentPhoto} alt={currentStyle.name}></img>
         </div>
         <div className="product current-info">
           <div className="product reviews">
-            <StarReview currentId={currentId} key={currentId} />
+            <StarReview currentId={product.id} key={product.id} />
           </div>
           <div className="product current-category">{currentProduct.category}</div>
           <div className="product current-name">{currentProduct.name}</div>
