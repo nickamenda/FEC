@@ -3,12 +3,12 @@ import axios from 'axios';
 import Sorting from './Sorting.jsx'
 import ReviewTile from './ReviewTile.jsx'
 
-const ReviewsList = () => {
+const ReviewsList = (props) => {
   return (
     <div className="reviews">
       <h1>Review List</h1>
-      <Sorting />
-      <ReviewTile />
+      <Sorting product={props.product}/>
+      <ReviewTile product={props.product}/>
     </div>
   )
 }
