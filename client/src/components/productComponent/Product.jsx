@@ -11,7 +11,6 @@ const Product = ({ currentId }) => {
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({})
   const [currentPhoto, setCurrentPhoto] = useState('')
-  // const [fetching, setFetching] = useState(true)
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${currentId}`, {
       headers: {
@@ -44,7 +43,7 @@ const Product = ({ currentId }) => {
     if (item.sale_price) {
       return (
         <>
-          <div className="product old-price" style={{ textDecoration: item.sale_price ? 'line-through' : "none" }}>${item.original_price}</div>
+          <div className="product old-price" style={{ color: item.sale_price ? 'red' : 'black', textDecoration: item.sale_price ? 'line-through' : "none" }}>${item.original_price}</div>
           <div className="product current-price">${item.sale_price}</div>
         </>
       )
@@ -57,7 +56,6 @@ const Product = ({ currentId }) => {
     <>
       <div className="product container">
         <div className="product current-photos">
-          <img className="product mainPic" src={currentPhoto} alt={currentStyle.name}></img>
           <div className="product thumbnails">
             {currentStyle.photos.map((item, i) => {
               return (
@@ -68,6 +66,7 @@ const Product = ({ currentId }) => {
               )
             })}
           </div>
+          <img className="product mainPic" src={currentPhoto} alt={currentStyle.name}></img>
         </div>
         <div className="product current-info">
           <div className="product reviews">
@@ -76,13 +75,15 @@ const Product = ({ currentId }) => {
           <div className="product current-category">{currentProduct.category}</div>
           <div className="product current-name">{currentProduct.name}</div>
           <div className="product prices">{handleSales(currentStyle)}</div>
-          <div className="product current-style">Current Style > {currentStyle.name}</div>
+          <div className="product current-style"><div className="product current-style title">Style ></div><div className="product current-style name"> {currentStyle.name}</div></div>
           <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} />
           <CartInfo currentStyle={currentStyle} />
-          <div className="product current-slogan">{currentProduct.slogan}</div>
-          <div className="product current-description">{currentProduct.description}</div>
         </div>
       </div>
+        <div className="product bottom-info">
+          <div className="product current-slogan">{currentProduct.slogan}</div>
+          <div className="product current-description">{currentProduct.description}</div>
+          </div>
     </>
   ) : null
 }
