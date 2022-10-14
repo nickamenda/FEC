@@ -1,16 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import StarReview from './StarReview.jsx'
 import RenderStyles from './Styles.jsx'
 import CartInfo from './CartInfo.jsx'
 import productExample from './exampleData/product.js'
 import stylesExample from './exampleData/styles.js'
 
-const Product = () => {
-  const [currentProduct, setCurrentProduct] = useState(productExample);
-  const [styles, setStyles] = useState(stylesExample.results);
-  const [currentStyle, setCurrentStyle] = useState(styles[0])
-  const [currentPhoto, setCurrentPhoto] = useState(currentStyle.photos[0].url)
+const Product = ({ currentId }) => {
+  const [currentProduct, setCurrentProduct] = useState({});
+  const [styles, setStyles] = useState([]);
+  const [currentStyle, setCurrentStyle] = useState({})
+  const [currentPhoto, setCurrentPhoto] = useState('')
+  // const [fetching, setFetching] = useState(true)
+  useEffect(() => {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${currentId}`, {
+      headers: {
+        'Authorization': process.env.AUTH_KEY
+      }
+    })
+      .then((res) => {
+        setCurrentProduct(res.data)
+      })
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${currentId}/styles`, {
+      headers: {
+        'Authorization': process.env.AUTH_KEY
+      }
+    })
+      .then((res) => {
+        setStyles(res.data.results)
+        setCurrentStyle(res.data.results[0])
+        handleCurrentPhoto(res.data.results[0].photos[0])
+      })
 
+    }, [])
   function handleStyles(style) {
     setCurrentStyle(style)
   }
@@ -31,7 +53,7 @@ const Product = () => {
       <div className="product old-price">${item.original_price}</div>
     )
   }
-  return (
+  return Object.keys(currentStyle).length !== 0 ? (
     <>
       <div className="product container">
         <div className="product current-photos">
@@ -49,7 +71,7 @@ const Product = () => {
         </div>
         <div className="product current-info">
           <div className="product reviews">
-            <StarReview currentProduct={currentProduct} key={currentProduct.id} />
+            <StarReview currentId={currentId} key={currentId} />
           </div>
           <div className="product current-category">{currentProduct.category}</div>
           <div className="product current-name">{currentProduct.name}</div>
@@ -62,6 +84,6 @@ const Product = () => {
         </div>
       </div>
     </>
-  )
+  ) : null
 }
 export default Product;
