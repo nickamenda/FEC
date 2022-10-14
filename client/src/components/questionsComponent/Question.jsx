@@ -5,9 +5,9 @@ const Question = () => {
   return (
     <section>
       <div>Question & Answers</div>
-      <QuestionSearch />
+      {/* <QuestionSearch />
       <QAList />
-      <AddQuestionBar />
+      <AddQuestionBar /> */}
     </section>
   )
 }
