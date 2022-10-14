@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
+
+import Product from './productComponent/Product.jsx'
 
 
 
@@ -8,12 +9,14 @@ import App from './App.jsx';
 const App = () => {
   return (
     <>
-    {/* <h1 className="title">Shopping</h1>
-    <Product /> */}
+    <h1 className="title">Shopping</h1>
+    <Product currentId={66642}/>
     {/* <QandA />
     <Related /> */}
-    <Reviews />
+    {/* <Reviews /> */}
 
     </>
   )
 }
+
+export default App;
