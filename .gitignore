@@ -25,5 +25,5 @@ build/
 bundle.js
 bundle.js.map
 
-
+# Enviroment variable file loaded by dotenv
 .env
