@@ -92,3 +92,14 @@ img:hover {
 .product.current-description {
   max-width: 450px;
 }
+.reviews {
+  display: flex;
+  gap: 5px;
+}
+
+.reviewAvg[avg] {
+  content: attr(avg);
+}
+.reviewAmt {
+  text-decoration: underline;
+}
