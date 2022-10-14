@@ -24,7 +24,7 @@ const StarReview = (props) => {
 }
 export default StarReview;
 
-
+console.log(process.env.TEST)
   // useEffect(() => {
   //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${currentProduct.id}`, {
   //     headers: {
