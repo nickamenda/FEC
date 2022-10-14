@@ -30,8 +30,6 @@ module.exports = {
                 {
                   "regenerator": true
                 }
-              ],[
-              new Dotenv()
               ]
             ]
           }
