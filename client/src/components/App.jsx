@@ -22,7 +22,6 @@ const App = () => {
 
   return Object.keys(product).length !== 0 ? (
     <>
-    <h1 className="title">Shopping</h1>
     <Product product={product}/>
     {/* <Related /> */}
     <Question product={product}/>
