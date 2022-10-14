@@ -1,8 +1,7 @@
-import React from 'react';
-import { useState } = React;
-import QuestionSearch from './'
+import React, { useState } from 'react';
+// import QuestionSearch from './'
 
-export default Question = () => {
+const Question = () => {
   return (
     <section>
       <div>Question & Answers</div>
@@ -12,3 +11,5 @@ export default Question = () => {
     </section>
   )
 }
+
+export default Question;

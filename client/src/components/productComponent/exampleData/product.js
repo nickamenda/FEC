@@ -19,5 +19,6 @@ var productExample = {
     }
   ]
 }
+// https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/66642
 
 export default productExample;

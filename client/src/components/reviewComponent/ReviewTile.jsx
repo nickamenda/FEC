@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import exampleData from './exampleData/exampleData.js';
-import './style.css';
+// import './style.css';
 
 
 const ReviewsList = () => {
