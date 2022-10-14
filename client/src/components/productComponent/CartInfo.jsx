@@ -6,7 +6,7 @@ const CartInfo = (props) => {
   const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
   const [selectedSize, setSelectedSize] = useState(null)
   const [quantity, setQuantity] = useState(0);
-  const [selectedQuantity, setSelectedQuantity] = useState(null)
+  const [selectedQuantity, setSelectedQuantity] = useState(1)
 
   useEffect(() => {
     for (let key in currentSkus) {
@@ -42,7 +42,7 @@ const CartInfo = (props) => {
             ) : null
           })}
         </select>
-        <button disabled={!selectedSize || !selectedQuantity} onClick={(e) => {
+        <button disabled={!selectedSize} onClick={(e) => {
           e.preventDefault()
         }}>Add To Cart</button>
     </>
