@@ -61,10 +61,28 @@ const Product = ({ product }) => {
               )
             })}
           </div>
-          <img className="product mainPic" style={{ width: zoom ? '750px' : null, height: zoom ? '750px' : null }} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
-            e.preventDefault();
-            setZoom(!zoom)
-          }}></img>
+          <div className="product arrows">
+            <img className="product mainPic" style={{ width: zoom ? '750px' : null, height: zoom ? '750px' : null, zIndex: zoom ? '100' : null }} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
+              e.preventDefault();
+              setZoom(!zoom)
+            }}></img>
+            <i className="arrow left" onClick={(e) => {
+              e.preventDefault();
+              for (let i = 0; i < currentStyle.photos.length; i++) {
+                if (currentStyle.photos[i].url === currentPhoto) {
+                  handleCurrentPhoto(currentStyle.photos[i - 1])
+                }
+              }
+            }}>&#8592;</i>
+            <i className="arrow right" onClick={(e) => {
+              e.preventDefault();
+              for (let i = 0; i < currentStyle.photos.length; i++) {
+                if (currentStyle.photos[i].url === currentPhoto) {
+                  handleCurrentPhoto(currentStyle.photos[i + 1])
+                }
+              }
+            }}>&#8594;</i>
+          </div>
         </div>
         <div className="product current-info">
           <div className="product reviews">
