@@ -54,7 +54,7 @@ const Product = ({ product }) => {
           <div className="product thumbnails">
             {currentStyle.photos.map((item, i) => {
               return (
-                <img className="product itemThumbnail" src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 1000000} onClick={(e) => {
+                <img className="product itemThumbnail" style={currentPhoto === item.url ? {border: '2px solid red'} : {border: '2px solid black'}}src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 1000000} onClick={(e) => {
                   e.preventDefault();
                   handleCurrentPhoto(item)
                 }}></img>
@@ -74,7 +74,7 @@ const Product = ({ product }) => {
           <div className="product current-name">{currentProduct.name}</div>
           <div className="product prices">{handleSales(currentStyle)}</div>
           <div className="product current-style"><div className="product current-style title">Style ></div><div className="product current-style name"> {currentStyle.name}</div></div>
-          <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} />
+          <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle}/>
           <CartInfo currentStyle={currentStyle} />
         </div>
       </div>
