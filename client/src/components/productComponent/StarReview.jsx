@@ -29,10 +29,10 @@ const StarReview = (props) => {
 
   return (
     <>
-    <div className="reviews">
-      <div className="reviewAvg" avg={(reviewScores / reviewAmt).toFixed(1)}>★★★★★</div>
-      <div className="reviewAmt">View all {reviewAmt} reviews...</div>
-    </div>
+      <div className="reviews">
+        <div className="reviewAvg" avg={(reviewScores / reviewAmt).toFixed(1)}>★★★★★</div>
+        <div className="reviewAmt">View all {reviewAmt} reviews...</div>
+      </div>
     </>
   )
 }

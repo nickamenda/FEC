@@ -31,20 +31,20 @@ const CartInfo = (props) => {
           )
         })}
       </select>
-      <select disabled={selectedSize === null}name="quantity" className="product quantity" onChange={(e) => {
-          e.preventDefault()
-          setSelectedQuantity(e.target.value)
-        }}>
-          <option key={0} value={0}>Choose Quantity:</option>
-          {Array(quantity).fill(1).map((x, i) => {
-            return i < 15 ? (
-              <option key={i} value={i + 1}>{i + 1}</option>
-            ) : null
-          })}
-        </select>
-        <button disabled={!selectedSize} onClick={(e) => {
-          e.preventDefault()
-        }}>Add To Cart</button>
+      <select disabled={selectedSize === null} name="quantity" className="product quantity" onChange={(e) => {
+        e.preventDefault()
+        setSelectedQuantity(e.target.value)
+      }}>
+        <option key={0} value={0}>Choose Quantity:</option>
+        {Array(quantity).fill(1).map((x, i) => {
+          return i < 15 ? (
+            <option key={i} value={i + 1}>{i + 1}</option>
+          ) : null
+        })}
+      </select>
+      <button disabled={!selectedSize} onClick={(e) => {
+        e.preventDefault()
+      }}>Add To Cart</button>
     </>
   )
 }
