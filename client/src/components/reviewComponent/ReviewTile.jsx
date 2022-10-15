@@ -13,8 +13,6 @@ const ReviewsList = (props) => {
       {props.product.filter((data, index) => index < reviewsOpen).map((data, i) => {
         return (<li key={i} className="tile">
           <span className="reviews">star rating: {data.rating}</span>
-
-
           <p>{data.reviewer_name} {data.date}</p>
           <h3>{data.summary}</h3>
           <p>{data.body}</p>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import ReviewsList from './ReviewsList.jsx'
+import RatingBreakdown from './RatingBreakdown.jsx'
 import './style.css'
 
 const Reviews = (props) => {
@@ -19,6 +20,8 @@ const Reviews = (props) => {
 
   return product.length !== 0 ? (
     <div className="reviews">
+      <h1>Ratings and Reviews</h1>
+      <RatingBreakdown product={product}/>
       <ReviewsList product={product}/>
     </div>
   ) : null
