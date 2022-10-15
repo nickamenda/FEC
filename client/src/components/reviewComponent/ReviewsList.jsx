@@ -9,8 +9,6 @@ const ReviewsList = (props) => {
       <h1>Review List</h1>
       <Sorting product={props.product}/>
       <ReviewTile product={props.product}/>
-      <button>More Reviews</button>
-      <button></button>
     </div>
   )
 }
