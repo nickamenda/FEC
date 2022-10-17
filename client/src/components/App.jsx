@@ -10,7 +10,7 @@ const App = () => {
   const [product, setProduct] = useState({})
 
   useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/66642`, {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/66645`, {
       headers: {
         'Authorization': process.env.AUTH_KEY
       }
@@ -24,19 +24,10 @@ const App = () => {
 
   return Object.keys(product).length !== 0 ? (
     <>
-
-    {/* <h1 className="title">Shopping</h1>
-    <Product product={product}/> */}
-    <Reviews product={product}/>
-    {/* <Question product={product}/> */}
     {/* <div className="navbar"></div>
-    <Product product={product}/>
-    <div className="navbar"></div>
-    <Product product={product} />
-    {/* <Related /> */}
-    {/* <Question product={product}/> */}
-    {/* <Reviews product={product}/> */}
-
+    <Product product={product}/> */}
+    <Question product={product}/>
+    <Reviews product={product}/>
     </>
   ) : null
 }

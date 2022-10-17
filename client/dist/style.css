@@ -127,6 +127,7 @@ img:hover,
   content: attr(avg);
 }
 
+
 .reviewAmt {
   text-decoration: underline;
 }
