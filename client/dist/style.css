@@ -1,5 +1,5 @@
-
-/* #root {
+/*
+#root {
 html {
   background-color: rgb(255, 255, 255);
 
@@ -15,12 +15,10 @@ img:hover,
   cursor: pointer;
 }
 
-<<<<<<<<< Temporary merge branch 1
 #root {
   text-align: center;
 }
-=========
->>>>>>>>> Temporary merge branch 2
+
 .product {
   background-color: rgb(255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
@@ -82,7 +80,7 @@ img:hover,
 .product.thumbnails img {
   height: 70px;
   width: 70px;
-  /* margin: 10px; */
+  margin: 10px;
 }
 
 .product.product.styles.all-styles {
@@ -95,7 +93,6 @@ img:hover,
   height: 50px;
   width: 50px;
   border-radius: 50%;
-} */
 }
 
 .product.bottom-info {
@@ -117,9 +114,6 @@ img:hover,
 .product.current-description {
   max-width: 450px;
 }
-<<<<<<<<< Temporary merge branch 1
->>>>>>> abfbfd25e81ab993f7052dfe8fc62a5caac64081
-=========
 
 .reviews {
   display: flex;
@@ -206,5 +200,4 @@ select {
   max-width: 75%;
   margin-bottom: 20px;
   background-color: rgb(151, 151, 151);
-}
->>>>>>>>> Temporary merge branch 2
+} */

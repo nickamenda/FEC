@@ -27,12 +27,12 @@ const App = () => {
     <Product product={product}/> */}
     <Reviews product={product}/>
     {/* <Question product={product}/> */}
-    <div className="navbar"></div>
+    {/* <div className="navbar"></div>
     <Product product={product}/>
     <div className="navbar"></div>
     <Product product={product}/>
     {/* <Related /> */}
-    <Question product={product}/>
+    {/* <Question product={product}/> */}
     {/* <Reviews product={product}/> */}
 
     </>

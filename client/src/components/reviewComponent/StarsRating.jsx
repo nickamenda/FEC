@@ -3,7 +3,6 @@ import axios from 'axios'
 
 
 const StarsRating = (props) => {
-  const [averageRating, setAverageRating] = useState(0);
   const [metaData, setMetaData] = useState({})
   const [ratings, setRatings] = useState({})
 
@@ -15,35 +14,32 @@ const StarsRating = (props) => {
     })
       .then((response) => {
         setMetaData(response.data)
+        setRatings(response.data.ratings)
       })
   }, [])
 
-  useEffect(() => {
-    console.log(Object.keys(metaData))
-  }, [metaData])
 
-  useEffect(() => {
-    setRatings(metaData.ratings)
-
-  }, [metaData])
-  useEffect(() => {
-    console.log(ratings)
-
-  }, [ratings])
   // ratings.characteristics
   // ratings.ratings
   // ratings.recommended
 
-  var totalNumReviews = 0;
+
+  // Creating the Average Rating points
+  var totalNumReviews = 0; // total number of reviews
   var totalRatingPoints = 0;
 
+  if (Object.keys(ratings).length !== 0) {
+    for (let key in ratings) {
+      totalNumReviews += parseInt(ratings[key])
+      totalRatingPoints += parseInt((key * ratings[key]))
+    }
+  }
 
 
   return (
     <>
       <p>Star Average</p>
-
-      <p>{averageRating / props.product.length}</p>
+      <p>{(totalRatingPoints / totalNumReviews).toFixed(1)}</p>
     </>
   )
 }
