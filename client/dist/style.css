@@ -1,3 +1,5 @@
+
+#root {
 html {
   background-color: rgb(255, 255, 255);
 
@@ -11,6 +13,10 @@ img:hover,
 .arrow.left:hover,
 .arrow.right:hover {
   cursor: pointer;
+}
+
+#root {
+  text-align: center;
 }
 
 .product {
@@ -74,6 +80,9 @@ img:hover,
 .product.thumbnails img {
   height: 70px;
   width: 70px;
+
+  margin: 10px;
+
 }
 
 .product.product.styles.all-styles {
@@ -213,3 +222,4 @@ select {
   right: 15px;
   color: red;
 }
+
