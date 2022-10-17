@@ -78,12 +78,14 @@ img:hover,
 }
 
 .product.product.styles.all-styles {
+  display: flex;
   text-align: left;
   max-width: 300px;
+  flex-wrap: wrap;
 }
 
 .product.styles.all-styles img {
-  margin: 5px;
+  margin-bottom: 5px;
   height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -97,7 +99,6 @@ img:hover,
   justify-content: center;
   align-items: center;
   min-width: 40px;
-
 }
 
 .product.current-slogan {
@@ -198,4 +199,13 @@ select {
 .product.quantity {
   font-size: 13px;
   margin: 10px;
+}
+
+.checkmark {
+  font-size: 25px;
+  z-index: 10000;
+  position: relative;
+  top: 2px;
+  right: 15px;
+  color: red;
 }
