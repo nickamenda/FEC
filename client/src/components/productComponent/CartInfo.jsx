@@ -19,7 +19,8 @@ const CartInfo = (props) => {
 
 
   return (
-    <>
+    <div className="cart">
+      <div className="selectors">
       <select name="size" className="product size" onChange={(e) => {
         e.preventDefault()
         setSelectedSize(e.target.value)
@@ -27,7 +28,7 @@ const CartInfo = (props) => {
         <option key={'option'} value={0}>Select Size</option>
         {sizes.map((item, i) => {
           return (
-            <option key={i} value={item}>{item}</option>
+            <option key={i + 1000000000} value={item}>{item}</option>
           )
         })}
       </select>
@@ -38,14 +39,15 @@ const CartInfo = (props) => {
         <option key={0} value={0}>Choose Quantity:</option>
         {Array(quantity).fill(1).map((x, i) => {
           return i < 15 ? (
-            <option key={i} value={i + 1}>{i + 1}</option>
+            <option key={i + 10000000} value={i + 1}>{i + 1}</option>
           ) : null
         })}
       </select>
-      <button disabled={!selectedSize} onClick={(e) => {
+      </div>
+      <button className="addCart"disabled={!selectedSize} onClick={(e) => {
         e.preventDefault()
       }}>Add To Cart</button>
-    </>
+    </div>
   )
 }
 
