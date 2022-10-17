@@ -6,6 +6,7 @@ import reviewsExample from './exampleData/reviews.js'
 const StarReview = (props) => {
   const { currentId } = props
   const [ratings, setRatings] = useState({})
+  var stars = ''
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${currentId}`, {
@@ -27,12 +28,21 @@ const StarReview = (props) => {
     }
   }
 
+  for (let i = 0; i < Math.round(reviewScores / reviewAmt); i++) {
+    stars += '★'
+  }
+  if (stars.length !== 5) {
+    while (stars.length < 5) {
+      stars += '☆'
+    }
+  }
+
   return (
     <>
-    <div className="reviews">
-      <div className="reviewAvg" avg={(reviewScores / reviewAmt).toFixed(1)}>★★★★★</div>
-      <div className="reviewAmt">View all {reviewAmt} reviews...</div>
-    </div>
+      <div className="reviews">
+        <div className="reviewAvg" avg={(reviewScores / reviewAmt).toFixed(1)}>{stars}</div>
+        <div className="reviewAmt">View all {reviewAmt} reviews...</div>
+      </div>
     </>
   )
 }

@@ -54,17 +54,35 @@ const Product = ({ product }) => {
           <div className="product thumbnails">
             {currentStyle.photos.map((item, i) => {
               return (
-                <img className="product itemThumbnail" style={currentPhoto === item.url ? {border: '2px solid red'} : {border: '2px solid black'}}src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 1000000} onClick={(e) => {
+                <img className="product itemThumbnail" style={currentPhoto === item.url ? { border: '2px solid red' } : { border: '2px solid black' }} src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 1000000} onClick={(e) => {
                   e.preventDefault();
                   handleCurrentPhoto(item)
                 }}></img>
               )
             })}
           </div>
-          <img className="product mainPic" style={{width: zoom ? '750px' : null, height: zoom ? '750px' : null}} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
-            e.preventDefault();
-            setZoom(!zoom)
-          }}></img>
+          <div className="product arrows">
+            <img className="product mainPic" style={{ width: zoom ? '750px' : null, height: zoom ? '750px' : null, zIndex: zoom ? '100' : null }} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
+              e.preventDefault();
+              setZoom(!zoom)
+            }}></img>
+            <i className="arrow left" onClick={(e) => {
+              e.preventDefault();
+              for (let i = 0; i < currentStyle.photos.length; i++) {
+                if (currentStyle.photos[i].url === currentPhoto) {
+                  handleCurrentPhoto(currentStyle.photos[i - 1])
+                }
+              }
+            }}>&#8592;</i>
+            <i className="arrow right" onClick={(e) => {
+              e.preventDefault();
+              for (let i = 0; i < currentStyle.photos.length; i++) {
+                if (currentStyle.photos[i].url === currentPhoto) {
+                  handleCurrentPhoto(currentStyle.photos[i + 1])
+                }
+              }
+            }}>&#8594;</i>
+          </div>
         </div>
         <div className="product current-info">
           <div className="product reviews">
@@ -74,24 +92,24 @@ const Product = ({ product }) => {
           <div className="product current-name">{currentProduct.name}</div>
           <div className="product prices">{handleSales(currentStyle)}</div>
           <div className="product current-style"><div className="product current-style title">Style ></div><div className="product current-style name"> {currentStyle.name}</div></div>
-          <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle}/>
+          <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle} />
           <CartInfo currentStyle={currentStyle} />
         </div>
       </div>
       <div className="product bottom-info">
         <div className="product bottom-left">
-        <div className="product current-slogan">{currentProduct.slogan}</div>
-        <div className="product current-description">{currentProduct.description}</div>
+          <div className="product current-slogan">{currentProduct.slogan}</div>
+          <div className="product current-description">{currentProduct.description}</div>
         </div>
-      <div className="product features">{
-        currentProduct.features.map((item) => {
-          return (
-            <>
-            <div className="product featureItem">{item.feature}: {item.value}</div>
-            </>
-          )
-        })
-      }</div>
+        <div className="product features">{
+          currentProduct.features.map((item) => {
+            return (
+              <>
+                <div className="product featureItem">{item.feature}: {item.value}</div>
+              </>
+            )
+          })
+        }</div>
       </div>
     </>
   ) : null
