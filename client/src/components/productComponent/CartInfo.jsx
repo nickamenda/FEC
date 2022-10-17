@@ -36,7 +36,7 @@ const CartInfo = (props) => {
         e.preventDefault()
         setSelectedQuantity(e.target.value)
       }}>
-        <option key={0} value={0}>Choose Quantity:</option>
+        <option key={0} value={0}>Choose Quantity</option>
         {Array(quantity).fill(1).map((x, i) => {
           return i < 15 ? (
             <option key={i + 10000000} value={i + 1}>{i + 1}</option>

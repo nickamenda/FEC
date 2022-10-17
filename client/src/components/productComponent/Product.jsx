@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import StarReview from './StarReview.jsx'
@@ -14,6 +15,8 @@ const Product = ({ product }) => {
   const [currentStyle, setCurrentStyle] = useState({})
   const [currentPhoto, setCurrentPhoto] = useState('')
   const [zoom, setZoom] = useState(false);
+  const [leftArrow, setLeftArrow] = useState('none')
+  const [rightArrow, setRightArrow] = useState('')
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product.id}/styles`, {
       headers: {
@@ -66,15 +69,16 @@ const Product = ({ product }) => {
               e.preventDefault();
               setZoom(!zoom)
             }}></img>
-            <i className="arrow left" onClick={(e) => {
+            <i className="arrow left" style={{visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null}} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
                 if (currentStyle.photos[i].url === currentPhoto) {
                   handleCurrentPhoto(currentStyle.photos[i - 1])
                 }
+
               }
             }}>&#8592;</i>
-            <i className="arrow right" onClick={(e) => {
+            <i className="arrow right" style={{visibility: currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null}} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
                 if (currentStyle.photos[i].url === currentPhoto) {
