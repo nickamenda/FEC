@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 const CartInfo = (props) => {
   const { currentStyle } = props;
   const currentSkus = currentStyle.skus;
+  // const [currentSkus, setCurrentSkus] = useState({})
   const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
   const [selectedSize, setSelectedSize] = useState(null)
   const [quantity, setQuantity] = useState(0);
-  const [selectedQuantity, setSelectedQuantity] = useState(1)
+  const [selectedQuantity, setSelectedQuantity] = useState(0)
 
   useEffect(() => {
     for (let key in currentSkus) {
@@ -16,16 +17,14 @@ const CartInfo = (props) => {
     }
   }, [selectedSize])
 
-
-
-  return (
+  return  (
     <div className="cart">
       <div className="selectors">
       <select name="size" className="product size" onChange={(e) => {
         e.preventDefault()
         setSelectedSize(e.target.value)
       }}>
-        <option key={'option'} value={0}>Select Size</option>
+        <option value={selectedSize}>Size</option>
         {sizes.map((item, i) => {
           return (
             <option key={i + 1000000000} value={item}>{item}</option>
@@ -36,7 +35,7 @@ const CartInfo = (props) => {
         e.preventDefault()
         setSelectedQuantity(e.target.value)
       }}>
-        <option key={0} value={0}>Choose Quantity</option>
+        <option value={selectedQuantity}>Quantity</option>
         {Array(quantity).fill(1).map((x, i) => {
           return i < 15 ? (
             <option key={i + 10000000} value={i + 1}>{i + 1}</option>
@@ -44,9 +43,14 @@ const CartInfo = (props) => {
         })}
       </select>
       </div>
+      <div className="add-to-cart">
       <button className="addCart"disabled={!selectedSize} onClick={(e) => {
         e.preventDefault()
+        setSelectedSize(null)
+        setQuantity(0)
+        setSelectedQuantity(1)
       }}>Add To Cart</button>
+      </div>
     </div>
   )
 }

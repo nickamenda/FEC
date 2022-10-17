@@ -8,15 +8,12 @@ import productExample from './exampleData/product.js'
 import stylesExample from './exampleData/styles.js'
 
 const Product = ({ product }) => {
-
-
   const [currentProduct, setCurrentProduct] = useState(product);
   const [styles, setStyles] = useState([]);
-  const [currentStyle, setCurrentStyle] = useState({})
-  const [currentPhoto, setCurrentPhoto] = useState('')
+  const [currentStyle, setCurrentStyle] = useState({});
+  const [currentPhoto, setCurrentPhoto] = useState('');
   const [zoom, setZoom] = useState(false);
-  const [leftArrow, setLeftArrow] = useState('none')
-  const [rightArrow, setRightArrow] = useState('')
+
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product.id}/styles`, {
       headers: {
@@ -37,6 +34,7 @@ const Product = ({ product }) => {
   function handleCurrentPhoto(item) {
     setCurrentPhoto(item.url)
   }
+
   function handleSales(item) {
     if (item.sale_price) {
       return (
@@ -97,7 +95,7 @@ const Product = ({ product }) => {
           <div className="product prices">{handleSales(currentStyle)}</div>
           <div className="product current-style"><div className="product current-style title">Style ></div><div className="product current-style name"> {currentStyle.name}</div></div>
           <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle} />
-          <CartInfo currentStyle={currentStyle} />
+          <CartInfo currentStyle={currentStyle}/>
         </div>
       </div>
       <div className="product bottom-info">

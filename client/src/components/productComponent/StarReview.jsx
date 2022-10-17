@@ -21,7 +21,7 @@ const StarReview = (props) => {
 
   var reviewAmt = 0;
   var reviewScores = 0;
-  if (Object.keys(ratings).length === 5) {
+  if (Object.keys(ratings).length !== 0) {
     for (let key in ratings) {
       reviewAmt += Number(ratings[key])
       reviewScores += (Number(key) * (ratings[key]))
