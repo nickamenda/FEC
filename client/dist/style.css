@@ -74,7 +74,6 @@ img:hover,
 .product.thumbnails img {
   height: 70px;
   width: 70px;
-  /* margin: 10px; */
 }
 
 .product.product.styles.all-styles {
@@ -130,7 +129,7 @@ img:hover,
 .product.features {
   display: flex;
   justify-content: center;
-  align-items: center;
+
   flex-direction: column;
   gap: 5px;
 }
@@ -170,8 +169,6 @@ img:hover,
   cursor: zoom-in;
 }
 
-
-
 select {
   width: 50%;
   padding: 12px 15px;
@@ -194,7 +191,13 @@ select {
   margin-bottom: 20px;
   background-color: rgb(151, 151, 151);
 }
-
+.selectors {
+  display: inline-flex;
+}
+.add-to-cart {
+  display: flex;
+  justify-content: center;
+}
 .product.size,
 .product.quantity {
   font-size: 13px;
