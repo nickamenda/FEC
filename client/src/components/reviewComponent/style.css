@@ -1,3 +1,12 @@
 .List {
   list-style-type: none;
 }
+
+.reviews {
+  border: 2px dashed red;
+}
+
+.tile {
+  margin: 10px 0 20px 0px;
+  list-style-type: none;
+}

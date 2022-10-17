@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Sorting = () => {
+  // RElevant should be on by default
   return (
     <div>
-      <h3>reviews, sorted by DropDownMenu
+      <h3>reviews, sorted by
       <select>
-        <option>Helloadas</option>
-        <option>Hello</option>
-        <option>Hello</option>
+        <option>Relevant</option>
+        <option>Helpful</option>
+        <option>Newest</option>
 
       </select>
       </h3>
