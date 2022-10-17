@@ -1,18 +1,44 @@
-import React, {useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 
 
 const StarsRating = (props) => {
   const [averageRating, setAverageRating] = useState(0);
-  // useEffect(() => {
-  //   for (let i = 0; i < props.product.length; i++) {
-  //     setAverageRating((averageRating + props.product[i].rating))
-  //   }
-  // })
+  const [metaData, setMetaData] = useState({})
+  const [ratings, setRatings] = useState({})
+
+  useEffect(() => {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${props.productId}`, {
+      headers: {
+        'Authorization': process.env.AUTH_KEY
+      }
+    })
+      .then((response) => {
+        setMetaData(response.data)
+      })
+  }, [])
+
+  useEffect(() => {
+    console.log(Object.keys(metaData))
+  }, [metaData])
+
+  useEffect(() => {
+    setRatings(metaData.ratings)
+
+  }, [metaData])
+  useEffect(() => {
+    console.log(ratings)
+
+  }, [ratings])
+  // ratings.characteristics
+  // ratings.ratings
+  // ratings.recommended
+
+  var totalNumReviews = 0;
+  var totalRatingPoints = 0;
 
 
-  if (props.product === 5) {
 
-  }
   return (
     <>
       <p>Star Average</p>

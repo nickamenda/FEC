@@ -6,7 +6,6 @@ import './style.css';
 const ReviewsList = (props) => {
   const [reviewsOpen, setReviewOpen] = useState(2)
 
-
   return (
     <>
       <ul className="reviews">
@@ -23,10 +22,10 @@ const ReviewsList = (props) => {
           </li>
       )})}
 
-    </ul>
-    {reviewsOpen <= props.product.length ? <button onClick={(e) => {e.preventDefault(); setReviewOpen(reviewsOpen + 2)}}>More Reviews</button> : null}
-    <button></button>
-  </>
+      </ul>
+      {reviewsOpen <= props.product.length ? <button onClick={(e) => {e.preventDefault(); setReviewOpen(reviewsOpen + 2)}}>More Reviews</button> : null}
+      <button>ADD A REVIEW + </button>
+    </>
   )
 }
 

@@ -14,7 +14,7 @@ const StarReview = (props) => {
       }
     })
       .then((res) => {
-        setRatings(res.data.ratings)
+        setRatings(res.data)
       })
   }, [])
 
