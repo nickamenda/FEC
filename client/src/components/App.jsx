@@ -22,15 +22,15 @@ const App = () => {
 
   return Object.keys(product).length !== 0 ? (
     <>
-<<<<<<< HEAD
+
     {/* <h1 className="title">Shopping</h1>
     <Product product={product}/> */}
     <Reviews product={product}/>
     {/* <Question product={product}/> */}
-=======
     <div className="navbar"></div>
     <Product product={product}/>
->>>>>>> 23f9c03ae459ea2a70ca6a00c9b80a716aaa76d5
+    <div className="navbar"></div>
+    <Product product={product}/>
     {/* <Related /> */}
     <Question product={product}/>
     {/* <Reviews product={product}/> */}

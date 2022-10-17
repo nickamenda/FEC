@@ -1,6 +1,5 @@
-<<<<<<< HEAD
+
 /* #root {
-=======
 html {
   background-color: rgb(255, 255, 255);
 
@@ -16,13 +15,12 @@ img:hover,
   cursor: pointer;
 }
 
-<<<<<<< HEAD
+<<<<<<<<< Temporary merge branch 1
 #root {
->>>>>>> abfbfd25e81ab993f7052dfe8fc62a5caac64081
   text-align: center;
 }
-=======
->>>>>>> 23f9c03ae459ea2a70ca6a00c9b80a716aaa76d5
+=========
+>>>>>>>>> Temporary merge branch 2
 .product {
   background-color: rgb(255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
@@ -97,9 +95,7 @@ img:hover,
   height: 50px;
   width: 50px;
   border-radius: 50%;
-<<<<<<< HEAD
 } */
-=======
 }
 
 .product.bottom-info {
@@ -121,9 +117,9 @@ img:hover,
 .product.current-description {
   max-width: 450px;
 }
-<<<<<<< HEAD
+<<<<<<<<< Temporary merge branch 1
 >>>>>>> abfbfd25e81ab993f7052dfe8fc62a5caac64081
-=======
+=========
 
 .reviews {
   display: flex;
@@ -211,4 +207,4 @@ select {
   margin-bottom: 20px;
   background-color: rgb(151, 151, 151);
 }
->>>>>>> 23f9c03ae459ea2a70ca6a00c9b80a716aaa76d5
+>>>>>>>>> Temporary merge branch 2
