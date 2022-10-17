@@ -17,15 +17,16 @@ const App = () => {
       .then((res) => {
         setProduct(res.data)
       })
+      .catch(err => console.log(err.message))
   }, [])
 
   return Object.keys(product).length !== 0 ? (
     <>
     <div className="navbar"></div>
     <Product product={product}/>
-    {/* <Reviews product={product}/>
-    <Question product={product}/> */}
     {/* <Related /> */}
+    <Question product={product}/>
+    {/* <Reviews product={product}/> */}
 
     </>
   ) : null
