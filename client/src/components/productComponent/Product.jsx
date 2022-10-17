@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import StarReview from './StarReview.jsx'
@@ -7,13 +8,12 @@ import productExample from './exampleData/product.js'
 import stylesExample from './exampleData/styles.js'
 
 const Product = ({ product }) => {
-
-
   const [currentProduct, setCurrentProduct] = useState(product);
   const [styles, setStyles] = useState([]);
-  const [currentStyle, setCurrentStyle] = useState({})
-  const [currentPhoto, setCurrentPhoto] = useState('')
+  const [currentStyle, setCurrentStyle] = useState({});
+  const [currentPhoto, setCurrentPhoto] = useState('');
   const [zoom, setZoom] = useState(false);
+
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product.id}/styles`, {
       headers: {
@@ -34,6 +34,7 @@ const Product = ({ product }) => {
   function handleCurrentPhoto(item) {
     setCurrentPhoto(item.url)
   }
+
   function handleSales(item) {
     if (item.sale_price) {
       return (
@@ -66,15 +67,16 @@ const Product = ({ product }) => {
               e.preventDefault();
               setZoom(!zoom)
             }}></img>
-            <i className="arrow left" onClick={(e) => {
+            <i className="arrow left" style={{visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null}} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
                 if (currentStyle.photos[i].url === currentPhoto) {
                   handleCurrentPhoto(currentStyle.photos[i - 1])
                 }
+
               }
             }}>&#8592;</i>
-            <i className="arrow right" onClick={(e) => {
+            <i className="arrow right" style={{visibility: currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null}} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
                 if (currentStyle.photos[i].url === currentPhoto) {
@@ -93,7 +95,7 @@ const Product = ({ product }) => {
           <div className="product prices">{handleSales(currentStyle)}</div>
           <div className="product current-style"><div className="product current-style title">Style ></div><div className="product current-style name"> {currentStyle.name}</div></div>
           <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle} />
-          <CartInfo currentStyle={currentStyle} />
+          <CartInfo currentStyle={currentStyle}/>
         </div>
       </div>
       <div className="product bottom-info">
