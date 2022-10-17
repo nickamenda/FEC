@@ -8,8 +8,6 @@ import productExample from './exampleData/product.js'
 import stylesExample from './exampleData/styles.js'
 
 const Product = ({ product }) => {
-
-
   const [currentProduct, setCurrentProduct] = useState(product);
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});

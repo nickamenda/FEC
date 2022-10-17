@@ -8,6 +8,7 @@ import Question from './questionsComponent/Question.jsx'
 
 const App = () => {
   const [product, setProduct] = useState({})
+
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/66642`, {
       headers: {
@@ -20,10 +21,11 @@ const App = () => {
       .catch(err => console.log(err.message))
   }, [])
 
+
   return Object.keys(product).length !== 0 ? (
     <>
     <div className="navbar"></div>
-    <Product product={product}/>
+    <Product product={product} />
     {/* <Related /> */}
     <Question product={product}/>
     {/* <Reviews product={product}/> */}

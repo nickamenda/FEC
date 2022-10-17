@@ -17,14 +17,14 @@ const CartInfo = (props) => {
     }
   }, [selectedSize])
 
-  return (
+  return  (
     <div className="cart">
       <div className="selectors">
       <select name="size" className="product size" onChange={(e) => {
         e.preventDefault()
         setSelectedSize(e.target.value)
       }}>
-        <option value={selectedSize}>Select Size</option>
+        <option value={selectedSize}>Size</option>
         {sizes.map((item, i) => {
           return (
             <option key={i + 1000000000} value={item}>{item}</option>
@@ -47,6 +47,7 @@ const CartInfo = (props) => {
       <button className="addCart"disabled={!selectedSize} onClick={(e) => {
         e.preventDefault()
         setSelectedSize(null)
+        setQuantity(0)
         setSelectedQuantity(1)
       }}>Add To Cart</button>
       </div>
