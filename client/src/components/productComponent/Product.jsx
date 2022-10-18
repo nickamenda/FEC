@@ -65,14 +65,7 @@ const Product = ({ product }) => {
       <div className="product container">
         <div className="product current-photos">
           <div className="product thumbnails">
-            {currentStyle.photos.map((item, i) => {
-              return (
-                <img className="product itemThumbnail" style={currentPhoto === item.url ? { border: '2px solid red' } : { border: '2px solid black' }} src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 1000000} onClick={(e) => {
-                  e.preventDefault();
-                  handleCurrentPhoto(item)
-                }}></img>
-              )
-            })}
+
           </div>
           <div className="product arrows">
             <img className="product mainPic" style={styling} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
@@ -97,6 +90,14 @@ const Product = ({ product }) => {
                 }
               }
             }}>&#8594;</i>
+                        {currentStyle.photos.map((item, i) => {
+              return (
+                <img className="product itemThumbnail" style={currentPhoto === item.url ? { border: '2px solid red' } : { border: '2px solid black' }} src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 1000000} onClick={(e) => {
+                  e.preventDefault();
+                  handleCurrentPhoto(item)
+                }}></img>
+              )
+            })}
           </div>
         </div>
         <div className="product current-info">
