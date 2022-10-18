@@ -38,8 +38,8 @@ const Question = ({ product }) => {
   }
 
   return (
-    <section>
-      <div>Question & Answers</div>
+    <section className="question-parent-container">
+      <div className="question-header">Question & Answers</div>
       <QuestionSearch />
       { loading ? null : <QAList questions={questions}/>}
       <AddQuestionBar moreQuestionsHandler={null} addQuestionHandler={null}/>
