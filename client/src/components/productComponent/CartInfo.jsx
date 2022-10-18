@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 const CartInfo = (props) => {
   const { currentStyle } = props;
   const currentSkus = currentStyle.skus;
-  // const [currentSkus, setCurrentSkus] = useState({})
   const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
   const [selectedSize, setSelectedSize] = useState(null)
   const [quantity, setQuantity] = useState(0);

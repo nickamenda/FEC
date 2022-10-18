@@ -13,6 +13,7 @@ const Product = ({ product }) => {
   const [currentStyle, setCurrentStyle] = useState({});
   const [currentPhoto, setCurrentPhoto] = useState('');
   const [zoom, setZoom] = useState(false);
+  const [styling, setStyling] = useState(null)
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product.id}/styles`, {
@@ -27,6 +28,17 @@ const Product = ({ product }) => {
       })
 
   }, [])
+  function changeStyling(zoom, styling) {
+    if (zoom && styling === null) {
+      setStyling({ width: '750px', height: '750px', zIndex: '100', cursor: 'zoom-in'})
+    } else if (!zoom && styling) {
+      setStyling({zoom: '250%', zIndex: '100', cursor: 'zoom-out'})
+    }
+    else {
+      setStyling(null)
+    }
+  }
+
   function handleStyles(style) {
     setCurrentStyle(style)
   }
@@ -63,11 +75,12 @@ const Product = ({ product }) => {
             })}
           </div>
           <div className="product arrows">
-            <img className="product mainPic" style={{ width: zoom ? '750px' : null, height: zoom ? '750px' : null, zIndex: zoom ? '100' : null }} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
+            <img className="product mainPic" style={styling} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
               e.preventDefault();
               setZoom(!zoom)
+              changeStyling(!zoom, styling)
             }}></img>
-            <i className="arrow left" style={{visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null}} onClick={(e) => {
+            <i className="arrow left" style={{ visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null }} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
                 if (currentStyle.photos[i].url === currentPhoto) {
@@ -76,7 +89,7 @@ const Product = ({ product }) => {
 
               }
             }}>&#8592;</i>
-            <i className="arrow right" style={{visibility: currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null}} onClick={(e) => {
+            <i className="arrow right" style={{ visibility: currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null }} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
                 if (currentStyle.photos[i].url === currentPhoto) {
@@ -95,7 +108,17 @@ const Product = ({ product }) => {
           <div className="product prices">{handleSales(currentStyle)}</div>
           <div className="product current-style"><div className="product current-style title">Style ></div><div className="product current-style name"> {currentStyle.name}</div></div>
           <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle} />
-          <CartInfo currentStyle={currentStyle}/>
+          <CartInfo currentStyle={currentStyle} />
+          <div className="share-buttons">
+            <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F&layout=button_count&size=small&width=77&height=20&appId" width="77" height="20" style={{ border: 'none', overflow: 'hidden' }} scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture;"></iframe>
+            <iframe allowtransparency="true" frameBorder="0" scrolling="no"
+              src="https://platform.twitter.com/widgets/tweet_button.html?size=medium"
+              style={{ width: '77px', height: '20px' }}></iframe>
+            <a href="http://pinterest.com/pin/create/button/?url={http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F%0A}" className="pin-it-button" count-layout="horizontal">
+              <img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" />
+            </a>
+          </div>
+
         </div>
       </div>
       <div className="product bottom-info">
