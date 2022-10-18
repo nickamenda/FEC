@@ -112,9 +112,11 @@ img:hover,
   padding-right: 20px;
 }
 
-.reviews {
+.myProductReviews {
   display: flex;
+  justify-content: flex-start;
   gap: 5px;
+
 }
 
 .reviewAvg[avg] {
@@ -255,3 +257,10 @@ select {
   display: flex;
   align-items: flex-end;
 }
+
+
+
+
+
+
+
