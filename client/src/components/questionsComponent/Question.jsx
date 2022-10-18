@@ -15,7 +15,8 @@ const Question = ({ product }) => {
 
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`, {
       params: {
-        product_id: product.id
+        product_id: product.id,
+        count: 50
       },
       headers: {
         'Authorization': process.env.AUTH_KEY
@@ -37,8 +38,8 @@ const Question = ({ product }) => {
   }
 
   return (
-    <section>
-      <div>Question & Answers</div>
+    <section className="question-parent-container">
+      <div className="question-header">Question & Answers</div>
       <QuestionSearch />
       { loading ? null : <QAList questions={questions}/>}
       <AddQuestionBar moreQuestionsHandler={null} addQuestionHandler={null}/>
