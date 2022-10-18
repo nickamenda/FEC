@@ -21,10 +21,18 @@ const StarBars = (props) => {
     fontWeight: 'bold'
   }
 
+  const bars = {
+    display: 'flex',
+    alignItems: 'flex-start',
+  }
+
   return (
-    <div style={containerStyles}>
-      <div style={fillerStyles}>
-        <span style={labelStyles}>{props.rating.number}</span>
+    <div style={bars}>
+      <p>{props.rating.number}</p>
+      <div style={containerStyles}>
+        <div style={fillerStyles}>
+          <span style={labelStyles}></span>
+        </div>
       </div>
     </div>
   )
