@@ -4,6 +4,7 @@ import axios from 'axios';
 // Takes an options object with type, either questions or answers and id of the question or answer
 const Helpful = ({ helpfulCount, options }) => {
   const [marked, setMarked] = useState(false)
+  const [count, setCount] = useState(helpfulCount)
 
   const increaseHelpfulCount = () => {
     axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/${options.type}/${options.id}/helpful`, undefined ,{
@@ -13,6 +14,7 @@ const Helpful = ({ helpfulCount, options }) => {
     })
       .then(res => {
         setMarked(true);
+        setCount(count + 1)
       })
       .catch(err => console.log('Can\'t mark helpful', err.message))
   }
@@ -25,7 +27,7 @@ const Helpful = ({ helpfulCount, options }) => {
   }
 
   return (
-    <span className="QA-helpful-btn" onClick={e => markHelpful()}>Helpful? Yes ({helpfulCount})</span>
+    <span className="QA-helpful-btn" onClick={e => markHelpful()}>Helpful? Yes ({count})</span>
   )
 }
 
