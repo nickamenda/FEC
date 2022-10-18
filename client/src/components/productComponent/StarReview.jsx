@@ -46,14 +46,4 @@ const StarReview = (props) => {
   )
 }
 export default StarReview;
-  // useEffect(() => {
-  //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${currentProduct.id}`, {
-  //     headers: {
-  //       'Authorization': process.env.AUTH_KEY
-  //     }
-  //   })
-  //     .then((res) => {
-  //       setRatings(res.data.ratings)
-  //     })
-  // }, [])
 

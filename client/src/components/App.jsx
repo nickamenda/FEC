@@ -27,10 +27,9 @@ const App = () => {
 
     <div className="navbar"></div>
     <Product product={product} />
-    {/* <Related /> */}
-    {/* <Question product={product}/> */}
-    {/* <Reviews product={product}/> */}
-
+    <Related />
+    <Question product={product}/>
+    <Reviews product={product}/>
     </>
   ) : null
 }
