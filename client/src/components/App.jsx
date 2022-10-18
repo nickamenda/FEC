@@ -10,7 +10,7 @@ const App = () => {
   const [product, setProduct] = useState({})
 
   useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/66642`, {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/66645`, {
       headers: {
         'Authorization': process.env.AUTH_KEY
       }
@@ -24,7 +24,6 @@ const App = () => {
 
   return Object.keys(product).length !== 0 ? (
     <>
-
     <div className="navbar"></div>
     <Product product={product} />
     <Related />

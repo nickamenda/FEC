@@ -27,6 +27,7 @@ const StarReview = (props) => {
       reviewScores += (Number(key) * (ratings[key]))
     }
   }
+
   for (let i = 0; i < Math.round(reviewScores / reviewAmt); i++) {
     stars += '★'
   }
