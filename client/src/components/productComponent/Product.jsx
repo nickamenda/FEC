@@ -92,7 +92,7 @@ const Product = ({ product }) => {
             }} key="arrow-right">&#8594;</i>
                         {currentStyle.photos.map((item, i) => {
               return (
-                <img className="product itemThumbnail" style={currentPhoto === item.url ? { border: '2px solid red' } : { border: '2px solid black' }} src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 3000} onClick={(e) => {
+                <img className="product itemThumbnail" style={currentPhoto === item.url ? { borderBottom: '4px solid red' } : { border: '2px solid black' }} src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 3000} onClick={(e) => {
                   e.preventDefault();
                   handleCurrentPhoto(item)
                 }}></img>
