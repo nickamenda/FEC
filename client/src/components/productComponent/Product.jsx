@@ -30,9 +30,9 @@ const Product = ({ product }) => {
   }, [])
   function changeStyling(zoom, styling) {
     if (zoom && styling === null) {
-      setStyling({ width: '750px', height: '750px', zIndex: '100', cursor: 'zoom-in'})
+      setStyling({ width: '850px', height: '500px', zIndex: '100', cursor: 'zoom-in'})
     } else if (!zoom && styling) {
-      setStyling({zoom: '250%', zIndex: '100', cursor: 'zoom-out'})
+      setStyling({transformOrigin: '50% 0%', transform: 'scale(1.5)', zIndex: '100', cursor: 'zoom-out', position: 'sticky'})
     }
     else {
       setStyling(null)
