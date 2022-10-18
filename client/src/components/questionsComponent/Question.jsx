@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import parseQuestions from './lib/parseQuestions.js'
+
 import QuestionSearch from './QuestionSearch.jsx';
 import AddQuestionBar from './AddQuestionBar.jsx';
 import QAList from './QAList.jsx';
@@ -8,7 +10,7 @@ import QAList from './QAList.jsx';
 const Question = ({ product }) => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  useEffect(() => console.log('questions', questions))
 
   useEffect(() => {
     setLoading(true);
@@ -23,7 +25,7 @@ const Question = ({ product }) => {
       }
     })
       .then(res => {
-        setQuestions(res.data);
+        setQuestions(parseQuestions(res.data));
         setLoading(false);
       })
       .catch(err => console.log('Error: ', err.message))
