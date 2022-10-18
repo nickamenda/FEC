@@ -1,5 +1,7 @@
 html {
   background-color: rgb(255, 255, 255);
+  max-width: 1280px;
+  margin: auto;
 }
 
 img {
@@ -74,16 +76,17 @@ img:hover,
 .product.thumbnails img {
   height: 70px;
   width: 70px;
-  margin: 10px;
 }
 
 .product.product.styles.all-styles {
+  display: flex;
   text-align: left;
-  max-width: 250px;
+  max-width: 300px;
+  flex-wrap: wrap;
 }
 
 .product.styles.all-styles img {
-  margin: 5px;
+  margin-bottom: 5px;
   height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -97,7 +100,6 @@ img:hover,
   justify-content: center;
   align-items: center;
   min-width: 40px;
-
 }
 
 .product.current-slogan {
@@ -119,6 +121,7 @@ img:hover,
   content: attr(avg);
 }
 
+
 .reviewAmt {
   text-decoration: underline;
 }
@@ -130,7 +133,7 @@ img:hover,
 .product.features {
   display: flex;
   justify-content: center;
-  align-items: center;
+
   flex-direction: column;
   gap: 5px;
 }
@@ -170,19 +173,16 @@ img:hover,
   cursor: zoom-in;
 }
 
-.cart {
-  display: flex;
-}
-
 select {
-  width: 50%;
-  padding: 16px 20px;
+  padding: 12px 15px;
   border: 1px solid black;
   border-radius: 4px;
 }
 
+
 .addCart {
-  width: 50%;
+  margin: 10px;
+  width: 75%;
   padding: 16px 20px;
   border: 1px solid black;
   border-radius: 4px;
