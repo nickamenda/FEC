@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
+import StarBars from './StarBars.jsx'
 
 
 const StarsRating = (props) => {
   const [metaData, setMetaData] = useState({})
   const [ratings, setRatings] = useState({})
+  const [recommend, setRecommend] = useState({})
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${props.productId}`, {
@@ -15,6 +17,7 @@ const StarsRating = (props) => {
       .then((response) => {
         setMetaData(response.data)
         setRatings(response.data.ratings)
+        setRecommend(response.data.recommended)
       })
   }, [])
 
@@ -22,7 +25,9 @@ const StarsRating = (props) => {
   // ratings.characteristics
   // ratings.ratings
   // ratings.recommended
-
+  useEffect(() => {
+    console.log(recommend)
+  }, [recommend])
 
   // Creating the Average Rating points
   var totalNumReviews = 0; // total number of reviews
@@ -36,10 +41,13 @@ const StarsRating = (props) => {
   }
 
 
+
   return (
     <>
       <p>Star Average</p>
       <p>{(totalRatingPoints / totalNumReviews).toFixed(1)}</p>
+      <p>{Math.ceil(((recommend.false / recommend.true).toFixed(2) * 100))}% of reviews recommend this product</p>
+      <StarBars ratings={ratings}/>
     </>
   )
 }
