@@ -250,3 +250,8 @@ select {
   display: flex;
   z-index: 0;
 }
+
+.product-reviews {
+  display: flex;
+  align-items: flex-end;
+}
