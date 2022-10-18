@@ -100,7 +100,7 @@ const Product = ({ product }) => {
           </div>
         </div>
         <div className="product current-info">
-          <div className="product reviews">
+          <div className="product-reviews">
             <StarReview currentId={product.id} key={product.id} />
           </div>
           <div className="product current-category">{currentProduct.category}</div>
