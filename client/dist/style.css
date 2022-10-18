@@ -107,6 +107,7 @@ img:hover,
 
 .product.current-description {
   max-width: 450px;
+  padding-right: 20px;
 }
 
 .reviews {
