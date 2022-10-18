@@ -213,3 +213,13 @@ select {
   right: 15px;
   color: red;
 }
+
+.share-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.share-buttons img {
+  border: none;
+}
