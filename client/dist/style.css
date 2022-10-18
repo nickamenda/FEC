@@ -13,14 +13,11 @@ img:hover,
   cursor: pointer;
 }
 
-#root {
-  text-align: center;
-}
-
 .product {
   background-color: rgb(255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
   font-size: large;
+  max-width: 1280px;
 }
 
 .product.container {
@@ -78,9 +75,6 @@ img:hover,
 .product.thumbnails img {
   height: 70px;
   width: 70px;
-
-  margin: 10px;
-
 }
 
 .product.product.styles.all-styles {
@@ -114,6 +108,7 @@ img:hover,
 
 .product.current-description {
   max-width: 450px;
+  padding-right: 20px;
 }
 
 .reviews {
@@ -215,10 +210,42 @@ select {
 
 .checkmark {
   font-size: 25px;
-  z-index: 10000;
+  z-index: 2;
   position: relative;
   top: 2px;
   right: 15px;
   color: red;
 }
 
+.share-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.share-buttons img {
+  border: none;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5e1;
+  font-size: 20px;
+  height: 25px;
+  width: 100px;
+  position: relative;
+  text-shadow: 0px 1px 0 #000000;
+}
+
+.rating-upper {
+  color: #e7c21b;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.rating-lower {
+  display: flex;
+  z-index: 0;
+}

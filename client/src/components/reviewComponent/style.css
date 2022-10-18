@@ -3,10 +3,14 @@
 }
 
 .reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
   border: 2px dashed red;
 }
 
 .tile {
-  margin: 10px 0 20px 0px;
   list-style-type: none;
 }
