@@ -28,20 +28,35 @@ const StarReview = (props) => {
     }
   }
 
-  for (let i = 0; i < Math.round(reviewScores / reviewAmt); i++) {
-    stars += '★'
-  }
-  if (stars.length !== 5) {
-    while (stars.length < 5) {
-      stars += '☆'
-    }
-  }
+  // for (let i = 0; i < Math.round(reviewScores / reviewAmt); i++) {
+  //   stars += '★'
+  // }
+  // if (stars.length !== 5) {
+  //   while (stars.length < 5) {
+  //     stars += '☆'
+  //   }
+  // }
 
   return (
     <>
       <div className="reviews">
-        <div className="reviewAvg" avg={(reviewScores / reviewAmt).toFixed(1)}>{stars}</div>
-        <a className="reviewAmt" href='#' style={{textDecoration: 'none', color: 'black', display: 'flex', alignItems: 'flex-end'}}>View all {reviewAmt} reviews...</a>
+          <div className="rating">
+            <div className="rating-upper" style={{width: ((reviewScores / reviewAmt).toFixed(2) / 5) * 100 + '%'}}>
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+            </div>
+            <div className="rating-lower">
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+            </div>
+        </div>
+        <a className="reviewAmt" href='#' style={{ textDecoration: 'none', color: 'black', display: 'flex', alignItems: 'flex-end' }}>View all {reviewAmt} reviews...</a>
       </div>
     </>
   )

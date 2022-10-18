@@ -1,6 +1,5 @@
 html {
   background-color: rgb(255, 255, 255);
-
 }
 
 img {
@@ -17,6 +16,7 @@ img:hover,
   background-color: rgb(255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
   font-size: large;
+  max-width: 1280px;
 }
 
 .product.container {
@@ -224,4 +224,27 @@ select {
 
 .share-buttons img {
   border: none;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5e1;
+  font-size: 20px;
+  height: 25px;
+  width: 100px;
+  position: relative;
+  text-shadow: 0px 1px 0 #000000;
+}
+
+.rating-upper {
+  color: #e7c21b;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.rating-lower {
+  display: flex;
+  z-index: 0;
 }
