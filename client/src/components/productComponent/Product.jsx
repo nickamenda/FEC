@@ -67,7 +67,7 @@ const Product = ({ product }) => {
               e.preventDefault();
               setZoom(!zoom)
             }}></img>
-            <i className="arrow left" style={{visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null}} onClick={(e) => {
+            <i className="arrow left" style={{ visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null }} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
                 if (currentStyle.photos[i].url === currentPhoto) {
@@ -76,7 +76,7 @@ const Product = ({ product }) => {
 
               }
             }}>&#8592;</i>
-            <i className="arrow right" style={{visibility: currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null}} onClick={(e) => {
+            <i className="arrow right" style={{ visibility: currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null }} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
                 if (currentStyle.photos[i].url === currentPhoto) {
@@ -95,7 +95,17 @@ const Product = ({ product }) => {
           <div className="product prices">{handleSales(currentStyle)}</div>
           <div className="product current-style"><div className="product current-style title">Style ></div><div className="product current-style name"> {currentStyle.name}</div></div>
           <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle} />
-          <CartInfo currentStyle={currentStyle}/>
+          <CartInfo currentStyle={currentStyle} />
+          <div className="share-buttons">
+            <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F&layout=button_count&size=small&width=77&height=20&appId" width="77" height="20" style={{ border: 'none', overflow: 'hidden' }} scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture;"></iframe>
+            <iframe allowtransparency="true" frameBorder="0" scrolling="no"
+              src="https://platform.twitter.com/widgets/tweet_button.html?size=medium"
+              style={{ width: '130px', height: '20px' }}></iframe>
+            <a href="http://pinterest.com/pin/create/button/?url={http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F%0A}" className="pin-it-button" count-layout="horizontal">
+              <img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" />
+            </a>
+          </div>
+
         </div>
       </div>
       <div className="product bottom-info">
