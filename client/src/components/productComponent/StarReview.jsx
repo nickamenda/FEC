@@ -41,20 +41,10 @@ const StarReview = (props) => {
     <>
       <div className="reviews">
         <div className="reviewAvg" avg={(reviewScores / reviewAmt).toFixed(1)}>{stars}</div>
-        <div className="reviewAmt">View all {reviewAmt} reviews...</div>
+        <a className="reviewAmt" href='#' style={{textDecoration: 'none', color: 'black', display: 'flex', alignItems: 'flex-end'}}>View all {reviewAmt} reviews...</a>
       </div>
     </>
   )
 }
 export default StarReview;
-  // useEffect(() => {
-  //   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${currentProduct.id}`, {
-  //     headers: {
-  //       'Authorization': process.env.AUTH_KEY
-  //     }
-  //   })
-  //     .then((res) => {
-  //       setRatings(res.data.ratings)
-  //     })
-  // }, [])
 
