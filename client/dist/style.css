@@ -111,9 +111,11 @@ img:hover,
   padding-right: 20px;
 }
 
-.reviews {
+.myProductReviews {
   display: flex;
+  justify-content: flex-start;
   gap: 5px;
+
 }
 
 .reviewAvg[avg] {
@@ -248,4 +250,20 @@ select {
 .rating-lower {
   display: flex;
   z-index: 0;
+<<<<<<< HEAD
 } */
+=======
+}
+
+.product-reviews {
+  display: flex;
+  align-items: flex-end;
+}
+
+
+
+
+
+
+
+>>>>>>> 97bb7af0c33fd70ef4c444974d7e741bd83bb74f

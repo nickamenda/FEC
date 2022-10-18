@@ -39,7 +39,7 @@ const StarReview = (props) => {
 
   return (
     <>
-      <div className="reviews">
+      <div className="myProductReviews">
           <div className="rating">
             <div className="rating-upper" style={{width: ((reviewScores / reviewAmt).toFixed(2) / 5) * 100 + '%'}}>
               <span>★</span>
