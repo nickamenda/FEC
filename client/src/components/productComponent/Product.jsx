@@ -13,6 +13,7 @@ const Product = ({ product }) => {
   const [currentStyle, setCurrentStyle] = useState({});
   const [currentPhoto, setCurrentPhoto] = useState('');
   const [zoom, setZoom] = useState(false);
+  const [styling, setStyling] = useState(null)
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product.id}/styles`, {
@@ -27,6 +28,17 @@ const Product = ({ product }) => {
       })
 
   }, [])
+  function changeStyling(zoom, styling) {
+    if (zoom && styling === null) {
+      setStyling({ width: '750px', height: '750px', zIndex: '100', cursor: 'zoom-in'})
+    } else if (!zoom && styling) {
+      setStyling({zoom: '250%', zIndex: '100', cursor: 'zoom-out'})
+    }
+    else {
+      setStyling(null)
+    }
+  }
+
   function handleStyles(style) {
     setCurrentStyle(style)
   }
@@ -63,9 +75,10 @@ const Product = ({ product }) => {
             })}
           </div>
           <div className="product arrows">
-            <img className="product mainPic" style={{ width: zoom ? '750px' : null, height: zoom ? '750px' : null, zIndex: zoom ? '100' : null }} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
+            <img className="product mainPic" style={styling} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
               e.preventDefault();
               setZoom(!zoom)
+              changeStyling(!zoom, styling)
             }}></img>
             <i className="arrow left" style={{ visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null }} onClick={(e) => {
               e.preventDefault();
