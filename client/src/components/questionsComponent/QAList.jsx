@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import QAEntry from './QAEntry.jsx';
 
 const QAList = ({ questions }) => {
