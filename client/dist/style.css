@@ -166,9 +166,11 @@ img:hover,
   position: relative;
   bottom: 350px;
   text-shadow: 0 0 3px rgb(255, 255, 255);
+  user-select: none;
 }
 
 .arrow.right {
+  user-select: none;
   z-index: 10;
   font-size: 50px;
   position: relative;
@@ -217,6 +219,7 @@ select {
 }
 
 .checkmark {
+  user-select: none;
   font-size: 25px;
   z-index: 2;
   position: relative;
@@ -246,7 +249,7 @@ select {
 }
 
 .rating-upper {
-  color: #e7c21b;
+  color: #ffd416;
   position: absolute;
   z-index: 1;
   display: flex;
