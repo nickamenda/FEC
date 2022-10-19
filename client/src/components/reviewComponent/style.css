@@ -1,14 +1,33 @@
-.List {
+.list {
   list-style-type: none;
 }
 
-.reviews {
+.reviews-parent {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   max-width: 1280px;
+  flex-direction: row;
   margin: 0 auto;
-  border: 2px dashed red;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.reviews-header {
+  align-self: flex-start;
+}
+
+.reviews-content {
+  flex-direction: row;
+  align-items:flex-start
+}
+.reviews-ratingBreakdown {
+
+}
+.reviews-list {
+  width: 550px;
+  margin: 0 20px 10px 30px;
 }
 
 .tile {

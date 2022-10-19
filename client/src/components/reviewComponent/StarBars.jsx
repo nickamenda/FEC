@@ -2,42 +2,39 @@ import React, {useState, useEffect} from 'react';
 
 const StarBars = (props) => {
 
-  let maxItem = 0;
-
-
-
-  if (props.ratings) {
-    for (let i = 1; i < 6; i++) {
-      if (!props.ratings[i]) {
-        props.ratings[i] = '0'
-      }
-    }
-    console.log('props.ratings:', props.ratings)
-    let maxNum = Number(props.ratings[1]);
-    for (let key in props.ratings) {
-      if (maxNum < Number(props.ratings[key])) {
-        maxNum = Number(props.ratings[key])
-      }
-    }
-    maxItem = maxNum;
+  const containerStyles = {
+    height: 10,
+    width: '100%',
+    backgroundColor: "#e0e0de",
+    margin: 5
   }
 
-  // setTimeout(() => {
-  //   console.log(props.ratings)
-  // }, 2000)
+  const fillerStyles = {
+    height: '100%',
+    width: `${(props.rating.value / props.maxItem) * 100}%`,
+    backgroundColor: 'grey',
+  }
+
+  const labelStyles = {
+    padding: 5,
+    color: 'black',
+    fontWeight: 'bold'
+  }
+
+  const bars = {
+    display: 'flex',
+    alignItems: 'flex-start',
+  }
+
   return (
-    <>
-    <div>
-      <div>
-        <span></span>
+    <div style={bars}>
+      <p>{props.rating.number}</p>
+      <div style={containerStyles}>
+        <div style={fillerStyles}>
+          <span style={labelStyles}></span>
+        </div>
       </div>
     </div>
-      {/* <span>{props.ratings[1]}</span>
-      <span>{props.ratings[2]}</span>
-      <span>{props.ratings[3]}</span>
-      <span>{props.ratings[4]}</span>
-      <span>{props.ratings[5]}</span> */}
-    </>
   )
 }
 

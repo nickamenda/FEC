@@ -19,10 +19,15 @@ const Reviews = (props) => {
 
 
   return product.length !== 0 ? (
-    <div className="reviews">
-      <h1>Ratings and Reviews</h1>
-      <RatingBreakdown product={product} productId={props.product.id}/>
-      <ReviewsList product={product}/>
+    <div>
+      <div className="reviews-parent">
+        <h1 className="reviews-header">Ratings and Reviews</h1>
+
+      </div>
+      <div className="row">
+        <RatingBreakdown className="reviews-content" product={product} productId={props.product.id}/>
+        <ReviewsList className="reviews-content" product={product}/>
+      </div>
     </div>
   ) : null
 }

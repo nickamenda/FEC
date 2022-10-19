@@ -5,7 +5,7 @@ const Sorting = () => {
   // RElevant should be on by default
   return (
     <div>
-      <h3>reviews, sorted by
+      <h3 data-testid="sorting">reviews, sorted by
       <select>
         <option>Relevant</option>
         <option>Helpful</option>

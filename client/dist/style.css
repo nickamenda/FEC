@@ -1,4 +1,4 @@
-html {
+/* html {
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -257,6 +257,9 @@ select {
 .rating-lower {
   display: flex;
   z-index: 0;
+<<<<<<< HEAD
+} */
+=======
 }
 
 .product-reviews {
@@ -270,3 +273,4 @@ select {
 
 
 
+>>>>>>> 97bb7af0c33fd70ef4c444974d7e741bd83bb74f
