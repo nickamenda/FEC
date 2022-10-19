@@ -43,7 +43,7 @@ const CartInfo = (props) => {
       </select>
       </div>
       <div className="add-to-cart">
-      <button className="addCart"disabled={!selectedSize} onClick={(e) => {
+      <button className="addCart" data-testid="add-Cart" disabled={!selectedSize} onClick={(e) => {
         e.preventDefault()
         setSelectedSize(null)
         setQuantity(0)
