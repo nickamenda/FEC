@@ -1,5 +1,5 @@
 import React from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 
 // Takes an options object with type, either questions or answers and the id.
 const ReportBtn = ({ options }) => {
@@ -9,6 +9,7 @@ const ReportBtn = ({ options }) => {
         'Authorization': process.env.AUTH_KEY
       }
     })
+      .catch(err => console.log('Error reporting: ', err.message))
   }
 
   return (

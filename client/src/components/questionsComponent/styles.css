@@ -135,6 +135,7 @@
 .QA-report {
   margin: .3em .4em .4em .4em;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 #search-icon {
