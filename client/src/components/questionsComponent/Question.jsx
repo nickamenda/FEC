@@ -40,8 +40,6 @@ const Question = ({ product }) => {
     return
   }
 
-  useEffect(() => console.log('questions', questions))
-
   return (
     <section className="question-parent-container"
       <div className="question-header" data-testid="question-header">Question & Answers</div>
