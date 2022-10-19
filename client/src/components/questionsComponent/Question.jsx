@@ -39,7 +39,7 @@ const Question = ({ product }) => {
 
   return (
     <section className="question-parent-container">
-      <div className="question-header">Question & Answers</div>
+      <div className="question-header" data-testid="question-header">Question & Answers</div>
       <QuestionSearch />
       { loading ? null : <QAList questions={questions}/>}
       <AddQuestionBar moreQuestionsHandler={null} addQuestionHandler={null}/>
