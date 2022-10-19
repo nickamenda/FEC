@@ -5,3 +5,5 @@ const AnswerEntry = ({ answer }) => {
 
   </div>
 }
+
+export default AnswerEntry

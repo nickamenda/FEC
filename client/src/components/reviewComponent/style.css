@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+
+body {
+  font-family: 'Lato', sans-serif;
+}
 .list {
   list-style-type: none;
 }
@@ -26,7 +32,7 @@
 
 }
 .reviews-list {
-  width: 550px;
+  width: 70%;
   margin: 0 20px 10px 30px;
 }
 

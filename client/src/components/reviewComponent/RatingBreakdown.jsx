@@ -10,7 +10,6 @@ const RatingBreakdown = (props) => {
 
   return (
     <div className="reviews">
-      <h1>Rating BreakDown</h1>
       <StarsRating product={props.product} productId={props.productId}/>
     </div>
   )

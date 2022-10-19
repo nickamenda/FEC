@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import StarBars from './StarBars.jsx'
+import Characteristics from './Characteristics.jsx'
 
 
 const StarsRating = (props) => {
   const [metaData, setMetaData] = useState({})
   const [ratings, setRatings] = useState({})
   const [recommend, setRecommend] = useState({})
+  const [characteristics, setCharacteristics] = useState({})
+  const [charFit, setCharFit] = useState({})
+  const [charLength, setCharLength] = useState({})
+  const [charComfort, setCharComfort] = useState({})
+  const [charQuality, setCharQuality] = useState({})
 
   const arrOfRatings = [];
 
@@ -20,9 +26,17 @@ const StarsRating = (props) => {
         setMetaData(response.data)
         setRatings(response.data.ratings)
         setRecommend(response.data.recommended)
+        setCharacteristics(response.data.characteristics)
       })
   }, [])
 
+  useEffect(() => {
+    setCharFit(characteristics.Fit);
+    setCharLength(characteristics.Length);
+    setCharComfort(characteristics.Comfort);
+    setCharQuality(characteristics.Quality);
+    console.log('car', characteristics)
+  }, [characteristics])
 
   // ratings.characteristics
   // ratings.ratings
@@ -48,7 +62,7 @@ const StarsRating = (props) => {
         ratings[i] = '0'
       }
     }
-    console.log('props.ratings:', ratings)
+    // console.log('props.ratings:', ratings)
     // getting the largest value
     let maxNum = Number(ratings[1]);
     for (let key in ratings) {
@@ -64,19 +78,19 @@ const StarsRating = (props) => {
       obj['value'] = ratings[j];
       arrOfRatings.push(obj)
     }
-    console.log(arrOfRatings)
+    // console.log(arrOfRatings)
   }
 
 
 
   return (
     <>
-      <p>Star Average</p>
       <p>{(totalRatingPoints / totalNumReviews).toFixed(1)}</p>
       <p>{Math.ceil(((recommend.false / recommend.true).toFixed(2) * 100))}% of reviews recommend this product</p>
       {arrOfRatings.length > 0 ? arrOfRatings.map((rating, id) => (
         <StarBars key={id} rating={rating} maxItem={maxItem}/>
       )) : null}
+      {characteristics ? <Characteristics Fit={charFit} Length={charLength} Comfort={charComfort} Quality={charQuality}/> : null}
     </>
   )
 }
