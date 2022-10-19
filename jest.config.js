@@ -4,5 +4,6 @@ module.exports = {
   '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',
   },
   transformIgnorePatterns: ['<rootDir>/node_modules/(?!(axios)/)'],
+  testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest-setup.js']
   };
