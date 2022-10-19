@@ -26,7 +26,7 @@ const CartInfo = (props) => {
         <option value={selectedSize}>Size</option>
         {sizes.map((item, i) => {
           return (
-            <option key={i + 1000000000} value={item}>{item}</option>
+            <option key={i + 1000} value={item}>{item}</option>
           )
         })}
       </select>
@@ -37,7 +37,7 @@ const CartInfo = (props) => {
         <option value={selectedQuantity}>Quantity</option>
         {Array(quantity).fill(1).map((x, i) => {
           return i < 15 ? (
-            <option key={i + 10000000} value={i + 1}>{i + 1}</option>
+            <option key={i + 2000} value={i + 1}>{i + 1}</option>
           ) : null
         })}
       </select>

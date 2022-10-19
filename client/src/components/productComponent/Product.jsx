@@ -30,9 +30,9 @@ const Product = ({ product }) => {
   }, [])
   function changeStyling(zoom, styling) {
     if (zoom && styling === null) {
-      setStyling({ width: '750px', height: '750px', zIndex: '100', cursor: 'zoom-in'})
+      setStyling({ width: '850px', height: '500px', zIndex: '100', cursor: 'zoom-in'})
     } else if (!zoom && styling) {
-      setStyling({zoom: '250%', zIndex: '100', cursor: 'zoom-out'})
+      setStyling({transformOrigin: '50% 0%', transform: 'scale(1.5)', zIndex: '100', cursor: 'zoom-out', position: 'sticky'})
     }
     else {
       setStyling(null)
@@ -51,13 +51,13 @@ const Product = ({ product }) => {
     if (item.sale_price) {
       return (
         <>
-          <div className="product old-price" style={{ color: item.sale_price ? 'red' : 'black', textDecoration: item.sale_price ? 'line-through' : "none" }}>${item.original_price}</div>
-          <div className="product current-price">${item.sale_price}</div>
+          <div className="product old-price" style={{ color: item.sale_price ? 'red' : 'black', textDecoration: item.sale_price ? 'line-through' : "none" }} key={item.original_price}>${item.original_price}</div>
+          <div className="product current-price" key={item.sale_price}>${item.sale_price}</div>
         </>
       )
     }
     return (
-      <div className="product old-price">${item.original_price}</div>
+      <div className="product old-price" key={item.original_price}>${item.original_price}</div>
     )
   }
   return Object.keys(currentStyle).length !== 0 ? (
@@ -65,21 +65,14 @@ const Product = ({ product }) => {
       <div className="product container">
         <div className="product current-photos">
           <div className="product thumbnails">
-            {currentStyle.photos.map((item, i) => {
-              return (
-                <img className="product itemThumbnail" style={currentPhoto === item.url ? { border: '2px solid red' } : { border: '2px solid black' }} src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 1000000} onClick={(e) => {
-                  e.preventDefault();
-                  handleCurrentPhoto(item)
-                }}></img>
-              )
-            })}
+
           </div>
           <div className="product arrows">
             <img className="product mainPic" style={styling} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
               e.preventDefault();
               setZoom(!zoom)
               changeStyling(!zoom, styling)
-            }}></img>
+            }} key={'mainPic'}></img>
             <i className="arrow left" style={{ visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null }} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
@@ -88,7 +81,7 @@ const Product = ({ product }) => {
                 }
 
               }
-            }}>&#8592;</i>
+            }} key="arrow-left">&#8592;</i>
             <i className="arrow right" style={{ visibility: currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null }} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
@@ -96,26 +89,34 @@ const Product = ({ product }) => {
                   handleCurrentPhoto(currentStyle.photos[i + 1])
                 }
               }
-            }}>&#8594;</i>
+            }} key="arrow-right">&#8594;</i>
+                        {currentStyle.photos.map((item, i) => {
+              return (
+                <img className="product itemThumbnail" style={currentPhoto === item.url ? { borderBottom: '4px solid red' } : { border: '2px solid black' }} src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 3000} onClick={(e) => {
+                  e.preventDefault();
+                  handleCurrentPhoto(item)
+                }}></img>
+              )
+            })}
           </div>
         </div>
         <div className="product current-info">
-          <div className="product reviews">
+          <div className="product-reviews">
             <StarReview currentId={product.id} key={product.id} />
           </div>
-          <div className="product current-category">{currentProduct.category}</div>
-          <div className="product current-name">{currentProduct.name}</div>
+          <div className="product current-category" key={currentProduct.category}>{currentProduct.category}</div>
+          <div className="product current-name" key={currentProduct.name}>{currentProduct.name}</div>
           <div className="product prices">{handleSales(currentStyle)}</div>
           <div className="product current-style"><div className="product current-style title">Style ></div><div className="product current-style name"> {currentStyle.name}</div></div>
           <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle} />
           <CartInfo currentStyle={currentStyle} />
           <div className="share-buttons">
-            <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F&layout=button_count&size=small&width=77&height=20&appId" width="77" height="20" style={{ border: 'none', overflow: 'hidden' }} scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture;"></iframe>
+            <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F&layout=button_count&size=small&width=77&height=20&appId" width="77" height="20" style={{ border: 'none', overflow: 'hidden' }} scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture;" key={'iframe1'}></iframe>
             <iframe allowtransparency="true" frameBorder="0" scrolling="no"
               src="https://platform.twitter.com/widgets/tweet_button.html?size=medium"
-              style={{ width: '77px', height: '20px' }}></iframe>
-            <a href="http://pinterest.com/pin/create/button/?url={http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F%0A}" className="pin-it-button" count-layout="horizontal">
-              <img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" />
+              style={{ width: '77px', height: '20px' }} key={'iframe2'}></iframe>
+            <a href="http://pinterest.com/pin/create/button/?url={http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F%0A}" className="pin-it-button" count-layout="horizontal" key={'pinterest'}>
+              <img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" key={'pinterest2'}/>
             </a>
           </div>
 
@@ -123,14 +124,14 @@ const Product = ({ product }) => {
       </div>
       <div className="product bottom-info">
         <div className="product bottom-left">
-          <div className="product current-slogan">{currentProduct.slogan}</div>
-          <div className="product current-description">{currentProduct.description}</div>
+          <div className="product current-slogan" key={currentProduct.slogan}>{currentProduct.slogan}</div>
+          <div className="product current-description" key={currentProduct.description}>{currentProduct.description}</div>
         </div>
         <div className="product features">{
-          currentProduct.features.map((item) => {
+          currentProduct.features.map((item, i) => {
             return (
               <>
-                <div className="product featureItem">{item.feature}: {item.value}</div>
+                <div className="product featureItem" key={i + 1943000}>{item.feature}: {item.value}</div>
               </>
             )
           })
