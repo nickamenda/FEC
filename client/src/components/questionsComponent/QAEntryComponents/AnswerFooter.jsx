@@ -1,11 +1,14 @@
 import React from 'react';
 import Helpful from './Helpful.jsx';
 import Axios from 'axios';
+import { format, parseISO } from 'date-fns'
 
 const AnswerFooter = ({ answer }) => {
-  console.log(answer.id)
+
   return (
-    <></>
+    <div className="QA-answer-footer">
+      by {answer.answerer_name}, {format(parseISO(answer.date), 'MMM d\, YYY')}
+    </div>
   )
 }
 
