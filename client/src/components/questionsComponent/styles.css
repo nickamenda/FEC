@@ -120,6 +120,12 @@
   font-size: 17px;
 }
 
+.QA-answer-img {
+  max-width: 10em;
+  height: auto;
+  margin: .5em;
+}
+
 .QA-answer-footer {
   padding: .4em .2em .4em .2em;
 }
