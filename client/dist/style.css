@@ -86,7 +86,7 @@ img:hover,
 .product.product.styles.all-styles {
   display: flex;
   text-align: left;
-  max-width: 300px;
+  max-width: 340px;
   flex-wrap: wrap;
 }
 
@@ -135,6 +135,9 @@ img:hover,
 
 .product.bottom-left {
   border-right: 5px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .product.features {
