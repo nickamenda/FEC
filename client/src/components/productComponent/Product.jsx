@@ -13,7 +13,7 @@ const Product = ({ product }) => {
   const [currentStyle, setCurrentStyle] = useState({});
   const [currentPhoto, setCurrentPhoto] = useState('');
   const [zoom, setZoom] = useState(false);
-  const [styling, setStyling] = useState(null)
+  const [styling, setStyling] = useState(null);
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product.id}/styles`, {
@@ -28,6 +28,7 @@ const Product = ({ product }) => {
       })
 
   }, [])
+
   function changeStyling(zoom, styling) {
     if (zoom && styling === null) {
       setStyling({ width: '850px', height: '500px', zIndex: '100', cursor: 'zoom-in'})
@@ -36,8 +37,11 @@ const Product = ({ product }) => {
     }
     else {
       setStyling(null)
+      setZoom(false)
     }
   }
+
+
 
   function handleStyles(style) {
     setCurrentStyle(style)
@@ -73,7 +77,7 @@ const Product = ({ product }) => {
               setZoom(!zoom)
               changeStyling(!zoom, styling)
             }} key={'mainPic'}></img>
-            <i className="arrow left" style={{ visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null }} onClick={(e) => {
+            <i className="arrow left" style={{ visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '-80px' : '-20px'}} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
                 if (currentStyle.photos[i].url === currentPhoto) {
@@ -82,7 +86,7 @@ const Product = ({ product }) => {
 
               }
             }} key="arrow-left">&#8592;</i>
-            <i className="arrow right" style={{ visibility: currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null }} onClick={(e) => {
+            <i className="arrow right" style={{ 'visibility': currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '630px' : '440px' }} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
                 if (currentStyle.photos[i].url === currentPhoto) {
@@ -91,13 +95,15 @@ const Product = ({ product }) => {
               }
             }} key="arrow-right">&#8594;</i>
                         {currentStyle.photos.map((item, i) => {
-              return (
-                <img className="product itemThumbnail" style={currentPhoto === item.url ? { borderBottom: '4px solid red' } : { border: '2px solid black' }} src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 3000} onClick={(e) => {
+              return i < 7 ? (
+
+                <img className="product itemThumbnail" style={currentPhoto === item.url ? {borderBottom: '4px solid red' } : null} src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 3000} onClick={(e) => {
                   e.preventDefault();
                   handleCurrentPhoto(item)
                 }}></img>
-              )
+              ) : null
             })}
+
           </div>
         </div>
         <div className="product current-info">
@@ -141,3 +147,5 @@ const Product = ({ product }) => {
   ) : null
 }
 export default Product;
+
+
