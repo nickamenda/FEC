@@ -103,6 +103,7 @@ const Product = ({ product }) => {
                 }}></img>
               ) : null
             })}
+
           </div>
         </div>
         <div className="product current-info">

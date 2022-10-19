@@ -19,7 +19,7 @@ const Reviews = (props) => {
 
 
   return product.length !== 0 ? (
-    <div>
+    <div id="reviews">
       <div className="reviews-parent">
         <h1 className="reviews-header">Ratings and Reviews</h1>
 
