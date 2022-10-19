@@ -14,7 +14,6 @@ const parseQuestions = (questionsResponse, answerCount) => {
     }
   })
 
-  console.log('parse', questions)
   return questions
 }
 

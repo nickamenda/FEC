@@ -10,7 +10,8 @@ import QAList from './QAList.jsx';
 const Question = ({ product }) => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
-  useEffect(() => console.log('questions', questions))
+
+
 
   useEffect(() => {
     setLoading(true);
@@ -38,6 +39,8 @@ const Question = ({ product }) => {
   const addNewQuestion = (question, nickname, email) => {
     return
   }
+
+  useEffect(() => console.log('questions', questions))
 
   return (
     <section className="question-parent-container">

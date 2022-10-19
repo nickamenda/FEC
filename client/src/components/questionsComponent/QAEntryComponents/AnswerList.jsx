@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-const AnswerList = ({ questionId }) => {
-  const
+const AnswerList = ({ answers }) => {
+  const [count, setCount] = useState(2)
 
-  console.log(questionId)
+  console.log('answers', answers)
 
   return (
     <div className="QA-Answer-List">
