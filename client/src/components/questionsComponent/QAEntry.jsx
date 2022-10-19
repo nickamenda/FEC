@@ -17,7 +17,9 @@ const QAEntry = ({ question }) => {
               | <AddAnswerBtn />
           </div>
         </div>
-        A:  <AnswerList answers={question.answers}/>
+        <div className="QA-answer-container">
+         <span className="QA-a-span">A:</span><AnswerList answers={question.answers}/>
+        </div>
     </div>
   )
 }

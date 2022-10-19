@@ -27,7 +27,7 @@ const Helpful = ({ helpfulCount, options }) => {
   }
 
   return (
-    <span className="QA-helpful-btn" onClick={e => markHelpful()}>Helpful? Yes ({count})</span>
+    <span className="QA-helpful-btn" onClick={e => markHelpful()}>Helpful? <span className="QA-helpful-yes">Yes</span>({count})</span>
   )
 }
 

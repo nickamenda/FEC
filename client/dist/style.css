@@ -1,4 +1,4 @@
-/* html {
+html {
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -65,12 +65,12 @@ img:hover,
   gap: 10px;
 }
 
-/* .product.thumbnails {
+.product.thumbnails {
   display: flex;
   flex-direction: column;
   gap: 12px;
   min-width: 40px;
-} */
+}
 
 .product.itemThumbnail {
   z-index: 20;
@@ -260,20 +260,10 @@ select {
 .rating-lower {
   display: flex;
   z-index: 0;
-<<<<<<< HEAD
-} */
-=======
+
 }
 
 .product-reviews {
   display: flex;
   align-items: flex-end;
 }
-
-
-
-
-
-
-
->>>>>>> 97bb7af0c33fd70ef4c444974d7e741bd83bb74f
