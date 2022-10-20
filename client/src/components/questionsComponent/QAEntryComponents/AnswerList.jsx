@@ -2,17 +2,33 @@ import React, { useState } from 'react';
 import AnswerEntry from './AnswerEntry.jsx';
 
 const AnswerList = ({ answers }) => {
-  const [count, setCount] = useState(2)
+  const [count, setCount] = useState(2);
+
+  const adjustCount = () => {
+    return undefined
+  };
 
   return (
     <div className="QA-answer-list">
       { answers.length > 0 ? answers.map((answer, i) => {
           if (i < count) return (<AnswerEntry answer={answer} key={answer.id} />)
           })
-            : <div className="QA-no-answers">Be the first to respond</div>
+            : <div className="QA-no-answers">Be the first to respond</div> }
+      {
+        answers.length > count ? <button className="QA-load-answers-btn" onClick={adjustCount}>See More Answers</button>
+        : (count === answers.length && answers.length > 2) ? <button className="QA-collapse-answers-btn" onClick={adjustCount}>Collapse Answers</button>
+        : null
       }
     </div>
   )
 }
 
 export default AnswerList;
+
+
+
+// (answers.length > count) && <button className="QA-load-answers-btn"  >See More Answers</button>
+// (answer.length > 2 && answer.length === count) && <button className="QA-collapse-answers-btn" >Collapse Answers</button>
+
+// { answers.length > count ? <button className="QA-load-answers-btn" onClick={adjustCount}>See More Answers</button>
+// : <button className="QA-collapse-answers-btn" onClick={adjustCount}></button> }

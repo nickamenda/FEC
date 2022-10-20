@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   color: var(--light-text-color);
+  width: 90%vw;
 }
 
 .question-parent-container * {
@@ -28,18 +29,18 @@
 .QA-search-container {
   display: flex;
   border: 1px solid grey;
-  max-width: 1080px;
+  max-width: 1180px;
   width: 100%;
   height: 2.8em;
   align-self: flex-start;
-  margin-left: 1em;
+  margin-left: .8em;
   justify-content: flex-start;
   padding: .2em;
 }
 
 .question-input {
   border: none;
-  width: 100%;
+  width: 95%;
   height: 95%;
   font-size: 16px;
   font-weight: bold;
@@ -50,6 +51,7 @@
 
 .QA-question-list {
   margin: .4em .2em .4em .2em;
+  max-height: 50%vh;
 }
 
 .QA-entry-container {
@@ -80,10 +82,6 @@
   margin-left: .2em;
 }
 
-/* .QA-answer-list {
-  margin-left: .3em;
-} */
-
 .QA-helpful-yes {
   text-decoration: underline;
   margin-right: .1em;
@@ -104,8 +102,23 @@
   margin: .4em;
 }
 
+.QA-load-answers-btn, .QA-collapse-answers-btn {
+  background-color: rgb(255, 255, 255);
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: .3em;
+  margin: .3em 0 .3em 0;
+  cursor: pointer;
+}
+
 .QA-answer-container {
   display: flex;
+  margin-top: .3em;
+}
+
+.QA-answer-entry-container {
+  margin-bottom: .2em;
 }
 
 .QA-answer-body {

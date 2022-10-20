@@ -6,4 +6,4 @@ const AddAnswerBtn = () => {
   )
 }
 
-export default AddAnswerBtn
+export default AddAnswerBtn;
