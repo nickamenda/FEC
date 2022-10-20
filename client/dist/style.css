@@ -23,8 +23,7 @@ img:hover,
 .product.container {
   display: flex;
   justify-content: center;
-  gap: 100px;
-
+  gap: 150px;
 }
 
 .product.current-info {
@@ -100,7 +99,7 @@ img:hover,
 .product.bottom-info {
   display: flex;
   gap: 10px;
-  margin-top: 30px;
+  margin-top: 90px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -202,7 +201,6 @@ select {
   margin: auto;
   padding-right: 40px;
   padding-bottom: 10px;
-  max-width: 90%;
   margin-bottom: 20px;
   background-color: rgb(151, 151, 151);
 }
