@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-// Takes an options object with type, either questions or answers and id of the question or answer
+// Takes an 2 arguments the first is the helpfulness count and the second is an options object with type, either questions
+// or answers and id of the question or answer.
 const Helpful = ({ helpfulCount, options }) => {
   const [marked, setMarked] = useState(false)
   const [count, setCount] = useState(helpfulCount)
@@ -27,7 +28,7 @@ const Helpful = ({ helpfulCount, options }) => {
   }
 
   return (
-    <span className="QA-helpful-btn" onClick={e => markHelpful()}>Helpful? Yes ({count})</span>
+    <span className="QA-helpful-btn" onClick={e => markHelpful()}>Helpful? <span className="QA-helpful-yes">Yes</span>({count})</span>
   )
 }
 
