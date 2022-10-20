@@ -6,6 +6,7 @@ import RenderStyles from './Styles.jsx'
 import CartInfo from './CartInfo.jsx'
 import productExample from './exampleData/product.js'
 import stylesExample from './exampleData/styles.js'
+import { v4 as uuidv4 } from 'uuid';
 
 const Product = ({ product }) => {
   const [currentProduct, setCurrentProduct] = useState(product);
@@ -61,28 +62,25 @@ const Product = ({ product }) => {
     if (item.sale_price) {
       return (
         <>
-          <div className="product old-price" style={{ color: item.sale_price ? 'red' : 'black', textDecoration: item.sale_price ? 'line-through' : "none" }} key={item.original_price}>${item.original_price}</div>
-          <div className="product current-price" key={item.sale_price}>${item.sale_price}</div>
+          <div className="product old-price" style={{ color: item.sale_price ? 'red' : 'black', textDecoration: item.sale_price ? 'line-through' : "none" }} key={uuidv4()}>${item.original_price}</div>
+          <div className="product current-price" key={uuidv4()}>${item.sale_price}</div>
         </>
       )
     }
     return (
-      <div className="product old-price" key={item.original_price}>${item.original_price}</div>
+      <div className="product old-price" key={uuidv4()}>${item.original_price}</div>
     )
   }
   return Object.keys(currentStyle).length !== 0 ? (
     <>
       <div className="product container">
         <div className="product current-photos">
-          <div className="product thumbnails">
-
-          </div>
           <div className="product arrows">
             <img className="product mainPic" style={styling} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
               e.preventDefault();
               setZoom(!zoom)
               changeStyling(!zoom, styling)
-            }} key={'mainPic'}></img>
+            }} key={uuidv4()}></img>
             <i className="arrow left" style={{ visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '-80px' : '-20px' }} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
@@ -94,7 +92,7 @@ const Product = ({ product }) => {
                 }
 
               }
-            }} key="arrow-left">&#8592;</i>
+            }} key={uuidv4()}>&#8592;</i>
             <i className="arrow right" style={{ 'visibility': currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '630px' : '440px' }} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
@@ -106,11 +104,11 @@ const Product = ({ product }) => {
 
                 }
               }
-            }} key="arrow-right">&#8594;</i>
+            }} key={uuidv4()}>&#8594;</i>
 
             {currentThumbnails.map((item, i) => {
               return (
-                <img className="product itemThumbnail" style={currentPhoto === item.url ? { borderBottom: '4px solid red' } : null} src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 3000} onClick={(e) => {
+                <img className="product itemThumbnail" style={currentPhoto === item.url ? { borderBottom: '4px solid red' } : null} src={item.thumbnail_url} alt={currentStyle.style_id} key={uuidv4()} onClick={(e) => {
                   e.preventDefault();
                   handleCurrentPhoto(item)
                 }}></img>
@@ -131,21 +129,21 @@ const Product = ({ product }) => {
         </div>
         <div className="product current-info">
           <div className="product-reviews">
-            <StarReview currentId={product.id} key={product.id} />
+            <StarReview currentId={product.id} key={uuidv4()} />
           </div>
-          <div className="product current-category" key={currentProduct.category}>{currentProduct.category}</div>
-          <div className="product current-name" key={currentProduct.name}>{currentProduct.name}</div>
+          <div className="product current-category" key={uuidv4()}>{currentProduct.category}</div>
+          <div className="product current-name" key={uuidv4()}>{currentProduct.name}</div>
           <div className="product prices">{handleSales(currentStyle)}</div>
           <div className="product current-style"><div className="product current-style title">Style ></div><div className="product current-style name"> {currentStyle.name}</div></div>
           <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle} />
           <CartInfo currentStyle={currentStyle} />
           <div className="share-buttons">
-            <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F&layout=button_count&size=small&width=77&height=20&appId" width="77" height="20" style={{ border: 'none', overflow: 'hidden' }} scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture;" key={'iframe1'}></iframe>
+            <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F&layout=button_count&size=small&width=77&height=20&appId" width="77" height="20" style={{ border: 'none', overflow: 'hidden' }} scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture;" key={uuidv4()}></iframe>
             <iframe allowtransparency="true" frameBorder="0" scrolling="no"
               src="https://platform.twitter.com/widgets/tweet_button.html?size=medium"
-              style={{ width: '77px', height: '20px' }} key={'iframe2'}></iframe>
-            <a href="http://pinterest.com/pin/create/button/?url={http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F%0A}" className="pin-it-button" count-layout="horizontal" key={'pinterest'}>
-              <img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" key={'pinterest2'} />
+              style={{ width: '77px', height: '20px' }} key={uuidv4()}></iframe>
+            <a href="http://pinterest.com/pin/create/button/?url={http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F%0A}" className="pin-it-button" count-layout="horizontal" key={uuidv4()}>
+              <img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" key={uuidv4()} />
             </a>
           </div>
 
@@ -153,14 +151,14 @@ const Product = ({ product }) => {
       </div>
       <div className="product bottom-info">
         <div className="product bottom-left">
-          <div className="product current-slogan" key={currentProduct.slogan}>{currentProduct.slogan}</div>
-          <div className="product current-description" key={currentProduct.description}>{currentProduct.description}</div>
+          <div className="product current-slogan" key={uuidv4()}>{currentProduct.slogan}</div>
+          <div className="product current-description" key={uuidv4()}>{currentProduct.description}</div>
         </div>
         <div className="product features">{
           currentProduct.features.map((item, i) => {
             return (
               <>
-                <div className="product featureItem" key={i + 1943000}>{item.feature}: {item.value}</div>
+                <div className="product featureItem" key={uuidv4()}>{item.feature}: {item.value}</div>
               </>
             )
           })

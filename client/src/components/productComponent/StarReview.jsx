@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import reviewsExample from './exampleData/reviews.js'
+import { v4 as uuidv4 } from 'uuid';
+
 
 const StarReview = (props) => {
   const { currentId } = props

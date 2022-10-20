@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const StylesItem = (props) => {
   const { style, handleStyles, handleCurrentPhoto, currentStyle } = props
@@ -8,7 +10,7 @@ const StylesItem = (props) => {
       e.preventDefault()
       handleStyles(style)
       handleCurrentPhoto(style.photos[0])
-    }}></img>
+    }} key={uuidv4()}></img>
     <div className="checkmark" style={{visibility: currentStyle === style ? null : 'hidden'}}>✓</div>
     </>
   )
