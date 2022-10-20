@@ -16,6 +16,7 @@ const Product = ({ product }) => {
   const [styling, setStyling] = useState(null);
   const [thumbnails, setThumbnails] = useState([])
   const [currentThumbnails, setCurrentThumbnails] = useState([])
+  const [length, setLength] = useState(0)
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product.id}/styles`, {
@@ -27,7 +28,7 @@ const Product = ({ product }) => {
         setStyles(res.data.results)
         setCurrentStyle(res.data.results[0])
         handleCurrentPhoto(res.data.results[0].photos[0])
-        var length = res.data.results[0].photos.length
+        setLength(res.data.results[0].photos.length)
         setThumbnails([res.data.results[0].photos.slice(0, 7), res.data.results[0].photos.slice(7, length)])
         setCurrentThumbnails(res.data.results[0].photos.slice(0, 7))
       })
@@ -115,7 +116,7 @@ const Product = ({ product }) => {
                 }}></img>
               )
             })}
-            {JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[0]) ? (
+            {JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[0]) && length > 7 ? (
               <div className="downArrow" onClick={(e) => {
                 e.preventDefault();
                 setCurrentThumbnails(thumbnails[1])
