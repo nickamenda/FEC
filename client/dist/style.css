@@ -9,7 +9,9 @@ img {
 
 img:hover,
 .arrow.left:hover,
-.arrow.right:hover {
+.arrow.right:hover,
+.downArrow:hover,
+.upArrow:hover {
   cursor: pointer;
 }
 
@@ -77,9 +79,29 @@ img:hover,
   position: relative;
   height: 50px;
   width: 50px;
-  bottom: 630px;
+  bottom: 580px;
   margin: 5px;
   right: 90px;
+}
+
+.downArrow {
+  font-size: 40px;
+  z-index: 10;
+  position: relative;
+  bottom: 590px;
+  right: 72px;
+  text-shadow: 0 0 3px rgb(255, 255, 255);
+  user-select: none;
+}
+
+.upArrow {
+  z-index: 10;
+  font-size: 40px;
+  position: relative;
+  bottom: 860px;
+  right: 72px;
+  text-shadow: 0 0 3px rgb(255, 255, 255);
+  user-select: none;
 }
 
 .product.product.styles.all-styles {
