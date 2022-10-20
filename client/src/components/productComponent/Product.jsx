@@ -29,7 +29,7 @@ const Product = ({ product }) => {
         setCurrentStyle(res.data.results[0])
         handleCurrentPhoto(res.data.results[0].photos[0])
         setLength(res.data.results[0].photos.length)
-        setThumbnails([res.data.results[0].photos.slice(0, 7), res.data.results[0].photos.slice(7, length)])
+        setThumbnails([res.data.results[0].photos.slice(0, 7), res.data.results[0].photos.slice(7, res.data.results[0].photos.length)])
         setCurrentThumbnails(res.data.results[0].photos.slice(0, 7))
       })
 
