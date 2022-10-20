@@ -51,7 +51,9 @@
 
 .QA-question-list {
   margin: .4em .2em .4em .2em;
-  max-height: 50%vh;
+  overflow-y: scroll;
+  max-height: 48vh;
+
 }
 
 .QA-entry-container {
