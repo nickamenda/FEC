@@ -2,7 +2,6 @@ import React from 'react';
 import AnswerFooter from './AnswerFooter.jsx';
 
 const AnswerEntry = ({ answer }) => {
-  if (answer) console.log('answer in AList', answer)
   return (
   <div className="QA-answer-entry-container">
     <div className="QA-answer-body">

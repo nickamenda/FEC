@@ -5,7 +5,11 @@ const AnswerList = ({ answers }) => {
   const [count, setCount] = useState(2);
 
   const adjustCount = () => {
-    return undefined
+    if (count === 2) {
+      setCount(answers.length);
+    } else if (count === answers.length) {
+      setCount(2);
+    }
   };
 
   return (
