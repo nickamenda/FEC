@@ -83,8 +83,8 @@ const Characteristics = (props) => {
           </div>
         </div>
         <div className="char-description">
-          <p>Too small</p>
-          <p>Too large</p>
+          <p className='char-description-p'>Too small</p>
+          <p className='char-description-p'>Too large</p>
         </div>
       </div>
 
@@ -95,6 +95,10 @@ const Characteristics = (props) => {
             <span style={labelStyles}>▼</span>
           </div>
         </div>
+        <div className="char-description">
+          <p className='char-description-p'>Too small</p>
+          <p className='char-description-p'>Too large</p>
+        </div>
       </div>
 
       <div>
@@ -104,6 +108,10 @@ const Characteristics = (props) => {
             <span style={labelStyles}>▼</span>
           </div>
         </div>
+        <div className="char-description">
+          <p className='char-description-p'>Too small</p>
+          <p className='char-description-p'>Too large</p>
+        </div>
       </div>
 
       <div>
@@ -112,6 +120,10 @@ const Characteristics = (props) => {
           <div style={fillerStyles4}>
             <span style={labelStyles}>▼</span>
           </div>
+        </div>
+        <div className="char-description">
+          <p className='char-description-p'>Too small</p>
+          <p className='char-description-p'>Too large</p>
         </div>
       </div>
 

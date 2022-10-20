@@ -89,3 +89,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.char-description-p {
+  font-size: 8pt;
+}
