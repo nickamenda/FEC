@@ -14,6 +14,8 @@ const Product = ({ product }) => {
   const [currentPhoto, setCurrentPhoto] = useState('');
   const [zoom, setZoom] = useState(false);
   const [styling, setStyling] = useState(null);
+  const [thumbnails, setThumbnails] = useState([])
+  const [currentThumbnails, setCurrentThumbnails] = useState([])
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product.id}/styles`, {
@@ -25,15 +27,18 @@ const Product = ({ product }) => {
         setStyles(res.data.results)
         setCurrentStyle(res.data.results[0])
         handleCurrentPhoto(res.data.results[0].photos[0])
+        var length = res.data.results[0].photos.length
+        setThumbnails([res.data.results[0].photos.slice(0, 7), res.data.results[0].photos.slice(7, length)])
+        setCurrentThumbnails(res.data.results[0].photos.slice(0, 7))
       })
 
   }, [])
 
   function changeStyling(zoom, styling) {
     if (zoom && styling === null) {
-      setStyling({ width: '850px', height: '570px', zIndex: '100', cursor: 'zoom-in'})
+      setStyling({ width: '850px', height: '570px', zIndex: '100', cursor: 'zoom-in' })
     } else if (!zoom && styling) {
-      setStyling({transformOrigin: '50% 0%', transform: 'scale(1.5)', zIndex: '100', cursor: 'zoom-out', position: 'sticky'})
+      setStyling({ transformOrigin: '50% 0%', transform: 'scale(1.5)', zIndex: '100', cursor: 'zoom-out', position: 'sticky' })
     }
     else {
       setStyling(null)
@@ -77,11 +82,14 @@ const Product = ({ product }) => {
               setZoom(!zoom)
               changeStyling(!zoom, styling)
             }} key={'mainPic'}></img>
-            <i className="arrow left" style={{ visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '-80px' : '-20px'}} onClick={(e) => {
+            <i className="arrow left" style={{ visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '-80px' : '-20px' }} onClick={(e) => {
               e.preventDefault();
               for (let i = 0; i < currentStyle.photos.length; i++) {
                 if (currentStyle.photos[i].url === currentPhoto) {
                   handleCurrentPhoto(currentStyle.photos[i - 1])
+                  if (i < 8) {
+                    setCurrentThumbnails(thumbnails[0])
+                  }
                 }
 
               }
@@ -91,19 +99,33 @@ const Product = ({ product }) => {
               for (let i = 0; i < currentStyle.photos.length; i++) {
                 if (currentStyle.photos[i].url === currentPhoto) {
                   handleCurrentPhoto(currentStyle.photos[i + 1])
+                if (i > 5) {
+                  setCurrentThumbnails(thumbnails[1])
+                }
+
                 }
               }
             }} key="arrow-right">&#8594;</i>
-                        {currentStyle.photos.map((item, i) => {
-              return i < 7 ? (
 
-                <img className="product itemThumbnail" style={currentPhoto === item.url ? {borderBottom: '4px solid red' } : null} src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 3000} onClick={(e) => {
+            {currentThumbnails.map((item, i) => {
+              return (
+                <img className="product itemThumbnail" style={currentPhoto === item.url ? { borderBottom: '4px solid red' } : null} src={item.thumbnail_url} alt={currentStyle.style_id} key={i + 3000} onClick={(e) => {
                   e.preventDefault();
                   handleCurrentPhoto(item)
                 }}></img>
-              ) : null
+              )
             })}
-
+            {JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[0]) ? (
+              <div className="downArrow" onClick={(e) => {
+                e.preventDefault();
+                setCurrentThumbnails(thumbnails[1])
+              }}>&#8595;</div>
+            ) : (
+                <div className="upArrow" onClick={(e) => {
+                  e.preventDefault();
+                  setCurrentThumbnails(thumbnails[0])
+                }}>&#8593;</div>
+              )}
           </div>
         </div>
         <div className="product current-info">
@@ -122,7 +144,7 @@ const Product = ({ product }) => {
               src="https://platform.twitter.com/widgets/tweet_button.html?size=medium"
               style={{ width: '77px', height: '20px' }} key={'iframe2'}></iframe>
             <a href="http://pinterest.com/pin/create/button/?url={http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F%0A}" className="pin-it-button" count-layout="horizontal" key={'pinterest'}>
-              <img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" key={'pinterest2'}/>
+              <img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" key={'pinterest2'} />
             </a>
           </div>
 
