@@ -11,6 +11,17 @@ const Question = ({ product }) => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const filterQuestions = (query) => {
+    let filteredQuestions = questions.filter((question => {
+      let pattern = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      let queryRegEx = new RegExp(pattern, 'ig');
+
+      if (queryRegEx.test(question.question_body)) {
+        return question
+      }
+    }))
+    setQuestions(filteredQuestions)
+  }
 
 
   useEffect(() => {
@@ -19,7 +30,7 @@ const Question = ({ product }) => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`, {
       params: {
         product_id: product.id,
-        count: 50
+        count: 100
       },
       headers: {
         'Authorization': process.env.AUTH_KEY
@@ -32,10 +43,6 @@ const Question = ({ product }) => {
       .catch(err => console.log('Error: ', err.message))
   }, [])
 
-  const loadMoreQuestions = () => {
-    return
-  }
-
   const addNewQuestion = (question, nickname, email) => {
     return
   }
@@ -43,9 +50,9 @@ const Question = ({ product }) => {
   return (
     <section className="question-parent-container">
       <div className="question-header">Question & Answers</div>
-      <QuestionSearch searchHandler={null}/>
+      <QuestionSearch searchHandler={filterQuestions}/>
       { loading ? null : <QAList questions={questions}/>}
-      <AddQuestionBar moreQuestionsHandler={null} addQuestionHandler={null}/>
+      <AddQuestionBar addQuestionHandler={null}/>
     </section>
   )
 }
