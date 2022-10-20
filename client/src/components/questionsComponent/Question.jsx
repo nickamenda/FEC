@@ -9,18 +9,23 @@ import QAList from './QAList.jsx';
 
 const Question = ({ product }) => {
   const [questions, setQuestions] = useState([]);
+  const [filteredQuestions, setFilteredQuestions] = useState([])
   const [loading, setLoading] = useState(true);
 
   const filterQuestions = (query) => {
-    let filteredQuestions = questions.filter((question => {
-      let pattern = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      let queryRegEx = new RegExp(pattern, 'ig');
 
-      if (queryRegEx.test(question.question_body)) {
-        return question
-      }
-    }))
-    setQuestions(filteredQuestions)
+    if (query.length >= 3) {
+      let filteredQuestions = questions.filter((question => {
+        let pattern = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        let queryRegEx = new RegExp(pattern, 'ig');
+
+        if (queryRegEx.test(question.question_body)) {
+          return question
+        }
+      }))
+      return setFilteredQuestions(filteredQuestions)
+    }
+    return setFilteredQuestions(questions)
   }
 
 
@@ -37,7 +42,9 @@ const Question = ({ product }) => {
       }
     })
       .then(res => {
-        setQuestions(parseQuestions(res.data));
+        let parsedQuestions = parseQuestions(res.data);
+        setQuestions(parsedQuestions);
+        setFilteredQuestions(parsedQuestions);
         setLoading(false);
       })
       .catch(err => console.log('Error: ', err.message))
@@ -51,7 +58,7 @@ const Question = ({ product }) => {
     <section className="question-parent-container">
       <div className="question-header">Question & Answers</div>
       <QuestionSearch searchHandler={filterQuestions}/>
-      { loading ? null : <QAList questions={questions}/>}
+      { loading ? null : <QAList questions={filteredQuestions}/>}
       <AddQuestionBar addQuestionHandler={null}/>
     </section>
   )
