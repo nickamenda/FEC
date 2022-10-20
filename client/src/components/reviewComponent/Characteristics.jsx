@@ -2,56 +2,66 @@ import React, {useState, useEffect} from 'react';
 
 const Characteristics = (props) => {
 
+  const [charFit, setCharFit] = useState({value: '1'})
+  const [charLength, setCharLength] = useState({value: '1'})
+  const [charComfort, setCharComfort] = useState({value: '1'})
+  const [charQuality, setCharQuality] = useState({value: '1'})
+
+  let fitStyle;
+  let lengthStyle = {};
+  let comfortStyle = {};
+  let qualityStyle = {};
 
   const containerStyles = {
-    height: 20,
+    height: 10,
     width: '100%',
     backgroundColor: "#e0e0de",
-    borderRadius: 50,
-    margin: 50
+    margin: 5
+  }
+
+  useEffect(() => {
+    if (props.Quality !== undefined) {
+      setCharFit(props.Fit);
+      setCharLength(props.Length);
+      setCharComfort(props.Comfort);
+      setCharQuality(props.Quality);
+      console.log('props', props)
+    }
+  }, [props])
+
+  useEffect(() => {
+    console.log(charFit)
+    fitStyle = {
+      height: '100%',
+      width: `${charFit.value * 5}%`,
+      borderRadius: 'inherit',
+      textAlign: 'right'
+    }
+    console.log('fitzs', fitStyle)
+  }, [charQuality])
+
+  const labelStyles = {
+    padding: 5,
+    color: 'black',
+    fontWeight: 'bold'
   }
 
 
-  // const fillerStyles = {
-  //   height: '100%',
-  //   width: `${}%`,
-  //   backgroundColor: bgcolor,
-  //   borderRadius: 'inherit',
-  //   textAlign: 'right'
-  // }
+  const fillerStyles = {
+    height: '100%',
+    width: `50%`,
+    borderRadius: 'inherit',
+    textAlign: 'right'
+  }
 
-  // const labelStyles = {
-  //   padding: 5,
-  //   color: 'white',
-  //   fontWeight: 'bold'
-  // }
 
-  return props.Fit ? (
+  return fitStyle ? (
     <div>
-      <div style={containerStyles}>
-        {/* <div style={fillerStyles}>
-          <span style={labelStyles}></span>
-        </div> */}
-      </div>
       {/* <div style={containerStyles}>
-        <div style={fillerStyles}>
-          <span style={labelStyles}></span>
-        </div>
-      </div>
-      <div style={containerStyles}>
-        <div style={fillerStyles}>
-          <span style={labelStyles}></span>
-        </div>
-      </div>
-      <div style={containerStyles}>
-        <div style={fillerStyles}>
-          <span style={labelStyles}></span>
+        <div style={fitStyle}>
+          <span style={labelStyles}>hello</span>
         </div>
       </div> */}
-      {/* <p>{props.Fit.value}</p>
-      <p>{props.Length.value}</p>
-      <p>{props.Comfort.value}</p>
-      <p>{props.Quality.value}</p> */}
     </div>
   ) : null
 }
