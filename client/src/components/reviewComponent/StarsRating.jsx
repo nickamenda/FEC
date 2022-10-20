@@ -72,7 +72,7 @@ const StarsRating = (props) => {
     }
     maxItem = maxNum;
     // creating an array of objs for StarBars
-    for (let j = 1; j < 6; j++) {
+    for (let j = 5; j >= 1; j--) {
       let obj = {}
       obj['number'] = j;
       obj['value'] = ratings[j];
@@ -85,7 +85,7 @@ const StarsRating = (props) => {
 
   return (
     <>
-      <p>{(totalRatingPoints / totalNumReviews).toFixed(1)}</p>
+      <p className="rating-point">{(totalRatingPoints / totalNumReviews).toFixed(1)}</p>
       <p>{Math.ceil(((Number(recommend.true) / (Number(recommend.false) + Number(recommend.true))).toFixed(2) * 100))}% of reviews recommend this product</p>
       {arrOfRatings.length > 0 ? arrOfRatings.map((rating, id) => (
         <StarBars key={id} rating={rating} maxItem={maxItem}/>

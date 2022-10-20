@@ -1,28 +1,39 @@
 import React,{ useState, useEffect } from 'react';
 import axios from 'axios';
 import './style.css';
-
+import { format, parseISO } from 'date-fns';
 
 const ReviewsTile = (props) => {
   const [reviewsOpen, setReviewOpen] = useState(2)
 
   return (
     <>
-      <ul className="reviews">
+      <div className="reviews">
       {props.product.filter((data, index) => index < reviewsOpen).map((data, i) => {
-        return (<li key={i} className="tile">
-          <span className="reviews">star rating: {data.rating}</span>
-          <p>{data.reviewer_name} {data.date}</p>
-          <h3>{data.summary}</h3>
-          <p>{data.body}</p>
+        return (<div key={i} className="tile">
+          <div className="tile-header">
+            <div>
+              <span>star rating: {data.rating} ★★★★★</span>
+            </div>
+            <div>
+              <small>{data.reviewer_name}, {format(parseISO(data.date), 'MMM d\, YYY')}</small>
+            </div>
+          </div>
+
+
+          <h4 className="tile-summary">{data.summary}</h4>
+
+          <p className="tile-body">{data.body}</p>
+
           {data.recommend ? <p>✓ I recommend this product</p> : null}
-          {data.recommend ? <><b>Response: </b>  <p>{data.response}</p> </> : null}
+          {data.response ? <><b>Response: </b>  <p>{data.response}</p> </> : null}
+
           <small>Helpful? <u>Yes</u> ({data.helpfulness}) | <u>Report</u></small>
           <hr></hr>
-          </li>
+          </div>
       )})}
 
-      </ul>
+      </div>
       {reviewsOpen <= props.product.length ? <button onClick={(e) => {e.preventDefault(); setReviewOpen(reviewsOpen + 2)}}>More Reviews</button> : null}
       <button>ADD A REVIEW + </button>
     </>
