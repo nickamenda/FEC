@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import React, { useState, useEffect } from 'react';
 
 const CartInfo = (props) => {
@@ -7,6 +8,7 @@ const CartInfo = (props) => {
   const [selectedSize, setSelectedSize] = useState(null)
   const [quantity, setQuantity] = useState(0);
   const [selectedQuantity, setSelectedQuantity] = useState(0)
+
 
   useEffect(() => {
     for (let key in currentSkus) {
@@ -26,7 +28,7 @@ const CartInfo = (props) => {
         <option value={selectedSize}>Size</option>
         {sizes.map((item, i) => {
           return (
-            <option key={i + 1000} value={item}>{item}</option>
+            <option key={uuidv4()} value={item}>{item}</option>
           )
         })}
       </select>
@@ -37,7 +39,7 @@ const CartInfo = (props) => {
         <option value={selectedQuantity}>Quantity</option>
         {Array(quantity).fill(1).map((x, i) => {
           return i < 15 ? (
-            <option key={i + 2000} value={i + 1}>{i + 1}</option>
+            <option key={uuidv4()} value={i + 1}>{i + 1}</option>
           ) : null
         })}
       </select>

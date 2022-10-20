@@ -66,12 +66,12 @@ img:hover,
   gap: 10px;
 }
 
-.product.thumbnails {
+/* .product.thumbnails {
   display: flex;
   flex-direction: column;
   gap: 12px;
   min-width: 40px;
-}
+} */
 
 .product.itemThumbnail {
   z-index: 20;
