@@ -200,7 +200,8 @@ select {
 
 .navbar {
   margin: auto;
-  padding: 40px;
+  padding-right: 40px;
+  padding-bottom: 10px;
   max-width: 90%;
   margin-bottom: 20px;
   background-color: rgb(151, 151, 151);
@@ -264,4 +265,10 @@ select {
 .product-reviews {
   display: flex;
   align-items: flex-end;
+}
+
+.logo {
+  position: relative;
+  top: 7px;
+  left: 10px
 }

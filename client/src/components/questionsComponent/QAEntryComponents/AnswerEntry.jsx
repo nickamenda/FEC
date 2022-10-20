@@ -10,13 +10,7 @@ const AnswerEntry = ({ answer }) => {
     </div>
     <AnswerFooter answer={answer}/>
   </div>
-<<<<<<< HEAD
-}
-
-export default AnswerEntry
-=======
   )
 }
 
 export default AnswerEntry;
->>>>>>> b6056cc11076333f77169e9ccec91d974a2a5ee0
