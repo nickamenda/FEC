@@ -16,19 +16,18 @@ const StarBars = (props) => {
   }
 
   const labelStyles = {
-    padding: 5,
     color: 'black',
     fontWeight: 'bold'
   }
 
   const bars = {
     display: 'flex',
-    alignItems: 'flex-start',
+    justifyContent: 'space-between'
   }
 
   return (
     <div style={bars}>
-      <p>{props.rating.number}</p>
+      <p className="stars-p">{props.rating.number} stars</p>
       <div style={containerStyles}>
         <div style={fillerStyles}>
           <span style={labelStyles}></span>
