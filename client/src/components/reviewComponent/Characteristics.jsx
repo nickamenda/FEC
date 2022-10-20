@@ -84,7 +84,7 @@ const Characteristics = (props) => {
         </div>
         <div className="char-description">
           <p className='char-description-p'>Too small</p>
-          <p className='char-description-p'>Too large</p>
+          <p className='char-description-p'>Too large!</p>
         </div>
       </div>
 
