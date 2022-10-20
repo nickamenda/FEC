@@ -39,3 +39,22 @@ body {
 .tile {
   list-style-type: none;
 }
+
+.tile-header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.tile-summary {
+  margin: 5px 0;
+}
+.tile-body {
+  margin: 5px 0;
+  font-size: 10pt;
+}
+
+.rating-point {
+  font-size: 40pt;
+  margin: 10px 0;
+}
