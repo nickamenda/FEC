@@ -37,11 +37,11 @@ const CartInfo = (props) => {
         <option value={selectedSize}>Size</option>
         {sizes.map((item, i) => {
           return (
-            <option key={i + 10000} value={item}>{item}</option>
+            <option key={i + 1000000000000} value={item}>{item}</option>
           )
         })}
       </select>
-      <select disabled={selectedSize === null} name="quantity" className="product quantity" onChange={(e) => {
+      <select disabled={!selectedSize} name="quantity" className="product quantity" onChange={(e) => {
         e.preventDefault()
         setSelectedQuantity(e.target.value)
       }}>
