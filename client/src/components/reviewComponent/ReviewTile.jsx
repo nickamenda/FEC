@@ -2,6 +2,7 @@ import React,{ useState, useEffect } from 'react';
 import axios from 'axios';
 import './style.css';
 import { format, parseISO } from 'date-fns';
+import Helpful from './Helpful.jsx'
 
 const ReviewsTile = (props) => {
   const [reviewsOpen, setReviewOpen] = useState(2)
@@ -27,8 +28,8 @@ const ReviewsTile = (props) => {
 
           {data.recommend ? <p>✓ I recommend this product</p> : null}
           {data.response ? <><b>Response: </b>  <p>{data.response}</p> </> : null}
+          <Helpful data={data.helpfulness}/>
 
-          <small>Helpful? <u>Yes</u> ({data.helpfulness}) | <u>Report</u></small>
           <hr></hr>
           </div>
       )})}
