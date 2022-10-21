@@ -10,7 +10,6 @@ const StylesItem = (props) => {
       e.preventDefault()
       handleStyles(style)
       handleCurrentPhoto(style.photos[0])
-      console.log(style.photos)
       handleThumbnails(style.photos)
     }}></img>
     <div className="checkmark" style={{visibility: currentStyle === style ? null : 'hidden'}}>✓</div>
