@@ -52,7 +52,17 @@ const Product = ({ product }) => {
   }
 
 
-
+  function handleThumbnails(photosObj) {
+    if (photosObj.length > 7) {
+      setLength(photosObj.length)
+      setThumbnails([photosObj.slice(0, 7), photosObj.slice(7, photosObj.length)])
+      setCurrentThumbnails(photosObj.slice(0, 7))
+    } else {
+      setLength(photosObj.length)
+      setThumbnails(photosObj)
+      setCurrentThumbnails(photosObj)
+    }
+  }
   function handleStyles(style) {
     setCurrentStyle(style)
   }
@@ -140,7 +150,7 @@ const Product = ({ product }) => {
           <div className="product current-name" >{currentProduct.name}</div>
           <div className="product prices">{handleSales(currentStyle)}</div>
           <div className="product current-style"><div className="product current-style title">Style ></div><div className="product current-style name"> {currentStyle.name}</div></div>
-          <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle} />
+          <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle} handleThumbnails={handleThumbnails}/>
           <CartInfo currentStyle={currentStyle} />
           <div className="share-buttons">
             <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F&layout=button_count&size=small&width=77&height=20&appId" width="77" height="20" style={{ border: 'none', overflow: 'hidden' }} scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture;" ></iframe>
