@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 import parseQuestions from './lib/parseQuestions.js'
@@ -6,6 +6,8 @@ import parseQuestions from './lib/parseQuestions.js'
 import QuestionSearch from './QuestionSearch.jsx';
 import AddQuestionBar from './AddQuestionBar.jsx';
 import QAList from './QAList.jsx';
+import Modal from './Modal.jsx';
+
 
 const Question = ({ product }) => {
   const [questions, setQuestions] = useState([]);
@@ -14,6 +16,8 @@ const Question = ({ product }) => {
   // View count for number of questions to display in QAList & Boolean to render more question btn
   const [viewCount, setViewCount] = useState(2);
   const [showButton, setShowButton] = useState(false)
+
+  // const modal = useRef(null);
 
   // Gets and sorts questions for product
   useEffect(() => {
