@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import QAEntry from './QAEntry.jsx';
 
-const QAList = ({ questions }) => {
-  const [viewCount, setViewCount] = useState(2);
+const QAList = ({ questions, viewCount }) => {
 
   return (
     <div className="QA-question-list">

@@ -11,7 +11,34 @@ const Question = ({ product }) => {
   const [questions, setQuestions] = useState([]);
   const [filteredQuestions, setFilteredQuestions] = useState([])
   const [loading, setLoading] = useState(true);
+  // View count for number of questions to display in QAList & Boolean to render more question btn
+  const [viewCount, setViewCount] = useState(2);
+  const [showButton, setShowButton] = useState(false)
 
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`, {
+      params: {
+        product_id: product.id,
+        count: 100
+      },
+      headers: {
+        'Authorization': process.env.AUTH_KEY
+      }
+    })
+      .then(res => {
+        let parsedQuestions = parseQuestions(res.data);
+        if (parsedQuestions.length > viewCount) {
+          setShowButton(true);
+        }
+        setQuestions(parsedQuestions);
+        setFilteredQuestions(parsedQuestions);
+        setLoading(false);
+      })
+      .catch(err => console.log('Error: ', err.message))
+  }, [])
+
+  // Filters questions by query provided by QuestionSearch component
   const filterQuestions = (query) => {
     if (query.length >= 3) {
       let filteredQuestions = questions.filter((question => {
@@ -27,42 +54,46 @@ const Question = ({ product }) => {
     return setFilteredQuestions(questions)
   }
 
-  useEffect(() => {
-    setLoading(true);
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`, {
-      params: {
-        product_id: product.id,
-        count: 100
-      },
-      headers: {
-        'Authorization': process.env.AUTH_KEY
-      }
-    })
-      .then(res => {
-        let parsedQuestions = parseQuestions(res.data);
-        setQuestions(parsedQuestions);
-        setFilteredQuestions(parsedQuestions);
-        setLoading(false);
-      })
-      .catch(err => console.log('Error: ', err.message))
-  }, [])
-
   const addNewQuestion = (question, nickname, email) => {
     return
   }
 
-  const loadMoreQuestions = () => {
+  const adjustQuestionViewCount = () => {
+    console.log('viewCountB', viewCount)
+    let numQuestions = filteredQuestions.length;
+    if (numQuestions >= viewCount + 2) {
+      setViewCount(viewCount + 2)
+    } else if (numQuestions === viewCount + 1) {
+      setViewCount(viewCount + 1)
+    }
+    console.log('viewCountA', viewCount)
 
   }
+
+  useEffect(() => {
+    if (viewCount >= filteredQuestions.length) {
+      setShowButton(false)
+    }
+  }, [viewCount])
 
   return (
     <section className="question-parent-container">
       <div className="question-header">Question & Answers</div>
       <QuestionSearch searchHandler={filterQuestions}/>
-      { loading ? null : <QAList questions={filteredQuestions}/>}
-      <AddQuestionBar addQuestionHandler={null} loadQuestionsHandler={loadMoreQuestions}/>
+      { loading ? null : <QAList questions={filteredQuestions} viewCount={viewCount}/>}
+      <AddQuestionBar addQuestionHandler={null} loadQuestionsHandler={adjustQuestionViewCount} showButton={showButton}/>
     </section>
   )
 }
 
 export default Question;
+
+
+
+const adjustCount = () => {
+  if (count === 2) {
+    setCount(questions.length);
+  } else if (count === questions.length) {
+    setCount(2);
+  }
+};
