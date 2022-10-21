@@ -22,7 +22,6 @@ const Characteristics = (props) => {
     if (props.Comfort !== undefined) { setCharComfort(props.Comfort) }
     if (props.Width !== undefined) { setCharWidth(props.Width) }
     if (props.Size !== undefined) { setCharSize(props.Size) }
-    console.log(charFit)
     console.log('props', props)
   }, [props])
 
@@ -35,7 +34,7 @@ const Characteristics = (props) => {
   // }, [charQuality])
 
   const labelStyles = {
-    padding: 5,
+    marginTop: '-2px',
     color: 'black',
     fontWeight: 'bold'
   }
@@ -43,41 +42,41 @@ const Characteristics = (props) => {
 
   const fillerStyles = {
     height: '100%',
-    width: `${charFit.value * 20}%`,
+    width: `${(charFit.value * 25) - 20}%`,
     borderRadius: 'inherit',
     textAlign: 'right'
   }
 
   const fillerStyles2 = {
     height: '100%',
-    width: `${charLength.value * 20}%`,
+    width: `${(charLength.value * 25) - 20}%`,
     borderRadius: 'inherit',
     textAlign: 'right'
   }
 
   const fillerStyles3 = {
     height: '100%',
-    width: `${charComfort.value * 20}%`,
+    width: `${(charComfort.value * 25) - 20}%`,
     borderRadius: 'inherit',
     textAlign: 'right'
   }
 
   const fillerStyles4 = {
     height: '100%',
-    width: `${charQuality.value * 20}%`,
+    width: `${(charQuality.value * 25) - 20}%`,
     borderRadius: 'inherit',
     textAlign: 'right'
   }
 
   const fillerStyles5 = {
     height: '100%',
-    width: `${charSize.value * 20}%`,
+    width: `${(charSize.value * 25) - 20}%`,
     borderRadius: 'inherit',
     textAlign: 'right'
   }
   const fillerStyles6 = {
     height: '100%',
-    width: `${charWidth.value * 20}%`,
+    width: `${(charWidth.value * 25) - 20}%`,
     borderRadius: 'inherit',
     textAlign: 'right'
   }
@@ -95,7 +94,8 @@ const Characteristics = (props) => {
         </div>
         <div className="char-description">
           <p className='char-description-p'>Too small</p>
-          <p className='char-description-p'>Too large!</p>
+          <p className='char-description-p'>Perfect</p>
+          <p className='char-description-p'>Too large</p>
         </div>
       </div>: null}
 
@@ -107,8 +107,9 @@ const Characteristics = (props) => {
           </div>
         </div>
         <div className="char-description">
-          <p className='char-description-p'>Too small</p>
-          <p className='char-description-p'>Too large</p>
+          <p className='char-description-p'>Too short</p>
+          <p className='char-description-p'>Perfect</p>
+          <p className='char-description-p'>Too long</p>
         </div>
       </div> : null}
 
@@ -120,8 +121,8 @@ const Characteristics = (props) => {
           </div>
         </div>
         <div className="char-description">
-          <p className='char-description-p'>Too small</p>
-          <p className='char-description-p'>Too large</p>
+          <p className='char-description-p'>Poor</p>
+          <p className='char-description-p'>Perfect</p>
         </div>
       </div> : null}
 
@@ -133,8 +134,8 @@ const Characteristics = (props) => {
           </div>
         </div>
         <div className="char-description">
-          <p className='char-description-p'>Too small</p>
-          <p className='char-description-p'>Too large</p>
+          <p className='char-description-p'>Low</p>
+          <p className='char-description-p'>High</p>
         </div>
       </div> : null}
 
@@ -147,11 +148,12 @@ const Characteristics = (props) => {
         </div>
         <div className="char-description">
           <p className='char-description-p'>Too small</p>
+          <p className='char-description-p'>Perfect</p>
           <p className='char-description-p'>Too large!</p>
         </div>
       </div> : null}
 
-      { charWidth ? <div>
+      { charWidth.value ? <div>
         <p className="char-p">Width</p>
         <div style={containerStyles}>
           <div style={fillerStyles6}>
@@ -160,6 +162,7 @@ const Characteristics = (props) => {
         </div>
         <div className="char-description">
           <p className='char-description-p'>Too small</p>
+          <p className='char-description-p'>Perfect</p>
           <p className='char-description-p'>Too large!</p>
         </div>
       </div> : null}
