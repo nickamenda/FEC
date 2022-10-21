@@ -7,9 +7,7 @@ const ReviewsList = (props) => {
   return (
     <div className="reviews-list">
       <Sorting product={props.product}/>
-      <div className="reviews-scroll">
-        <ReviewTile product={props.product} />
-      </div>
+      <ReviewTile product={props.product} />
     </div>
   )
 }

@@ -9,7 +9,7 @@ const ReviewsTile = (props) => {
 
   return (
     <>
-      <div className="reviews">
+      <div className="reviews-scroll">
       {props.product.filter((data, index) => index < reviewsOpen).map((data, i) => {
         return (<div key={i} className="tile">
           <div className="tile-header">

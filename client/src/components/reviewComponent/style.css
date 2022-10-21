@@ -38,6 +38,7 @@ body {
 
 .tile {
   list-style-type: none;
+  margin-bottom: 20px;
 }
 
 .tile-header {
@@ -95,6 +96,7 @@ body {
 }
 
 .reviews-scroll {
-  overflow: scroll;
-  white-space: nowrap;
+  margin: .4em .2em .4em .2em;
+  overflow-y: scroll;
+  max-height: 65vh;
 }
