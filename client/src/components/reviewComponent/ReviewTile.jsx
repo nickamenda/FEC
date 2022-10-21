@@ -34,8 +34,8 @@ const ReviewsTile = (props) => {
       )})}
 
       </div>
-      {reviewsOpen <= props.product.length ? <button onClick={(e) => {e.preventDefault(); setReviewOpen(reviewsOpen + 2)}}>More Reviews</button> : null}
-      <button>ADD A REVIEW + </button>
+      {reviewsOpen <= props.product.length ? <button className="reviews-button" onClick={(e) => {e.preventDefault(); setReviewOpen(reviewsOpen + 2)}}>MORE REVIEWS</button> : null}
+      <button className="reviews-button">ADD A REVIEW + </button>
     </>
   )
 }

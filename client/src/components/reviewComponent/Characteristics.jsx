@@ -16,7 +16,6 @@ const Characteristics = (props) => {
     height: 10,
     width: '100%',
     backgroundColor: "#e0e0de",
-    margin: 5
   }
 
   useEffect(() => {
@@ -29,16 +28,13 @@ const Characteristics = (props) => {
     }
   }, [props])
 
-  useEffect(() => {
-    console.log(charFit)
-    fitStyle = {
-      height: '100%',
-      width: `${charFit.value * 5}%`,
-      borderRadius: 'inherit',
-      textAlign: 'right'
-    }
-    console.log('fitzs', fitStyle)
-  }, [charQuality])
+  // useEffect(() => {
+  //   fitStyle = {
+  //     height: '100%',
+  //     width: `${charFit.value * 20}%`,
+  //     backgroundColor: 'gery'
+  //   }
+  // }, [charQuality])
 
   const labelStyles = {
     padding: 5,
@@ -49,21 +45,91 @@ const Characteristics = (props) => {
 
   const fillerStyles = {
     height: '100%',
-    width: `50%`,
+    width: `${charFit.value * 20}%`,
+    borderRadius: 'inherit',
+    textAlign: 'right'
+  }
+
+  const fillerStyles2 = {
+    height: '100%',
+    width: `${charLength.value * 20}%`,
+    borderRadius: 'inherit',
+    textAlign: 'right'
+  }
+
+  const fillerStyles3 = {
+    height: '100%',
+    width: `${charComfort.value * 20}%`,
+    borderRadius: 'inherit',
+    textAlign: 'right'
+  }
+
+  const fillerStyles4 = {
+    height: '100%',
+    width: `${charQuality.value * 20}%`,
     borderRadius: 'inherit',
     textAlign: 'right'
   }
 
 
-  return fitStyle ? (
-    <div>
-      {/* <div style={containerStyles}>
-        <div style={fitStyle}>
-          <span style={labelStyles}>hello</span>
+  return (
+    <div className="characteristics">
+
+      <div>
+        <p className="char-p">Fit</p>
+        <div style={containerStyles}>
+          <div style={fillerStyles}>
+            <span style={labelStyles}>▼</span>
+          </div>
         </div>
-      </div> */}
+        <div className="char-description">
+          <p className='char-description-p'>Too small</p>
+          <p className='char-description-p'>Too large!</p>
+        </div>
+      </div>
+
+      <div>
+        <p className="char-p">Length</p>
+        <div style={containerStyles}>
+          <div style={fillerStyles2}>
+            <span style={labelStyles}>▼</span>
+          </div>
+        </div>
+        <div className="char-description">
+          <p className='char-description-p'>Too small</p>
+          <p className='char-description-p'>Too large</p>
+        </div>
+      </div>
+
+      <div>
+        <p className="char-p">Comfort</p>
+        <div style={containerStyles}>
+          <div style={fillerStyles3}>
+            <span style={labelStyles}>▼</span>
+          </div>
+        </div>
+        <div className="char-description">
+          <p className='char-description-p'>Too small</p>
+          <p className='char-description-p'>Too large</p>
+        </div>
+      </div>
+
+      <div>
+        <p className="char-p">Quality</p>
+        <div style={containerStyles}>
+          <div style={fillerStyles4}>
+            <span style={labelStyles}>▼</span>
+          </div>
+        </div>
+        <div className="char-description">
+          <p className='char-description-p'>Too small</p>
+          <p className='char-description-p'>Too large</p>
+        </div>
+      </div>
+
     </div>
-  ) : null
+
+  )
 }
 
 export default Characteristics;
