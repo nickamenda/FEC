@@ -4,11 +4,18 @@ import React, { useState, useEffect } from 'react';
 const CartInfo = (props) => {
   const { currentStyle } = props;
   const currentSkus = currentStyle.skus;
-  const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
+  const [sizes, setSizes] = useState([])
   const [selectedSize, setSelectedSize] = useState(null)
   const [quantity, setQuantity] = useState(0);
   const [selectedQuantity, setSelectedQuantity] = useState(0)
 
+  useEffect(() => {
+    var allSizes = []
+    for (let key in currentSkus) {
+      allSizes.push(currentSkus[key].size)
+    }
+    setSizes(allSizes)
+  }, [])
 
   useEffect(() => {
     for (let key in currentSkus) {
@@ -17,6 +24,8 @@ const CartInfo = (props) => {
       }
     }
   }, [selectedSize])
+
+
 
   return  (
     <div className="cart">

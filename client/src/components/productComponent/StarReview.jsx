@@ -30,15 +30,6 @@ const StarReview = (props) => {
     }
   }
 
-  // for (let i = 0; i < Math.round(reviewScores / reviewAmt); i++) {
-  //   stars += '★'
-  // }
-  // if (stars.length !== 5) {
-  //   while (stars.length < 5) {
-  //     stars += '☆'
-  //   }
-  // }
-
   return (
     <>
       <div className="myProductReviews">
