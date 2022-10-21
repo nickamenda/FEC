@@ -163,7 +163,7 @@ const Product = ({ product }) => {
           currentProduct.features.map((item, i) => {
             return (
               <>
-                <div className="product featureItem" key={i + 100}>{item.feature}: {item.value}</div>
+                <div className="product featureItem" key={i + 100}>{item.feature}: {item.value.split(/(?=[A-Z])/).join(' ')}</div>
               </>
             )
           })
