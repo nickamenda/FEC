@@ -69,13 +69,18 @@ const Question = ({ product }) => {
     }
   }
 
+  // Controls whether the the button to load more questions is shown
   useEffect(() => {
-    if (viewCount >= filteredQuestions.length) {
+    if (viewCount === filteredQuestions.length) {
       setShowButton(false)
-    } else {
+    } else if (viewCount > filteredQuestions.length) {
+      setViewCount(2)
+    }
+
+    if (viewCount < filteredQuestions.length) {
       setShowButton(true)
     }
-  }, [viewCount])
+  }, [viewCount, filteredQuestions])
 
   return (
     <section className="question-parent-container">
