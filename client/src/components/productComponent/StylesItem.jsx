@@ -10,7 +10,7 @@ const StylesItem = (props) => {
       e.preventDefault()
       handleStyles(style)
       handleCurrentPhoto(style.photos[0])
-    }} key={uuidv4()}></img>
+    }}></img>
     <div className="checkmark" style={{visibility: currentStyle === style ? null : 'hidden'}}>✓</div>
     </>
   )
