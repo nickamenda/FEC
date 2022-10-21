@@ -34,7 +34,8 @@ const Characteristics = (props) => {
   // }, [charQuality])
 
   const labelStyles = {
-    marginTop: '-2px',
+    position: 'relative',
+    top: '-2px',
     color: 'black',
     fontWeight: 'bold'
   }
