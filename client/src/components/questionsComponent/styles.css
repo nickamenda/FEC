@@ -50,10 +50,10 @@
 }
 
 .QA-question-list {
-  margin: .4em .2em .4em .2em;
+  margin: 0 .2em 0 .2em;
   overflow-y: scroll;
   max-height: 48vh;
-
+  padding: 1.2em 0 .4em 0;
 }
 
 .QA-entry-container {
