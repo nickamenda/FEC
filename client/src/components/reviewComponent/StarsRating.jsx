@@ -13,6 +13,8 @@ const StarsRating = (props) => {
   const [charLength, setCharLength] = useState({})
   const [charComfort, setCharComfort] = useState({})
   const [charQuality, setCharQuality] = useState({})
+  const [charWidth, setCharWidth] = useState({})
+  const [charSize, setCharSize] = useState({})
 
   const arrOfRatings = [];
 
@@ -35,6 +37,8 @@ const StarsRating = (props) => {
     setCharLength(characteristics.Length);
     setCharComfort(characteristics.Comfort);
     setCharQuality(characteristics.Quality);
+    setCharWidth(characteristics.Width);
+    setCharSize(characteristics.Size);
     console.log('car', characteristics)
   }, [characteristics])
 
@@ -90,7 +94,7 @@ const StarsRating = (props) => {
       {arrOfRatings.length > 0 ? arrOfRatings.map((rating, id) => (
         <StarBars key={id} rating={rating} maxItem={maxItem}/>
       )) : null}
-      {characteristics ? <Characteristics Fit={charFit} Length={charLength} Comfort={charComfort} Quality={charQuality}/> : null}
+      {characteristics ? <Characteristics Fit={charFit} Length={charLength} Comfort={charComfort} Quality={charQuality} Size={charSize} Width={charWidth}/> : null}
     </>
   )
 }
