@@ -22,7 +22,6 @@ const Characteristics = (props) => {
     if (props.Comfort !== undefined) { setCharComfort(props.Comfort) }
     if (props.Width !== undefined) { setCharWidth(props.Width) }
     if (props.Size !== undefined) { setCharSize(props.Size) }
-    console.log(charFit)
     console.log('props', props)
   }, [props])
 
@@ -151,7 +150,7 @@ const Characteristics = (props) => {
         </div>
       </div> : null}
 
-      { charWidth ? <div>
+      { charWidth.value ? <div>
         <p className="char-p">Width</p>
         <div style={containerStyles}>
           <div style={fillerStyles6}>

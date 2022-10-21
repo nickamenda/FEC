@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import StarBars from './StarBars.jsx'
 import Characteristics from './Characteristics.jsx'
-
+import './style.css';
 
 const StarsRating = (props) => {
   const [metaData, setMetaData] = useState({})
