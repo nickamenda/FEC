@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import './styles.css';
 
-const QuestionSearch = ({searchHandler}) => {
+const QuestionSearch = ({ searchHandler }) => {
   const [query, setQuery] = useState('');
 
-  const search = () => {
+  const search = (event) => {
+    setQuery(event.target.value);
     searchHandler(query);
-    setQuery('');
   }
 
   return (
     <div className={"QA-search-container"}>
-      <input onChange={(e => setQuery(e.target.value))} value={query} type="text" className="question-input" placeholder="Have a question? Search for answers" />
+      <input onChange={(e => search(e))} value={query} type="text" className="question-input" placeholder="Have a question? Search for answers" />
       <span id="search-icon">🔍</span>
     </div>
   )
