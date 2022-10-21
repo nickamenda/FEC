@@ -136,8 +136,8 @@
 }
 
 .QA-answer-img {
-  max-width: 10em;
-  height: auto;
+  height: 3.8em;
+  width: auto;
   margin: .5em;
 }
 
@@ -170,8 +170,11 @@
   margin: 1em;
 }
 
+.QA-more-questions-btn {
+  margin-right: 1.4em;
+}
 .QA-more-questions-btn, .QA-add-question-btn {
-  padding: 1.2em;
+  padding: 1.4em;
   font-weight: bold;
   background-color: white;
   color: var(--dark-text-color);

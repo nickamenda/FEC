@@ -15,6 +15,7 @@ const Question = ({ product }) => {
   const [viewCount, setViewCount] = useState(2);
   const [showButton, setShowButton] = useState(false)
 
+  // Gets and sorts questions for product
   useEffect(() => {
     setLoading(true);
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`, {
@@ -58,21 +59,21 @@ const Question = ({ product }) => {
     return
   }
 
+  // Adjusts the viewCount (number of questions rendering) used in QAList
   const adjustQuestionViewCount = () => {
-    console.log('viewCountB', viewCount)
     let numQuestions = filteredQuestions.length;
     if (numQuestions >= viewCount + 2) {
       setViewCount(viewCount + 2)
     } else if (numQuestions === viewCount + 1) {
       setViewCount(viewCount + 1)
     }
-    console.log('viewCountA', viewCount)
-
   }
 
   useEffect(() => {
     if (viewCount >= filteredQuestions.length) {
       setShowButton(false)
+    } else {
+      setShowButton(true)
     }
   }, [viewCount])
 
