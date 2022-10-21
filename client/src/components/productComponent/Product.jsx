@@ -100,10 +100,9 @@ const Product = ({ product }) => {
                 if (currentStyle.photos[i].url === currentPhoto) {
                   handleCurrentPhoto(currentStyle.photos[i - 1])
                   if (i < 8) {
-                    setCurrentThumbnails(thumbnails[0])
-                  }
+                   thumbnails.length === 2 ? setCurrentThumbnails(thumbnails[0]) : setCurrentThumbnails(thumbnails);
                 }
-
+              }
               }
             }}>&#8592;</i>
             <i className="arrow right" style={{ 'visibility': currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '630px' : '440px' }} onClick={(e) => {
@@ -114,7 +113,6 @@ const Product = ({ product }) => {
                   if (i > 5) {
                     setCurrentThumbnails(thumbnails[1])
                   }
-
                 }
               }
             }}>&#8594;</i>
