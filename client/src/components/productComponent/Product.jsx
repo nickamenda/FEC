@@ -7,6 +7,7 @@ import CartInfo from './CartInfo.jsx'
 import productExample from './exampleData/product.js'
 import stylesExample from './exampleData/styles.js'
 import { v4 as uuidv4 } from 'uuid';
+import ReactImageZoom from 'react-image-zoom';
 
 const Product = ({ product }) => {
   const [currentProduct, setCurrentProduct] = useState(product);
@@ -17,7 +18,8 @@ const Product = ({ product }) => {
   const [styling, setStyling] = useState(null);
   const [thumbnails, setThumbnails] = useState([])
   const [currentThumbnails, setCurrentThumbnails] = useState([])
-  const [length, setLength] = useState(0)
+  const [length, setLength] = useState(0);
+  const zoomProps = { width: 850, height: 570, scale: 2.5, img: currentPhoto, zoomPosition: 'original' };
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product.id}/styles`, {
@@ -39,6 +41,7 @@ const Product = ({ product }) => {
   function changeStyling(zoom, styling) {
     if (zoom && styling === null) {
       setStyling({ width: '850px', height: '570px', zIndex: '100', cursor: 'zoom-in' })
+
     } else if (!zoom && styling) {
       setStyling({ transformOrigin: '50% 0%', transform: 'scale(1.5)', zIndex: '100', cursor: 'zoom-out', position: 'sticky' })
     }
@@ -98,9 +101,9 @@ const Product = ({ product }) => {
               for (let i = 0; i < currentStyle.photos.length; i++) {
                 if (currentStyle.photos[i].url === currentPhoto) {
                   handleCurrentPhoto(currentStyle.photos[i + 1])
-                if (i > 5) {
-                  setCurrentThumbnails(thumbnails[1])
-                }
+                  if (i > 5) {
+                    setCurrentThumbnails(thumbnails[1])
+                  }
 
                 }
               }
@@ -114,17 +117,19 @@ const Product = ({ product }) => {
                 }}></img>
               )
             })}
-            {JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[0]) && length > 7 ? (
-              <div className="downArrow" onClick={(e) => {
-                e.preventDefault();
-                setCurrentThumbnails(thumbnails[1])
-              }}>&#8595;</div>
-            ) : (
-                <div className="upArrow" onClick={(e) => {
+            {length > 7 ? (
+              <>
+                <div className="downArrow" style={JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[0]) ? { visibility: null } : { visibility: 'hidden' }} onClick={(e) => {
+                  e.preventDefault();
+                  setCurrentThumbnails(thumbnails[1])
+                }}>&#8595;</div>
+                <div className="upArrow" style={JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[0]) ? { visibility: null } : { visibility: 'hidden' }} onClick={(e) => {
                   e.preventDefault();
                   setCurrentThumbnails(thumbnails[0])
                 }}>&#8593;</div>
-              )}
+              </>
+            ) : null
+            }
           </div>
         </div>
         <div className="product current-info">

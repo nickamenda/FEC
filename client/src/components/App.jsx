@@ -29,7 +29,7 @@ const App = () => {
       </div>
       <Product product={product} />
       <Question product={product} />
-      <Reviews product={product} />
+      {/* <Reviews product={product} /> */}
     </>
   ) : null
 }
