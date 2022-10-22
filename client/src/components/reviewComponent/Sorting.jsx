@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Sorting = () => {
+const Sorting = (props) => {
   // RElevant should be on by default
   return (
     <div>
-      <h3 data-testid="sorting">reviews, sorted by
+      <h3 data-testid="sorting">{props.product.length} reviews, sorted by
       <select>
         <option>Relevant</option>
         <option>Helpful</option>

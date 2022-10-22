@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-const Modal = () => {
-  const [show, setShow] = useState()
+const Modal = (props) => {
+  const { showModal } = props;
 
   return (
     <div>
-      <p>Modal</p>
+      <p className="modal">Modal</p>
     </div>
   )
 }
