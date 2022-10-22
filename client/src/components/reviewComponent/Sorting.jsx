@@ -6,10 +6,10 @@ const Sorting = (props) => {
   return (
     <div>
       <h3 data-testid="sorting">{props.product.length} reviews, sorted by
-      <select>
-        <option>Relevant</option>
-        <option>Helpful</option>
-        <option>Newest</option>
+      <select onChange={(e) => props.sorting(e.target.value)}>
+        <option value="relevant">Relevant</option>
+        <option value="helpful">Helpful</option>
+        <option value="newest">Newest</option>
 
       </select>
       </h3>
