@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Helpful from './QAEntryComponents/Helpful.jsx';
 import AnswerList from './QAEntryComponents/AnswerList.jsx';
 import AddAnswerBtn from './QAEntryComponents/AddAnswerBtn.jsx';
+// import Modal from './Modal.jsx';
+// import AddAnswer from './ModalViews/addAnswerView.jsx';
 
-const QAEntry = ({ question }) => {
-  // console.log(question_body)
-
+const QAEntry = ({ question, productInfo }) => {
   return (
     <div className="QA-entry-container">
         <div className="QA-entry-header">
@@ -14,7 +14,7 @@ const QAEntry = ({ question }) => {
           </div>
           <div className="QA-entry-add-answer-bar">
             <Helpful helpfulCount={question.question_helpfulness} options={{type: 'questions', id: question.question_id}} />
-              | <AddAnswerBtn />
+              | <AddAnswerBtn productInfo={productInfo} question={{body: question.question_body, id: question.question_id}} />
           </div>
         </div>
         <div className="QA-answer-container">

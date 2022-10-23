@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 import parseQuestions from './lib/parseQuestions.js'
-
 import QuestionSearch from './QuestionSearch.jsx';
 import AddQuestionBar from './AddQuestionBar.jsx';
 import QAList from './QAList.jsx';
+
 
 const Question = ({ product }) => {
   const [questions, setQuestions] = useState([]);
@@ -13,8 +13,16 @@ const Question = ({ product }) => {
   const [loading, setLoading] = useState(true);
   // View count for number of questions to display in QAList & Boolean to render more question btn
   const [viewCount, setViewCount] = useState(2);
-  const [showButton, setShowButton] = useState(false)
+  const [showButton, setShowButton] = useState(false);
+  const [productInfo, setProductInfo] = useState({});
 
+  // Sets product info to pass to AddQuestion component
+  useEffect(() => setProductInfo({
+    id: product.id,
+    name: product.name
+  }), [product]);
+
+  // Gets and sorts questions for product
   useEffect(() => {
     setLoading(true);
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`, {
@@ -54,34 +62,35 @@ const Question = ({ product }) => {
     return setFilteredQuestions(questions)
   }
 
-  const addNewQuestion = (question, nickname, email) => {
-    return
-  }
-
+  // Adjusts the viewCount (number of questions rendering) used in QAList
   const adjustQuestionViewCount = () => {
-    console.log('viewCountB', viewCount)
     let numQuestions = filteredQuestions.length;
     if (numQuestions >= viewCount + 2) {
       setViewCount(viewCount + 2)
     } else if (numQuestions === viewCount + 1) {
       setViewCount(viewCount + 1)
     }
-    console.log('viewCountA', viewCount)
-
   }
 
+  // Controls whether the the button to load more questions is shown
   useEffect(() => {
-    if (viewCount >= filteredQuestions.length) {
+    if (viewCount === filteredQuestions.length) {
       setShowButton(false)
+    } else if (viewCount > filteredQuestions.length) {
+      setViewCount(2)
     }
-  }, [viewCount])
+
+    if (viewCount < filteredQuestions.length) {
+      setShowButton(true)
+    }
+  }, [viewCount, filteredQuestions])
 
   return (
     <section className="question-parent-container">
       <div className="question-header">Question & Answers</div>
       <QuestionSearch searchHandler={filterQuestions}/>
-      { loading ? null : <QAList questions={filteredQuestions} viewCount={viewCount}/>}
-      <AddQuestionBar addQuestionHandler={null} loadQuestionsHandler={adjustQuestionViewCount} showButton={showButton}/>
+      { loading ? null : <QAList questions={filteredQuestions} productInfo={productInfo} viewCount={viewCount}/>}
+      <AddQuestionBar productInfo={productInfo} loadQuestionsHandler={adjustQuestionViewCount} showButton={showButton}/>
     </section>
   )
 }

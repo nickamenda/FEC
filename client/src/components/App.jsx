@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import ReactDOM from 'react-dom/client';
-import Product from './productComponent/Product.jsx'
-import Reviews from './reviewComponent/Reviews.jsx'
-import Question from './questionsComponent/Question.jsx'
+import Product from './productComponent/Product.jsx';
+import Reviews from './reviewComponent/Reviews.jsx';
+import Question from './questionsComponent/Question.jsx';
 
 
 const App = () => {
