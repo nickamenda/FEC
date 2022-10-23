@@ -62,10 +62,6 @@ const Question = ({ product }) => {
     return setFilteredQuestions(questions)
   }
 
-  const addNewQuestion = (question, nickname, email) => {
-    return
-  }
-
   // Adjusts the viewCount (number of questions rendering) used in QAList
   const adjustQuestionViewCount = () => {
     let numQuestions = filteredQuestions.length;
@@ -93,8 +89,8 @@ const Question = ({ product }) => {
     <section className="question-parent-container">
       <div className="question-header">Question & Answers</div>
       <QuestionSearch searchHandler={filterQuestions}/>
-      { loading ? null : <QAList questions={filteredQuestions} viewCount={viewCount}/>}
-      <AddQuestionBar addQuestionHandler={null} productInfo={productInfo} loadQuestionsHandler={adjustQuestionViewCount} showButton={showButton}/>
+      { loading ? null : <QAList questions={filteredQuestions} productInfo={productInfo} viewCount={viewCount}/>}
+      <AddQuestionBar productInfo={productInfo} loadQuestionsHandler={adjustQuestionViewCount} showButton={showButton}/>
     </section>
   )
 }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Modal from '../Modal.jsx';
 
 
-const AddQuestion = ({productInfo, close}) => {
+const AddAnswer = ({productInfo, question, close}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [body, setBody] = useState('');
@@ -11,11 +11,10 @@ const AddQuestion = ({productInfo, close}) => {
 
   const submitQuestion = event => {
     event.preventDefault();
-    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions',  {
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${question.id}/answers`,  {
       body,
       name,
-      email,
-      product_id: productInfo.id
+      email
     }, {
      headers: {
         'Authorization': process.env.AUTH_KEY
@@ -27,16 +26,16 @@ const AddQuestion = ({productInfo, close}) => {
 
   return (
     <div className="QA-add-container">
-      <h1>Ask Your Question</h1>
-      <h2>About the {productInfo.name}</h2>
+      <h1>Submit your answer</h1>
+      <h2>{productInfo.name}: {question.body}</h2>
       <form className="QA-form" onSubmit={submitQuestion}>
         <label>
-        Your Question*
+        Your Answer*
         <textarea value={body} required className="QA-add-textarea" rows={5} cols={60} maxLength={1000} onChange={e => setBody(e.target.value)} />
         </label>
         <label>
         What is your nickname*
-        <input type="text" value={name} required placeholder='“Example: jackson11!”' className="QA-add-input" onChange={e => setName(e.target.value)} />
+        <input type="text" value={name} required placeholder='“Example: jack543!”' className="QA-add-input" onChange={e => setName(e.target.value)} />
           <span className="QA-add-subtext">For privacy reasons, do not use your full name of email address</span>
         </label>
         <label>
@@ -45,10 +44,10 @@ const AddQuestion = ({productInfo, close}) => {
         <span className="QA-add-subtext">For authentication, you will not be emailed</span>
         </label>
         {error ? <div className="add-error">{error}</div> : null}
-        <button type="submit">Submit Question</button>
+        <button type="submit">Submit Answer</button>
       </form>
     </div>
   )
 }
 
-export default AddQuestion;
+export default AddAnswer;

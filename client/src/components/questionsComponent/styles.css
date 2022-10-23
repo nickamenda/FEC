@@ -263,12 +263,12 @@
   }
 }
 
-.QA-add-question-container {
+.QA-add-container {
   display: flex;
   flex-direction: column;
 }
 
-.QA-add-question-container h1{
+.QA-add-container h1{
   font-weight: bold;
   font-size: 19px;
   color: var(--dark-text-color);
@@ -277,7 +277,7 @@
   align-self: center;
 }
 
-.QA-add-question-container h2{
+.QA-add-container h2{
   color: var(--dark-text-color);
   font-size: 16px;
   font-weight: bold;
@@ -286,7 +286,7 @@
   align-self: center;
 }
 
-.QA-add-question-container form {
+.QA-add-container form {
   display: flex;
   flex-direction: column;
 }
@@ -295,24 +295,28 @@
   font-size: 14px;
 }
 
-.QA-add-question-container label {
+.QA-add-container label {
   display: flex;
   flex-direction: column;
   padding-top: .7em;
 }
 
-.QA-add-question-input {
+.QA-add-input {
   margin-top: .3em;
   color: var(--light-text-color);
   height: 2em;
   font-size: 16px;
 }
 
-.QA-add-question-textarea {
+.QA-add-textarea {
   margin-top: .3em;
   color: var(--light-text-color);
   height: 5em;
   font-size: 16px;
+}
+
+.QA-add-textarea::placeholder, .QA-add-input::placeholder {
+  color: rgb(160, 160, 160);
 }
 
 .modal button {

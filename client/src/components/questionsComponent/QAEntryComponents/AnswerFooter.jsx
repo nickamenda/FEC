@@ -8,7 +8,7 @@ const AnswerFooter = ({ answer }) => {
 
   return (
     <div className="QA-answer-footer">
-      <span className="QA-answer-by-date">by <span style={{fontWeight: answer.answerer_name === 'Seller' ? 'bold' : 400}}>{answer.answerer_name}</span>, {format(parseISO(answer.date), 'MMM d\, YYY')}</span>
+      <span className="QA-answer-by-date">by <span style={{fontWeight: answer.answerer_name.toLowerCase() === 'seller' ? 'bold' : 400}}>{answer.answerer_name}</span>, {format(parseISO(answer.date), 'MMM d\, YYY')}</span>
       |<Helpful className="QA-answer-helpful" helpfulCount={answer.helpfulness} options={{type: 'answers', id: answer.id}} />
       |<ReportBtn options={{type: 'answers', id: answer.id}} />
     </div>
