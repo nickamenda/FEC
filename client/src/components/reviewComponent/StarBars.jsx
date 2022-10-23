@@ -6,7 +6,8 @@ const StarBars = (props) => {
     height: 10,
     width: '100%',
     backgroundColor: "#e0e0de",
-    margin: 5
+    margin: '5px',
+    marginRight: 0
   }
 
   const fillerStyles = {

@@ -100,3 +100,9 @@ body {
   overflow-y: scroll;
   max-height: 65vh;
 }
+
+.modal {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
