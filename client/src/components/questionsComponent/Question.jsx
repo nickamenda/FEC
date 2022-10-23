@@ -2,11 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 import parseQuestions from './lib/parseQuestions.js'
-
 import QuestionSearch from './QuestionSearch.jsx';
 import AddQuestionBar from './AddQuestionBar.jsx';
 import QAList from './QAList.jsx';
-import Modal from './Modal.jsx';
 
 
 const Question = ({ product }) => {
@@ -15,9 +13,14 @@ const Question = ({ product }) => {
   const [loading, setLoading] = useState(true);
   // View count for number of questions to display in QAList & Boolean to render more question btn
   const [viewCount, setViewCount] = useState(2);
-  const [showButton, setShowButton] = useState(false)
+  const [showButton, setShowButton] = useState(false);
+  const [productInfo, setProductInfo] = useState({});
 
-  // const modal = useRef(null);
+  // Sets product info to pass to AddQuestion component
+  useEffect(() => setProductInfo({
+    id: product.id,
+    name: product.name
+  }), [product]);
 
   // Gets and sorts questions for product
   useEffect(() => {
@@ -91,7 +94,7 @@ const Question = ({ product }) => {
       <div className="question-header">Question & Answers</div>
       <QuestionSearch searchHandler={filterQuestions}/>
       { loading ? null : <QAList questions={filteredQuestions} viewCount={viewCount}/>}
-      <AddQuestionBar addQuestionHandler={null} loadQuestionsHandler={adjustQuestionViewCount} showButton={showButton}/>
+      <AddQuestionBar addQuestionHandler={null} productInfo={productInfo} loadQuestionsHandler={adjustQuestionViewCount} showButton={showButton}/>
     </section>
   )
 }

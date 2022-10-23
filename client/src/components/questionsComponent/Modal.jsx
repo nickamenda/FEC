@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 // Gets div in index.html that will be used for our portal
 const modalElement = document.getElementById('modal-root');
 
-export function Modal({ children, fade = false, defaultOpened = false }, ref) {
+export function Modal({ children, fade = true, defaultOpened = true}, ref) {
   const [isOpen, setIsOpen] = useState(defaultOpened)
   // Allows modal to close on and avoid "Scripts may close only the windows that were opened by them."
   const close = useCallback(() => setIsOpen(false), [])
@@ -20,7 +20,7 @@ export function Modal({ children, fade = false, defaultOpened = false }, ref) {
     if (event.keyCode === 27) setIsOpen(false);
   }, [close])
 
-  // Creates an event listener for Escape when modal is open
+  // Creates an event listener for handleEscape when modal is open
   useEffect(() => {
     if (isOpen) document.addEventListener('keydown', handleEscape, false)
     return () => {
@@ -28,12 +28,11 @@ export function Modal({ children, fade = false, defaultOpened = false }, ref) {
     }
   }, [handleEscape, isOpen])
 
-
   return createPortal(
     isOpen ? (
       <div className={`modal ${fade ? 'modal-fade' : ''}`}>
         <div className="modal-overlay" onClick={close} />
-        <span role="button" className="modal-close" aria-label="close" onClick={close}>x</span>
+        <span role="button" className="modal-close" onClick={close}>x</span>
         <div className="modal-body">{children}</div>
       </div>
     ) : null,
