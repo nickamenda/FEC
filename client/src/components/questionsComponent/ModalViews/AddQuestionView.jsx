@@ -43,10 +43,12 @@ const AddQuestion = ({productInfo, close}) => {
         <label>
         What is your nickname*
         <input type="text" value={name} required placeholder=' “Example: jackson11!”' id="addQuestionName" className="QA-add-question-input" onChange={e => setName(e.target.value)} />
+          <span className="QA-add-subtext">For privacy reasons, do not use your full name of email address</span>
         </label>
         <label>
         Your email*
         <input type="email" value={email} required id="addQuestionEmail" className="QA-add-question-input" onChange={e => setEmail(e.target.value)} />
+        <span className="QA-add-subtext">For authentication, you will not be emailed</span>
         </label>
         {error ? <div className="add-question-error">{error}</div> : null}
         <button id="QA-submit-question-btn" type="submit">Submit Question</button>

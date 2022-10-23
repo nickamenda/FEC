@@ -291,6 +291,10 @@
   flex-direction: column;
 }
 
+.QA-add-subtext {
+  font-size: 14px;
+}
+
 .QA-add-question-container label {
   display: flex;
   flex-direction: column;
