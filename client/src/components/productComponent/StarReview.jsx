@@ -30,15 +30,6 @@ const StarReview = (props) => {
     }
   }
 
-  // for (let i = 0; i < Math.round(reviewScores / reviewAmt); i++) {
-  //   stars += '★'
-  // }
-  // if (stars.length !== 5) {
-  //   while (stars.length < 5) {
-  //     stars += '☆'
-  //   }
-  // }
-
   return (
     <>
       <div className="myProductReviews">
@@ -58,7 +49,7 @@ const StarReview = (props) => {
               <span>★</span>
             </div>
         </div>
-        <a className="reviewAmt" href="#reviews" style={{ textDecoration: 'none', color: 'black', display: 'flex', alignItems: 'flex-end' }}>View all {reviewAmt} reviews...</a>
+        <a className="reviewAmt" href="#reviews" style={{ textDecoration: 'none', color: 'rgb(60, 60, 60)', fontWeight: 'bold', display: 'flex', alignItems: 'flex-end' }}>View all {reviewAmt} reviews...</a>
       </div>
     </>
   )

@@ -4,11 +4,18 @@ import React, { useState, useEffect } from 'react';
 const CartInfo = (props) => {
   const { currentStyle } = props;
   const currentSkus = currentStyle.skus;
-  const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
+  const [sizes, setSizes] = useState([])
   const [selectedSize, setSelectedSize] = useState(null)
   const [quantity, setQuantity] = useState(0);
   const [selectedQuantity, setSelectedQuantity] = useState(0)
 
+  useEffect(() => {
+    var allSizes = []
+    for (let key in currentSkus) {
+      allSizes.push(currentSkus[key].size)
+    }
+    setSizes(allSizes)
+  }, [])
 
   useEffect(() => {
     for (let key in currentSkus) {
@@ -17,6 +24,8 @@ const CartInfo = (props) => {
       }
     }
   }, [selectedSize])
+
+
 
   return  (
     <div className="cart">
@@ -28,18 +37,18 @@ const CartInfo = (props) => {
         <option value={selectedSize}>Size</option>
         {sizes.map((item, i) => {
           return (
-            <option key={uuidv4()} value={item}>{item}</option>
+            <option key={i + 1000000000000} value={item}>{item}</option>
           )
         })}
       </select>
-      <select disabled={selectedSize === null} name="quantity" className="product quantity" onChange={(e) => {
+      <select disabled={!selectedSize} name="quantity" className="product quantity" onChange={(e) => {
         e.preventDefault()
         setSelectedQuantity(e.target.value)
       }}>
         <option value={selectedQuantity}>Quantity</option>
         {Array(quantity).fill(1).map((x, i) => {
           return i < 15 ? (
-            <option key={uuidv4()} value={i + 1}>{i + 1}</option>
+            <option key={i + 100000} value={i + 1}>{i + 1}</option>
           ) : null
         })}
       </select>
