@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 // Gets div in index.html that will be used for our portal
 const modalElement = document.getElementById('modal-root');
 
-export function Modal({ children, fade = true, defaultOpened = true}, ref) {
+export function Modal({ children, fade = true, defaultOpened = false}, ref) {
   const [isOpen, setIsOpen] = useState(defaultOpened)
   // Allows modal to close on and avoid "Scripts may close only the windows that were opened by them."
   const close = useCallback(() => setIsOpen(false), [])
