@@ -6,8 +6,6 @@ import RenderStyles from './Styles.jsx'
 import CartInfo from './CartInfo.jsx'
 import productExample from './exampleData/product.js'
 import stylesExample from './exampleData/styles.js'
-// import { v4 as uuidv4 } from 'uuid';
-// import ReactImageZoom from 'react-image-zoom';
 
 const Product = ({ product }) => {
   const [currentProduct, setCurrentProduct] = useState(product);
@@ -19,7 +17,6 @@ const Product = ({ product }) => {
   const [thumbnails, setThumbnails] = useState([])
   const [currentThumbnails, setCurrentThumbnails] = useState([])
   const [length, setLength] = useState(0);
-  const zoomProps = { width: 850, height: 570, scale: 2.5, img: currentPhoto, zoomPosition: 'original' };
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product.id}/styles`, {
