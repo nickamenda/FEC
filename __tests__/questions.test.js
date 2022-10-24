@@ -29,6 +29,9 @@ describe('Question Component', () => {
     ReactDOM.createPortal.mockClear();
   });
 
+  it("Should render without crashing", () => {
+    render(<Question product={dummyProduct}/>);
+  });
   it("Should show question component heading", () => {
     render(<Question product={dummyProduct}/>);
     const heading = screen.getByTestId('question-header');
