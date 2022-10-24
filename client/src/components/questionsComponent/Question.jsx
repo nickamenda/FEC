@@ -1,6 +1,7 @@
+// Third-party Packages
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-
+// Modules
 import parseQuestions from './lib/parseQuestions.js'
 import QuestionSearch from './QuestionSearch.jsx';
 import AddQuestionBar from './AddQuestionBar.jsx';
@@ -8,6 +9,7 @@ import QAList from './QAList.jsx';
 
 
 const Question = ({ product }) => {
+  // State for getting and storing questions for the product
   const [questions, setQuestions] = useState([]);
   const [filteredQuestions, setFilteredQuestions] = useState([])
   const [loading, setLoading] = useState(true);
@@ -22,7 +24,7 @@ const Question = ({ product }) => {
     name: product.name
   }), [product]);
 
-  // Gets and sorts questions for product
+  // Gets and sorts questions for product, sets questions, filteredQuestions, and productInfo
   useEffect(() => {
     setLoading(true);
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`, {
@@ -87,7 +89,7 @@ const Question = ({ product }) => {
 
   return (
     <section className="question-parent-container">
-      <div className="question-header">Question & Answers</div>
+      <div className="question-header" data-testid="question-header">Question & Answers</div>
       <QuestionSearch searchHandler={filterQuestions}/>
       { loading ? null : <QAList questions={filteredQuestions} productInfo={productInfo} viewCount={viewCount}/>}
       <AddQuestionBar productInfo={productInfo} loadQuestionsHandler={adjustQuestionViewCount} showButton={showButton}/>
@@ -96,13 +98,3 @@ const Question = ({ product }) => {
 }
 
 export default Question;
-
-
-
-const adjustCount = () => {
-  if (count === 2) {
-    setCount(questions.length);
-  } else if (count === questions.length) {
-    setCount(2);
-  }
-};
