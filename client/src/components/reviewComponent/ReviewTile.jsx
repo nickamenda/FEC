@@ -28,9 +28,11 @@ const ReviewsTile = (props) => {
           <h4 className="tile-summary">{data.summary}</h4>
 
           <p className="tile-body">{data.body}</p>
-
           {data.recommend ? <p>✓ I recommend this product</p> : null}
-          {data.response ? <><b>Response: </b>  <p>{data.response}</p> </> : null}
+          {data.response ? <div className="response">
+            <><b>Response: </b>  <p>{data.response}</p> </>
+          </div> : null}
+
           <Helpful data={data.helpfulness}/>
 
           <hr></hr>
