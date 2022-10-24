@@ -184,6 +184,7 @@ img:hover,
   width: 650px;
   right: 100px;
   position: relative;
+  object-fit: fill;
 }
 
 .arrow.left {
@@ -302,4 +303,12 @@ select {
   position: relative;
   top: 7px;
   left: 10px
+}
+
+.js-image-zoom__zoomed-area,
+.js-image-zoom__zoomed-image {
+  z-index: 10000;
+}
+.product-zoom {
+  object-fit: fill;
 }
