@@ -33,7 +33,7 @@ const ReviewsTile = (props) => {
             <><b>Response: </b>  <p>{data.response}</p> </>
           </div> : null}
 
-          <Helpful data={data.helpfulness}/>
+          <Helpful data={data.helpfulness} style={{cursor: 'pointer'}}/>
 
           <hr></hr>
           </div>

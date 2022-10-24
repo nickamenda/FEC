@@ -22,7 +22,6 @@ const Characteristics = (props) => {
     if (props.Comfort !== undefined) { setCharComfort(props.Comfort) }
     if (props.Width !== undefined) { setCharWidth(props.Width) }
     if (props.Size !== undefined) { setCharSize(props.Size) }
-    console.log('props', props)
   }, [props])
 
   // useEffect(() => {

@@ -18,7 +18,7 @@ const Reviews = (props) => {
     }
   }
   useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${props.product.id}&count=100&sort=relative`, {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${props.product.id}&count=1000&sort=relative`, {
       headers: {
         'Authorization': process.env.AUTH_KEY
       }
@@ -50,7 +50,7 @@ const Reviews = (props) => {
         <RatingBreakdown className="reviews-content" product={product} productId={props.product.id}/>
         <ReviewsList className="reviews-content" product={product} showModal={() => modal()} sorting={(input) => sorting(input)}/>
       </div>
-      {showModal ? <Modal className="modal"/> : null}
+      {showModal ? <Modal className="modal" showModal={() => modal()}/> : null}
     </div>
   ) : null
 }

@@ -6,6 +6,7 @@ import parseQuestions from './lib/parseQuestions.js'
 import QuestionSearch from './QuestionSearch.jsx';
 import AddQuestionBar from './AddQuestionBar.jsx';
 import QAList from './QAList.jsx';
+// import './styles.css'
 
 
 const Question = ({ product }) => {
