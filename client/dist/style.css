@@ -51,7 +51,6 @@ img:hover,
 .product.current-name {
   font-size: 40px;
   color: var(--dark-text-color);
-
   font-weight: bold;
 }
 
@@ -65,7 +64,6 @@ img:hover,
   font-size: 22px;
   font-weight: bold;
   color: var(--dark-text-color);
-
 }
 
 .product.current-info div.product.current-description {
@@ -156,7 +154,7 @@ img:hover,
 }
 
 .reviewAmt {
-  color: rgb(136, 136, 136);
+  color: var(--dark-text-color);
   text-decoration: underline;
 }
 
