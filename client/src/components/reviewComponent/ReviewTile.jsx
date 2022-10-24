@@ -5,8 +5,11 @@ import { format, parseISO } from 'date-fns';
 import Helpful from './Helpful.jsx'
 
 const ReviewsTile = (props) => {
+  const { showModal } = props;
   const [reviewsOpen, setReviewOpen] = useState(2)
 
+
+  // 66647
   return (
     <>
       <div className="reviews-scroll">
@@ -36,7 +39,7 @@ const ReviewsTile = (props) => {
 
       </div>
       {reviewsOpen <= props.product.length ? <button className="reviews-button" onClick={(e) => {e.preventDefault(); setReviewOpen(reviewsOpen + 2)}}>MORE REVIEWS</button> : null}
-      <button className="reviews-button">ADD A REVIEW + </button>
+      <button className="reviews-button" onClick={(e) => {e.preventDefault(); showModal()}}>ADD A REVIEW + </button>
     </>
   )
 }
