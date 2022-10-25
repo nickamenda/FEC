@@ -28,11 +28,3 @@ const AnswerList = ({ answers }) => {
 }
 
 export default AnswerList;
-
-
-
-// (answers.length > count) && <button className="QA-load-answers-btn"  >See More Answers</button>
-// (answer.length > 2 && answer.length === count) && <button className="QA-collapse-answers-btn" >Collapse Answers</button>
-
-// { answers.length > count ? <button className="QA-load-answers-btn" onClick={adjustCount}>See More Answers</button>
-// : <button className="QA-collapse-answers-btn" onClick={adjustCount}></button> }
