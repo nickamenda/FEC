@@ -123,8 +123,15 @@ body {
   background-color: #fff;
 }
 
-.reviews-modal-header .reviews-modal-footer {
+.reviews-modal-header, .reviews-modal-footer {
   padding: 10px;
+}
+
+.reviews-modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+
 }
 .response {
   background-color: #D3D3D3;
