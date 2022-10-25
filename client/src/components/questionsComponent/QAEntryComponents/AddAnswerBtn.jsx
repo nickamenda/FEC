@@ -4,9 +4,6 @@ import AddAnswer from '../ModalViews/addAnswerView.jsx';
 
 const AddAnswerBtn = ({productInfo, question }) => {
   const modal = useRef(null);
-  const handleClose = (e) => {
-    modal.current.close()
-  }
 
   return (
     <>
