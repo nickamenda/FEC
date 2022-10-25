@@ -6,36 +6,34 @@ const ModalForm = () => {
   const [checked, setChecked] = useState('')
   const [YNchecked, setYNChecked] = useState('')
 
+  // characteristics
   const [charSize, setCharSize] = useState('')
-  const [sizeChecked, setSizeChecked] = useState('')
-
   const [charWidth, setCharWidth] = useState('')
-  const [widthChecked, setWidthChecked] = useState('')
-
   const [charComfort, setCharComfort] = useState('')
-  const [comfortChecked, setComfortChecked] = useState('')
-
   const [charQuality, setCharQuality] = useState('')
-  const [qualityChecked, setQualityChecked] = useState('')
-
   const [charLength, setCharLength] = useState('')
-  const [lengthChecked, setLengthChecked] = useState('')
-
   const [charFit, setCharFit] = useState('')
+  const [sizeChecked, setSizeChecked] = useState('')
+  const [widthChecked, setWidthChecked] = useState('')
+  const [comfortChecked, setComfortChecked] = useState('')
+  const [qualityChecked, setQualityChecked] = useState('')
+  const [lengthChecked, setLengthChecked] = useState('')
   const [fitChecked, setFitChecked] = useState('')
 
+  // summary
+  const [summary, setSummary] = useState('')
 
-
-
-
+  // final form
   const [form, setForm] = useState({})
+
+
 
   useEffect(() => setForm({
     starRating: starRating,
     recommend: recommend
   }), [starRating, recommend])
   return (
-    <form onSubmit={(e) => {e.preventDefault(); console.log(form)}}>
+    <form className="form-parent" onSubmit={(e) => {e.preventDefault(); console.log(form)}}>
       <div className="form-stars">
         <div>
           <label>
@@ -98,7 +96,7 @@ const ModalForm = () => {
       </div>
 
       <div className="form-characteristics-size">
-        <p className="form-subtitle">Size </p>
+        <p className="form-subtitle">Size*</p>
         <div className="form-wrapper">
 
           <div className="form-characteristics">
@@ -151,7 +149,7 @@ const ModalForm = () => {
         </div>
       </div>
       <div className="form-characteristics-width">
-      <p className="form-subtitle">Width</p>
+      <p className="form-subtitle">Width*</p>
         <div className="form-wrapper">
 
           <div className="form-characteristics">
@@ -204,7 +202,7 @@ const ModalForm = () => {
         </div>
       </div>
       <div className="form-characteristics-comfort">
-      <p className="form-subtitle">Comfort</p>
+      <p className="form-subtitle">Comfort*</p>
         <div className="form-wrapper">
 
           <div className="form-characteristics">
@@ -257,7 +255,7 @@ const ModalForm = () => {
         </div>
       </div>
       <div className="form-characteristics-quality">
-      <p className="form-subtitle">Quality</p>
+      <p className="form-subtitle">Quality*</p>
         <div className="form-wrapper">
 
           <div className="form-characteristics">
@@ -310,7 +308,7 @@ const ModalForm = () => {
         </div>
       </div>
       <div className="form-characteristics-length">
-      <p className="form-subtitle">Length</p>
+      <p className="form-subtitle">Length*</p>
         <div className="form-wrapper">
 
           <div className="form-characteristics">
@@ -363,7 +361,7 @@ const ModalForm = () => {
         </div>
       </div>
       <div className="form-characteristics-fit">
-      <p className="form-subtitle">Fit</p>
+      <p className="form-subtitle">Fit*</p>
         <div className="form-wrapper">
 
           <div className="form-characteristics">
@@ -416,6 +414,12 @@ const ModalForm = () => {
         </div>
       </div>
 
+      <div className="form-summary">
+        <label>
+          <textarea value={summary} required className="form-summary" rows={5} cols={60} maxLength={1000} onChange={e => setSummary(e.target.value)} placeholder="Example: Best purchase ever!"/>
+        </label>
+
+      </div>
       <button type="submit">Submit</button>
     </form>
 

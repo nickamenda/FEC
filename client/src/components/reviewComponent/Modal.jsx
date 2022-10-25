@@ -8,8 +8,8 @@ const Modal = (props) => {
     <div className="reviews-modal">
       <div className="reviews-modal-content">
         <div className="reviews-modal-header">
-          <h4>Write Your Review for</h4>
-          <h3>About the {name}</h3>
+          <h4>Write Your Review</h4>
+          <h5>About the {name}</h5>
           <button onClick={(e) => {
             e.preventDefault();
             showModal()

@@ -137,6 +137,11 @@ body {
   background-color: #D3D3D3;
   padding: 5px;
 }
+
+.form-parent {
+  overflow-y: scroll;
+  max-height: 65vh;
+}
 .form-characteristics-size {
   display: flex;
   flex-direction: column;
@@ -168,3 +173,8 @@ body {
   font-size: 8pt;
 }
 
+.form-summary {
+  min-width: 90%;
+  max-width:100%;
+  max-height: 100%;
+}
