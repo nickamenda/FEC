@@ -4,7 +4,7 @@ import AnswerFooter from './AnswerFooter.jsx';
 const AnswerEntry = ({ answer }) => {
   return (
   <div className="QA-answer-entry-container">
-    <div className="QA-answer-body">
+    <div className="QA-answer-body" data-testid="answerBody">
       {answer.body}
     </div>
     <>

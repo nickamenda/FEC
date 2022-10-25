@@ -9,7 +9,7 @@ const QAEntry = ({ question, productInfo }) => {
   return (
     <div className="QA-entry-container">
         <div className="QA-entry-header">
-          <div className="QA-entry-question">
+          <div className="QA-entry-question" data-testid="questionBody">
             Q: {question.question_body}
           </div>
           <div className="QA-entry-add-answer-bar">
