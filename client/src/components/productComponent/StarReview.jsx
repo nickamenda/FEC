@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 const StarReview = (props) => {
   const { currentId } = props
   const [ratings, setRatings] = useState({})
+  const [amtOfRevs, setAmtOfRevs] = useState(0)
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${currentId}`, {
@@ -17,6 +18,17 @@ const StarReview = (props) => {
     })
       .then((res) => {
         setRatings(res.data.ratings)
+      })
+  }, [])
+
+  useEffect(() => {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${currentId}&count=100`, {
+      headers: {
+        'Authorization': process.env.AUTH_KEY
+      }
+    })
+      .then((res) => {
+        setAmtOfRevs(res.data.results.length)
       })
   }, [])
 
@@ -48,7 +60,7 @@ const StarReview = (props) => {
             <span>★</span>
           </div>
         </div>
-        <a className="reviewAmt" href="#reviews" style={{ textDecoration: 'none', color: 'rgb(60, 60, 60)', display: 'flex', alignItems: 'flex-end' }}>View all {reviewAmt} reviews...</a>
+        <a className="reviewAmt" href="#reviews" style={{ textDecoration: 'none', color: 'rgb(60, 60, 60)', display: 'flex', alignItems: 'flex-end' }}>View all {amtOfRevs} reviews...</a>
       </div>
     </>
   )
