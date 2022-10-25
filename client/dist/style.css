@@ -10,6 +10,7 @@ html {
 
 img {
   border: 1px solid black;
+  user-select: none;
 }
 .arrow.left,
 .arrow.right,
