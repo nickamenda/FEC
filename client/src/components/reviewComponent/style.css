@@ -33,7 +33,7 @@ body {
   align-items:flex-start
 }
 .reviews-ratingBreakdown {
-
+  display: flex;
 }
 .reviews-list {
   width: 70%;
@@ -119,7 +119,7 @@ body {
 }
 
 .reviews-modal-content {
-  width: 500px;
+  width: 600px;
   background-color: #fff;
 }
 
@@ -137,3 +137,24 @@ body {
   background-color: #D3D3D3;
   padding: 5px;
 }
+.form-characteristics-size {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.form-wrapper-p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.form-p {
+  margin: 0;
+  font-size: 8pt;
+}
+

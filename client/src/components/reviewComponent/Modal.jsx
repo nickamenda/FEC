@@ -10,18 +10,15 @@ const Modal = (props) => {
         <div className="reviews-modal-header">
           <h4>Write Your Review for</h4>
           <h3>About the {name}</h3>
-
-        </div>
-        <div className="reviews-modal-body">
-          <ModalForm />
-        </div>
-        <div className="reviews-modal-footer">
           <button onClick={(e) => {
             e.preventDefault();
             showModal()
           }}>Close</button>
-
         </div>
+        <div className="reviews-modal-body">
+          <ModalForm />
+        </div>
+
       </div>
     </div>
   )
