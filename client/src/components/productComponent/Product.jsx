@@ -6,6 +6,7 @@ import RenderStyles from './Styles.jsx';
 import CartInfo from './CartInfo.jsx';
 import productExample from './exampleData/product.js';
 import stylesExample from './exampleData/styles.js';
+import { v4 as uuidv4 } from 'uuid';
 import ReactImageZoom from 'react-image-zoom';
 
 const Product = ({ product }) => {
@@ -179,9 +180,9 @@ const Product = ({ product }) => {
         <div className="product features">{
           currentProduct.features.map((item, i) => {
             return (
-              <>
-                <div className="product featureItem" key={i + 100}>{item.feature}: {item.value.split(/(?=[A-Z])/).join(' ')}</div>
-              </>
+              <div key={uuidv4()}>
+                <div className="product featureItem">{item.feature}: {item.value.split(/(?=[A-Z])/).join(' ')}</div>
+              </div>
             )
           })
         }</div>
