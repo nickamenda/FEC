@@ -22,7 +22,6 @@ const Characteristics = (props) => {
     if (props.Comfort !== undefined) { setCharComfort(props.Comfort) }
     if (props.Width !== undefined) { setCharWidth(props.Width) }
     if (props.Size !== undefined) { setCharSize(props.Size) }
-    console.log('props', props)
   }, [props])
 
   // useEffect(() => {
@@ -94,9 +93,9 @@ const Characteristics = (props) => {
           </div>
         </div>
         <div className="char-description">
-          <p className='char-description-p'>Too small</p>
+          <p className='char-description-p'>Runs tight</p>
           <p className='char-description-p'>Perfect</p>
-          <p className='char-description-p'>Too large</p>
+          <p className='char-description-p'>Runs long</p>
         </div>
       </div>: null}
 
@@ -108,9 +107,9 @@ const Characteristics = (props) => {
           </div>
         </div>
         <div className="char-description">
-          <p className='char-description-p'>Too short</p>
+          <p className='char-description-p'>Runs Short</p>
           <p className='char-description-p'>Perfect</p>
-          <p className='char-description-p'>Too long</p>
+          <p className='char-description-p'>Runs long</p>
         </div>
       </div> : null}
 
@@ -122,7 +121,7 @@ const Characteristics = (props) => {
           </div>
         </div>
         <div className="char-description">
-          <p className='char-description-p'>Poor</p>
+          <p className='char-description-p'>Uncomfortable</p>
           <p className='char-description-p'>Perfect</p>
         </div>
       </div> : null}
@@ -135,8 +134,9 @@ const Characteristics = (props) => {
           </div>
         </div>
         <div className="char-description">
-          <p className='char-description-p'>Low</p>
-          <p className='char-description-p'>High</p>
+          <p className='char-description-p'>Poor</p>
+          <p className='char-description-p'>What I expected</p>
+          <p className='char-description-p'>Prefect</p>
         </div>
       </div> : null}
 
@@ -148,9 +148,9 @@ const Characteristics = (props) => {
           </div>
         </div>
         <div className="char-description">
-          <p className='char-description-p'>Too small</p>
+          <p className='char-description-p'>A size too small</p>
           <p className='char-description-p'>Perfect</p>
-          <p className='char-description-p'>Too large!</p>
+          <p className='char-description-p'>A size too wide</p>
         </div>
       </div> : null}
 
@@ -162,9 +162,9 @@ const Characteristics = (props) => {
           </div>
         </div>
         <div className="char-description">
-          <p className='char-description-p'>Too small</p>
+          <p className='char-description-p'>Too narrow</p>
           <p className='char-description-p'>Perfect</p>
-          <p className='char-description-p'>Too large!</p>
+          <p className='char-description-p'>Too wide</p>
         </div>
       </div> : null}
 

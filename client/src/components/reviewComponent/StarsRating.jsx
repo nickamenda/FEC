@@ -39,7 +39,7 @@ const StarsRating = (props) => {
     setCharQuality(characteristics.Quality);
     setCharWidth(characteristics.Width);
     setCharSize(characteristics.Size);
-    console.log('car', characteristics)
+    // console.log('car', characteristics)
   }, [characteristics])
 
   // ratings.characteristics
