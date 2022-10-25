@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-/* html {
-=======
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 html {
   font-family: 'Lato', sans-serif;
->>>>>>> 1933fb441d73ce4100da4366291c228fe181cc9f
   max-width: 1280px;
   margin: 0 auto;
   --dark-text-color: rgb(60, 60, 60);
@@ -307,9 +303,6 @@ select {
   position: relative;
   top: 7px;
   left: 10px
-<<<<<<< HEAD
-} */
-=======
 }
 
 .js-image-zoom__zoomed-area,
@@ -319,4 +312,3 @@ select {
 .product-zoom {
   object-fit: fill;
 }
->>>>>>> 1933fb441d73ce4100da4366291c228fe181cc9f
