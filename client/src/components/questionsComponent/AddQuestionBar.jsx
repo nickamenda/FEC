@@ -2,11 +2,8 @@ import React, { useRef } from 'react';
 import Modal from './Modal.jsx';
 import AddQuestion from './ModalViews/AddQuestionView.jsx';
 
-const AddQuestionBar = ({ loadQuestionsHandler, productInfo, showButton }) => {
+const AddQuestionBar = ({ loadQuestionsHandler, productInfo, showButton, refresh }) => {
   const modal = useRef(null);
-  const handleClose = (e) => {
-    modal.current.close()
-  }
 
   return (
     <>
