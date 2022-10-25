@@ -25,41 +25,39 @@ const CartInfo = (props) => {
     }
   }, [selectedSize])
 
-
-
-  return  (
+  return (
     <div className="cart">
       <div className="selectors">
-      <select name="size" className="product size" onChange={(e) => {
-        e.preventDefault()
-        setSelectedSize(e.target.value)
-      }}>
-        <option value={selectedSize}>Size</option>
-        {sizes.map((item, i) => {
-          return (
-            <option key={i + 1000000000000} value={item}>{item}</option>
-          )
-        })}
-      </select>
-      <select disabled={!selectedSize} name="quantity" className="product quantity" onChange={(e) => {
-        e.preventDefault()
-        setSelectedQuantity(e.target.value)
-      }}>
-        <option value={selectedQuantity}>Quantity</option>
-        {Array(quantity).fill(1).map((x, i) => {
-          return i < 15 ? (
-            <option key={i + 100000} value={i + 1}>{i + 1}</option>
-          ) : null
-        })}
-      </select>
+        <select name="size" className="product size" onChange={(e) => {
+          e.preventDefault()
+          setSelectedSize(e.target.value)
+        }}>
+          <option value={selectedSize}>Size</option>
+          {sizes.map((item, i) => {
+            return (
+              <option key={i + 1000000000000} value={item}>{item}</option>
+            )
+          })}
+        </select>
+        <select disabled={!selectedSize} name="quantity" className="product quantity" onChange={(e) => {
+          e.preventDefault()
+          setSelectedQuantity(e.target.value)
+        }}>
+          <option value={selectedQuantity}>Quantity</option>
+          {Array(quantity).fill(1).map((x, i) => {
+            return i < 15 ? (
+              <option key={i + 100000} value={i + 1}>{i + 1}</option>
+            ) : null
+          })}
+        </select>
       </div>
       <div className="add-to-cart">
-      <button className="addCart" data-testid="add-Cart" disabled={!selectedSize} onClick={(e) => {
-        e.preventDefault()
-        setSelectedSize(null)
-        setQuantity(0)
-        setSelectedQuantity(1)
-      }}>Add To Cart</button>
+        <button className="addCart" data-testid="add-Cart" disabled={!selectedSize} onClick={(e) => {
+          e.preventDefault()
+          setSelectedSize(null)
+          setQuantity(0)
+          setSelectedQuantity(1)
+        }}>Add To Cart</button>
       </div>
     </div>
   )
