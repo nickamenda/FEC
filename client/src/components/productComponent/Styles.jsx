@@ -9,7 +9,7 @@ const RenderStyles = (props) => {
     <div className="product styles all-styles">
       {styles.map((style, i) => {
         return (
-          <StylesItem style={style} key={uuidv4()} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle} handleThumbnails={handleThumbnails}/>
+          <StylesItem style={style} key={uuidv4()} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle} handleThumbnails={handleThumbnails} />
         )
       })}
     </div>

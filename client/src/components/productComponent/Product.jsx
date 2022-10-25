@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import StarReview from './StarReview.jsx';
@@ -19,7 +18,7 @@ const Product = ({ product }) => {
   const [thumbnails, setThumbnails] = useState([]);
   const [currentThumbnails, setCurrentThumbnails] = useState([]);
   const [length, setLength] = useState(0);
-  const zoomProps = {width: 850, height: 570, img: currentPhoto, zoomPosition: 'original'};
+  const zoomProps = { width: 850, height: 570, img: currentPhoto, zoomPosition: 'original' };
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product.id}/styles`, {
@@ -35,23 +34,17 @@ const Product = ({ product }) => {
         setThumbnails([res.data.results[0].photos.slice(0, 7), res.data.results[0].photos.slice(7, res.data.results[0].photos.length)])
         setCurrentThumbnails(res.data.results[0].photos.slice(0, 7))
       })
-
   }, [])
 
   function changeStyling(zoom, styling) {
     if (zoom && styling === null) {
-      setStyling({ width: '850px', height: '570px', zIndex: '100', cursor: 'zoom-in'})
-
+      setStyling({ width: '850px', height: '570px', zIndex: '100', cursor: 'zoom-in' })
     }
-    // else if (!zoom && styling) {
-    //   setStyling({ transformOrigin: '50% 0%', transform: 'scale(1.5)', zIndex: '100', cursor: 'zoom-out', position: 'sticky' })
-    // }
     if (!zoom && !styling) {
       setStyling(null)
       setZoom(false)
     }
   }
-
 
   function handleThumbnails(photosObj) {
     if (photosObj.length > 7) {
@@ -64,6 +57,7 @@ const Product = ({ product }) => {
       setCurrentThumbnails(photosObj)
     }
   }
+
   function handleStyles(style) {
     setCurrentStyle(style)
   }
@@ -81,84 +75,86 @@ const Product = ({ product }) => {
         </>
       )
     }
+
     return (
       <div className="product old-price">${item.original_price}</div>
     )
   }
+
   return Object.keys(currentStyle).length !== 0 ? (
     <>
       <div className="product container">
-      {!zoom && styling ? (
-            <div className="product-zoom" onClick={(e) => {
-              setZoom(false)
-              setStyling(null)
-            }}>
-            <ReactImageZoom {...zoomProps}/>
-            </div>
-            ) : (
-        <div className="product current-photos">
-          <div className="product arrows">
-<img className="product mainPic" style={styling} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
-              e.preventDefault();
-              setZoom(!zoom)
-              changeStyling(!zoom, styling)
-            }}></img>
-            <i className="arrow left" style={{ visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '-80px' : '-20px' }} onClick={(e) => {
-              e.preventDefault();
-              for (let i = 0; i < currentStyle.photos.length; i++) {
-                if (currentStyle.photos[i].url === currentPhoto) {
-                  handleCurrentPhoto(currentStyle.photos[i - 1])
-                  if (i < 8) {
-                   thumbnails.length === 2 ? setCurrentThumbnails(thumbnails[0]) : setCurrentThumbnails(thumbnails);
-                }
-              }
-              }
-            }}>&#8592;</i>
-            <i className="arrow right" style={{ 'visibility': currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '630px' : '440px' }} onClick={(e) => {
-              e.preventDefault();
-              for (let i = 0; i < currentStyle.photos.length; i++) {
-                if (currentStyle.photos[i].url === currentPhoto) {
-                  handleCurrentPhoto(currentStyle.photos[i + 1])
-                  if (i > 5) {
-                    setCurrentThumbnails(thumbnails[1])
+        {!zoom && styling ? (
+          <div className="product-zoom" onClick={(e) => {
+            setZoom(false)
+            setStyling(null)
+          }}>
+            <ReactImageZoom {...zoomProps} />
+          </div>
+        ) : (
+          <div className="product current-photos">
+            <div className="product arrows">
+              <img className="product mainPic" style={styling} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
+                e.preventDefault();
+                setZoom(!zoom)
+                changeStyling(!zoom, styling)
+              }}></img>
+              <i className="arrow left" style={{ visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '-80px' : '-20px' }} onClick={(e) => {
+                e.preventDefault();
+                for (let i = 0; i < currentStyle.photos.length; i++) {
+                  if (currentStyle.photos[i].url === currentPhoto) {
+                    handleCurrentPhoto(currentStyle.photos[i - 1])
+                    if (i < 8) {
+                      thumbnails.length === 2 ? setCurrentThumbnails(thumbnails[0]) : setCurrentThumbnails(thumbnails);
+                    }
                   }
                 }
+              }}>&#8592;</i>
+              <i className="arrow right" style={{ 'visibility': currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '630px' : '440px' }} onClick={(e) => {
+                e.preventDefault();
+                for (let i = 0; i < currentStyle.photos.length; i++) {
+                  if (currentStyle.photos[i].url === currentPhoto) {
+                    handleCurrentPhoto(currentStyle.photos[i + 1])
+                    if (i > 5) {
+                      setCurrentThumbnails(thumbnails[1])
+                    }
+                  }
+                }
+              }}>&#8594;</i>
+              {currentThumbnails.map((item, i) => {
+                return (!zoom && styling) === null ? (
+                  (<img className="product itemThumbnail" style={{ borderBottom: currentPhoto === item.url ? '4px solid red' : null }} src={item.thumbnail_url} alt={currentStyle.style_id} key={i} onClick={(e) => {
+                    e.preventDefault();
+                    handleCurrentPhoto(item)
+                  }}></img>)) : (<img className="product enlarged-thumbnail" style={{ border: currentPhoto === item.url ? '2px solid red' : null }} src={item.thumbnail_url} alt={currentStyle.style_id} key={i} onClick={(e) => {
+                    e.preventDefault();
+                    handleCurrentPhoto(item)
+                  }}></img>)
+              })}
+              {length > 7 ? (
+                <>
+                  <div className="downArrow" style={JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[0]) ? { visibility: null } : { visibility: 'hidden' }} onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentThumbnails(thumbnails[1])
+                  }}>&#8595;</div>
+                  <div className="upArrow" style={JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[1]) ? { visibility: null } : { visibility: 'hidden' }} onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentThumbnails(thumbnails[0])
+                  }}>&#8593;</div>
+                </>
+              ) : null
               }
-            }}>&#8594;</i>
-            {currentThumbnails.map((item, i) => {
-              return (!zoom && styling) === null ? (
-                (<img className="product itemThumbnail" style={{borderBottom: currentPhoto === item.url ? '4px solid red' : null}} src={item.thumbnail_url} alt={currentStyle.style_id} key={i} onClick={(e) => {
-                  e.preventDefault();
-                  handleCurrentPhoto(item)
-                }}></img>)) : (<img className="product enlarged-thumbnail" style={{border: currentPhoto === item.url ? '2px solid red' : null}} src={item.thumbnail_url} alt={currentStyle.style_id} key={i} onClick={(e) => {
-                  e.preventDefault();
-                  handleCurrentPhoto(item)
-                }}></img>)
-            })}
-            {length > 7 ? (
-              <>
-                <div className="downArrow" style={JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[0]) ? { visibility: null } : { visibility: 'hidden' }} onClick={(e) => {
-                  e.preventDefault();
-                  setCurrentThumbnails(thumbnails[1])
-                }}>&#8595;</div>
-                <div className="upArrow" style={JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[1]) ? { visibility: null } : { visibility: 'hidden' }} onClick={(e) => {
-                  e.preventDefault();
-                  setCurrentThumbnails(thumbnails[0])
-                }}>&#8593;</div>
-              </>
-            ) : null
-            }
-          </div>
-        </div>)}
+            </div>
+          </div>)}
         <div className="product current-info">
           <div className="product-reviews">
-            <StarReview currentId={product.id}  />
+            <StarReview currentId={product.id} />
           </div>
           <div className="product current-category" >{currentProduct.category}</div>
           <div className="product current-name" >{currentProduct.name}</div>
           <div className="product prices">{handleSales(currentStyle)}</div>
           <div className="product current-style"><div className="product current-style title">Style ></div><div className="product current-style name"> {currentStyle.name}</div></div>
-          <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle} handleThumbnails={handleThumbnails}/>
+          <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle} handleThumbnails={handleThumbnails} />
           <CartInfo currentStyle={currentStyle} />
           <div className="share-buttons">
             <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F&layout=button_count&size=small&width=77&height=20&appId" width="77" height="20" style={{ border: 'none', overflow: 'hidden' }} scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture;" ></iframe>
@@ -169,7 +165,6 @@ const Product = ({ product }) => {
               <img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" />
             </a>
           </div>
-
         </div>
       </div>
       <div className="product bottom-info">

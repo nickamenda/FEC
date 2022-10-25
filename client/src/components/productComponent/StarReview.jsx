@@ -8,7 +8,6 @@ import { v4 as uuidv4 } from 'uuid';
 const StarReview = (props) => {
   const { currentId } = props
   const [ratings, setRatings] = useState({})
-  var stars = ''
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${currentId}`, {
@@ -33,26 +32,27 @@ const StarReview = (props) => {
   return (
     <>
       <div className="myProductReviews">
-          <div className="rating">
-            <div className="rating-upper" style={{width: ((reviewScores / reviewAmt).toFixed(2) / 5) * 100 + '%'}}>
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-            </div>
-            <div className="rating-lower">
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-            </div>
+        <div className="rating">
+          <div className="rating-upper" style={{ width: ((reviewScores / reviewAmt).toFixed(2) / 5) * 100 + '%' }}>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+          </div>
+          <div className="rating-lower">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+          </div>
         </div>
         <a className="reviewAmt" href="#reviews" style={{ textDecoration: 'none', color: 'rgb(60, 60, 60)', display: 'flex', alignItems: 'flex-end' }}>View all {reviewAmt} reviews...</a>
       </div>
     </>
   )
 }
+
 export default StarReview;
 
