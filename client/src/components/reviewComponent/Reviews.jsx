@@ -26,7 +26,6 @@ const Reviews = (props) => {
     })
     .then((response) => {
       setProduct(response.data.results)
-      console.log(response.data.results)
     })
 
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${props.product.id}`, {
