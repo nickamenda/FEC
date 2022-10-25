@@ -119,7 +119,7 @@ body {
 }
 
 .reviews-modal-content {
-  width: 600px;
+  width: 500px;
   background-color: #fff;
 }
 
@@ -140,6 +140,10 @@ body {
 .form-characteristics-size {
   display: flex;
   flex-direction: column;
+}
+.form-subtitle {
+  margin: 5px 0;
+  font-size: 10pt;
 }
 
 .form-wrapper {
