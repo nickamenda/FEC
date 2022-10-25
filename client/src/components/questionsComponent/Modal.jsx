@@ -31,10 +31,10 @@ export function Modal({ children, fade = true, defaultOpened = false}, ref) {
 
   return createPortal(
     isOpen ? (
-      <div className={`modal ${fade ? 'modal-fade' : ''}`}>
-        <div className="modal-overlay" onClick={close} />
-        <span role="button" className="modal-close" onClick={close}>x</span>
-        <div className="modal-body">{children}</div>
+      <div className={`QA-modal ${fade ? 'QA-modal-fade' : ''}`}>
+        <div className="QA-modal-overlay" onClick={close} />
+        <span role="button" className="QA-modal-close" onClick={close}>x</span>
+        <div className="QA-modal-body">{children}</div>
       </div>
     ) : null,
     modalElement

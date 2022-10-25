@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 /* html {
+=======
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+html {
+  font-family: 'Lato', sans-serif;
+>>>>>>> 1933fb441d73ce4100da4366291c228fe181cc9f
   max-width: 1280px;
   margin: 0 auto;
   --dark-text-color: rgb(60, 60, 60);
@@ -6,7 +13,7 @@
 }
 
 img {
-  border: 2px solid black;
+  border: 1px solid black;
 }
 .arrow.left,
 .arrow.right,
@@ -48,7 +55,6 @@ img:hover,
 .product.current-name {
   font-size: 40px;
   color: var(--dark-text-color);
-
   font-weight: bold;
 }
 
@@ -62,7 +68,6 @@ img:hover,
   font-size: 22px;
   font-weight: bold;
   color: var(--dark-text-color);
-
 }
 
 .product.current-info div.product.current-description {
@@ -112,7 +117,7 @@ img:hover,
 .product.product.styles.all-styles {
   display: flex;
   text-align: left;
-  max-width: 340px;
+  max-width: 300px;
   flex-wrap: wrap;
 }
 
@@ -153,7 +158,7 @@ img:hover,
 }
 
 .reviewAmt {
-  color: rgb(136, 136, 136);
+  color: var(--dark-text-color);
   text-decoration: underline;
 }
 
@@ -183,6 +188,7 @@ img:hover,
   width: 650px;
   right: 100px;
   position: relative;
+  object-fit: fill;
 }
 
 .arrow.left {
@@ -301,4 +307,16 @@ select {
   position: relative;
   top: 7px;
   left: 10px
+<<<<<<< HEAD
 } */
+=======
+}
+
+.js-image-zoom__zoomed-area,
+.js-image-zoom__zoomed-image {
+  z-index: 10000;
+}
+.product-zoom {
+  object-fit: fill;
+}
+>>>>>>> 1933fb441d73ce4100da4366291c228fe181cc9f

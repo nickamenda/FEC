@@ -6,8 +6,12 @@ import parseQuestions from './lib/parseQuestions.js'
 import QuestionSearch from './QuestionSearch.jsx';
 import AddQuestionBar from './AddQuestionBar.jsx';
 import QAList from './QAList.jsx';
+<<<<<<< HEAD
 // import './styles.css'
 
+=======
+import './styles.css'
+>>>>>>> 1933fb441d73ce4100da4366291c228fe181cc9f
 
 const Question = ({ product }) => {
   // State for getting and storing questions for the product

@@ -1,13 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import StarReview from './StarReview.jsx'
-import RenderStyles from './Styles.jsx'
-import CartInfo from './CartInfo.jsx'
-import productExample from './exampleData/product.js'
-import stylesExample from './exampleData/styles.js'
-// import { v4 as uuidv4 } from 'uuid';
-// import ReactImageZoom from 'react-image-zoom';
+import StarReview from './StarReview.jsx';
+import RenderStyles from './Styles.jsx';
+import CartInfo from './CartInfo.jsx';
+import productExample from './exampleData/product.js';
+import stylesExample from './exampleData/styles.js';
+import ReactImageZoom from 'react-image-zoom';
 
 const Product = ({ product }) => {
   const [currentProduct, setCurrentProduct] = useState(product);
@@ -16,10 +15,10 @@ const Product = ({ product }) => {
   const [currentPhoto, setCurrentPhoto] = useState('');
   const [zoom, setZoom] = useState(false);
   const [styling, setStyling] = useState(null);
-  const [thumbnails, setThumbnails] = useState([])
-  const [currentThumbnails, setCurrentThumbnails] = useState([])
+  const [thumbnails, setThumbnails] = useState([]);
+  const [currentThumbnails, setCurrentThumbnails] = useState([]);
   const [length, setLength] = useState(0);
-  const zoomProps = { width: 850, height: 570, scale: 2.5, img: currentPhoto, zoomPosition: 'original' };
+  const zoomProps = {width: 850, height: 570, img: currentPhoto, zoomPosition: 'original'};
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${product.id}/styles`, {
@@ -40,12 +39,13 @@ const Product = ({ product }) => {
 
   function changeStyling(zoom, styling) {
     if (zoom && styling === null) {
-      setStyling({ width: '850px', height: '570px', zIndex: '100', cursor: 'zoom-in' })
+      setStyling({ width: '850px', height: '570px', zIndex: '100', cursor: 'zoom-in'})
 
-    } else if (!zoom && styling) {
-      setStyling({ transformOrigin: '50% 0%', transform: 'scale(1.5)', zIndex: '100', cursor: 'zoom-out', position: 'sticky' })
     }
-    else {
+    // else if (!zoom && styling) {
+    //   setStyling({ transformOrigin: '50% 0%', transform: 'scale(1.5)', zIndex: '100', cursor: 'zoom-out', position: 'sticky' })
+    // }
+    if (!zoom && !styling) {
       setStyling(null)
       setZoom(false)
     }
@@ -87,9 +87,17 @@ const Product = ({ product }) => {
   return Object.keys(currentStyle).length !== 0 ? (
     <>
       <div className="product container">
+      {!zoom && styling ? (
+            <div className="product-zoom" onClick={(e) => {
+              setZoom(false)
+              setStyling(null)
+            }}>
+            <ReactImageZoom {...zoomProps}/>
+            </div>
+            ) : (
         <div className="product current-photos">
           <div className="product arrows">
-            <img className="product mainPic" style={styling} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
+<img className="product mainPic" style={styling} src={currentPhoto} alt={currentStyle.name} onClick={(e) => {
               e.preventDefault();
               setZoom(!zoom)
               changeStyling(!zoom, styling)
@@ -139,7 +147,7 @@ const Product = ({ product }) => {
             ) : null
             }
           </div>
-        </div>
+        </div>)}
         <div className="product current-info">
           <div className="product-reviews">
             <StarReview currentId={product.id}  />
