@@ -124,17 +124,6 @@ const Product = ({ product }) => {
                 }
               }
             }}>&#8594;</i>
-
-            {/* {currentThumbnails.map((item, i) => {
-               return (!zoom && styling === null) ? (
-                <img className="product itemThumbnail" style={currentPhoto === item.url ? { borderBottom: '4px solid red' } : null} src={item.thumbnail_url} alt={currentStyle.style_id} key={i} onClick={(e) => {
-                  e.preventDefault();
-                  handleCurrentPhoto(item)
-                }}></img>
-              ) : (
-                {{currentPhoto === item.url ? (<div className="enlarged-thumbnail">0</div>) : (<div className="enlarged-thumbnail">1</div>)}
-              )
-            })} */}
             {currentThumbnails.map((item, i) => {
               return (!zoom && styling) === null ? (
                 (<img className="product itemThumbnail" style={{borderBottom: currentPhoto === item.url ? '4px solid red' : null}} src={item.thumbnail_url} alt={currentStyle.style_id} key={i} onClick={(e) => {
