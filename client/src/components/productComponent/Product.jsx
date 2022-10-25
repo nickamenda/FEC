@@ -35,6 +35,13 @@ const Product = ({ product }) => {
         setCurrentThumbnails(res.data.results[0].photos.slice(0, 7))
       })
   }, [])
+  // window.addEventListener("click", (event) => {
+  //   event.preventDefault()
+
+  //   console.log(event.target)
+  //   console.log(new Date().toLocaleString())
+  //   console.log('Product module was clicked!')
+  // })
 
   function changeStyling(zoom, styling) {
     if (zoom && styling === null) {
@@ -45,6 +52,7 @@ const Product = ({ product }) => {
       setZoom(false)
     }
   }
+
 
   function handleThumbnails(photosObj) {
     if (photosObj.length > 7) {
@@ -133,14 +141,14 @@ const Product = ({ product }) => {
               })}
               {length > 7 ? (
                 <>
-                  <div className="downArrow" style={JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[0]) ? { visibility: null } : { visibility: 'hidden' }} onClick={(e) => {
+                  <i className="downArrow" style={JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[0]) ? { visibility: null } : { visibility: 'hidden' }} onClick={(e) => {
                     e.preventDefault();
                     setCurrentThumbnails(thumbnails[1])
-                  }}>&#8595;</div>
-                  <div className="upArrow" style={JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[1]) ? { visibility: null } : { visibility: 'hidden' }} onClick={(e) => {
+                  }}>&#8595;</i>
+                  <i className="upArrow" style={JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[1]) ? { visibility: null } : { visibility: 'hidden' }} onClick={(e) => {
                     e.preventDefault();
                     setCurrentThumbnails(thumbnails[0])
-                  }}>&#8593;</div>
+                  }}>&#8593;</i>
                 </>
               ) : null
               }
