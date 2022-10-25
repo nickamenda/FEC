@@ -10,7 +10,6 @@ const AddQuestion = ({productInfo, close}) => {
   const [error, setError] = useState(null);
 
   const submitQuestion = event => {
-    event.preventDefault();
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions',  {
       body,
       name,

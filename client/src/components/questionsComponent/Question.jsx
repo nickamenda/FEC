@@ -25,29 +25,31 @@ const Question = ({ product }) => {
   }), [product]);
 
   // Gets and sorts questions for product, sets questions, filteredQuestions, and productInfo
-  useEffect(() => {
-    setLoading(true);
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`, {
-      params: {
-        product_id: product.id,
-        count: 100
-      },
-      headers: {
-        'Authorization': process.env.AUTH_KEY
-      }
-    })
-      .then(res => {
-        let parsedQuestions = parseQuestions(res.data);
-        if (parsedQuestions.length > viewCount) {
-          setShowButton(true);
+  const getQuestions = () => {
+    useEffect(() => {
+      setLoading(true);
+      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`, {
+        params: {
+          product_id: product.id,
+          count: 100
+        },
+        headers: {
+          'Authorization': process.env.AUTH_KEY
         }
-        setQuestions(parsedQuestions);
-        setFilteredQuestions(parsedQuestions);
-        setLoading(false);
       })
-      .catch(err => console.log('Error: ', err.message))
-  }, [])
-
+        .then(res => {
+          let parsedQuestions = parseQuestions(res.data);
+          if (parsedQuestions.length > viewCount) {
+            setShowButton(true);
+          }
+          setQuestions(parsedQuestions);
+          setFilteredQuestions(parsedQuestions);
+          setLoading(false);
+        })
+        .catch(err => console.log('Error: ', err.message))
+    }, [])
+  }
+  getQuestions();
   // Filters questions by query provided by QuestionSearch component
   const filterQuestions = (query) => {
     if (query.length >= 3) {

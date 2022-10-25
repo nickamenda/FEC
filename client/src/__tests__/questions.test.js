@@ -205,7 +205,7 @@ describe('Overall Question Component and Functionality', () => {
   it("Should render button to add questions", async () => {
     render(<Question product={dummyProduct}/>);
     await waitFor(() => {
-      expect(screen.getByTestId('loadQuestionBtn')).toBeInTheDocument()
+      expect(screen.getByTestId('loadQuestionsBtn')).toBeInTheDocument()
     })
   });
   it("Should render 2 more questions when More Answered Questions button is pressed", async () => {
@@ -217,13 +217,19 @@ describe('Overall Question Component and Functionality', () => {
       expect(questionInstances).toHaveLength(4)
     })
   });
-  it("Should open modal prompting user to enter question", async () => {
+  it("Should open modal prompting user to enter question when Add A Question button", async () => {
     render(<Question product={dummyProduct}/>);
     await waitFor(async () => {
-      const addQuestionBtn = screen.getByTestId('loadQuestionBtn')
-      fireEvent.click(moreQuestionsBtn);
-      const questionInstances = await waitFor(() => screen.findAllByTestId('questionBody'))
-      expect(questionInstances).toHaveLength(4)
-    })
-  });
+      const addQuestionBtn = screen.getByTestId('addQuestionBtn')
+      fireEvent.click(addQuestionBtn);
+      await waitFor(() => {
+        expect(screen.getByText('Ask Your Question')).toBeInTheDocument()
+      })
+    });
+  })
+  it("Should render helpful button for each question and answer", async () => {
+    render(<Question product={dummyProduct}/>);
+    const helpfulInstances = await waitFor(() => screen.getAllByText(/helpful/i))
+    expect(helpfulInstances).toHaveLength(6)
+  })
 })
