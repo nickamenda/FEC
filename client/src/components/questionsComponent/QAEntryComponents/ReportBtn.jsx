@@ -23,7 +23,7 @@ const ReportBtn = ({ options }) => {
   }
 
   return (
-    <span className="QA-report" role="button" onClick={e => {
+    <span className="QA-report" role="button" data-testid="reportBtn" onClick={e => {
       reportAnswer();
     }
       }>{reported ? 'Reported' : 'Report'}</span>

@@ -4,7 +4,7 @@ import Modal from '../Modal.jsx';
 
 const ImageView = ({ photo }) => {
   return (
-    <img src={photo} className="QA-modal-image" alt="Pictures provided by poster"/>
+    <img src={photo} className="QA-modal-image" data-testid="modalImage" alt="Pictures provided by poster"/>
   )
 }
 

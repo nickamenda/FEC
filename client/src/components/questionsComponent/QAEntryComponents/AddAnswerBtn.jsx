@@ -7,7 +7,7 @@ const AddAnswerBtn = ({productInfo, question }) => {
 
   return (
     <>
-     <span className="QA-entry-add-answer-btn"  onClick={e => modal.current.open()} role="button">Add Answer</span>
+     <span className="QA-entry-add-answer-btn" data-testid="addAnswerBtn" onClick={e => modal.current.open()} role="button">Add Answer</span>
       <Modal ref={modal} >
         <AddAnswer productInfo={productInfo} question={question} close={() => {
           modal.current.close()

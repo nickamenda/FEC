@@ -9,7 +9,8 @@
     "start:dev": "npx live-server & webpack --config ./webpack.config.js  -w",
     "react-dev": "webpack --config ./webpack.config.js  -w",
     "test": "jest",
-    "testWatch": "jest --watchAll"
+    "testWatch": "jest --watchAll",
+    "test-coverage": "jest  --coverage"
   },
   "repository": {
     "type": "git",
