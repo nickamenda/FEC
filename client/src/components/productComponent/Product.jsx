@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import ReactImageZoom from 'react-image-zoom';
 
 const Product = ({ product }) => {
+  Product.displayName = 'Product'
   const [currentProduct, setCurrentProduct] = useState(product);
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
@@ -35,13 +36,6 @@ const Product = ({ product }) => {
         setCurrentThumbnails(res.data.results[0].photos.slice(0, 7))
       })
   }, [])
-  // window.addEventListener("click", (event) => {
-  //   event.preventDefault()
-
-  //   console.log(event.target)
-  //   console.log(new Date().toLocaleString())
-  //   console.log('Product module was clicked!')
-  // })
 
   function changeStyling(zoom, styling) {
     if (zoom && styling === null) {
