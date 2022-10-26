@@ -244,6 +244,12 @@ describe('Question and Answers Component Render and Functionality', () => {
         expect(screen.getByText('Question & Answers')).toBeInTheDocument();
       })
     });
+    it("Should render input to search questions", async () => {
+      render(<Question product={dummyProduct}/>);
+      await waitFor(() => {
+        expect(screen.getByPlaceholderText('Have a question? Search for answers')).toBeInTheDocument();
+      })
+    });
     it("Should render questions in list", async () => {
       render(<Question product={dummyProduct}/>);
       await waitFor(() => {
