@@ -5,5 +5,9 @@ module.exports = {
   },
   transformIgnorePatterns: ['<rootDir>/node_modules/(?!(axios)/)'],
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/jest-setup.js']
+  setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
+  collectCoverage: false,
+  coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
+  coverageReporters: ["json", "html", "text"],
+  coverageDirectory: './coverage/'
   };
