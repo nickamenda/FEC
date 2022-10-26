@@ -98,8 +98,9 @@ img:hover,
   width: 20px;
   bottom: 170px;
   margin: 5px;
-  left: 210px;
+  left: 50%;
   border-radius: 50%;
+  transform: translateX(-50%);
 }
 
 .downArrow {
