@@ -91,6 +91,7 @@ img:hover,
   bottom: 645px;
   margin: 5px;
   right: 90px;
+  object-fit: cover;
 }
 
 .product.enlarged-thumbnail {
@@ -134,6 +135,7 @@ img:hover,
   text-align: left;
   max-width: 300px;
   flex-wrap: wrap;
+  object-fit: cover;
 }
 
 .product.styles.all-styles img {
@@ -203,7 +205,7 @@ img:hover,
   width: 650px;
   right: 100px;
   position: relative;
-  object-fit: fill;
+  object-fit: cover;
 }
 
 .arrow.left {
