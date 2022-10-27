@@ -6,6 +6,7 @@ import QAList from '../components/questionsComponent/QAList.jsx';
 import parseQuestions from '../components/questionsComponent/lib/parseQuestions.js';
 import axios from 'axios';
 
+// Create a mock for axios
 jest.mock('axios')
 
 const dummyProduct = {
@@ -231,6 +232,7 @@ describe('Question and Answers Component Render and Functionality', () => {
       ReactDOM.createPortal = jest.fn((element, node) => {
         return element;
       });
+      // Declare axios response when encountering axios.get
       axios.get.mockResolvedValue({ data: dummyQuestions });
     });
     afterEach(() => {
