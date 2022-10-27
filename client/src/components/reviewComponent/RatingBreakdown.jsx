@@ -10,7 +10,7 @@ const RatingBreakdown = (props) => {
 
   return (
     <div className="reviews">
-      <StarsRating product={props.product} productId={props.productId}/>
+      <StarsRating product={props.product} productId={props.productId} ids={(input) => props.ids(input)} filterList={(number) => props.filterList(number)}/>
     </div>
   )
 }

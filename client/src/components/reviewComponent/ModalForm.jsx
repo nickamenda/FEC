@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios'
 
 const ModalForm = (props) => {
   const [starRating, setStarRating] = useState(0)
@@ -33,25 +34,103 @@ const ModalForm = (props) => {
   const [form, setForm] = useState({})
 
   // images
-  const [images, setImages] = useState()
+  const [images, setImages] = useState([])
+  const [data, setData] = useState({})
+  var charObj = {}
 
   useEffect(() => {
+    if (props.ids.Comfort) {
+      if(!charObj[props.ids.Comfort.id]) {
+        charObj[props.ids.Comfort.id] = charComfort
+      } else {
+        charObj[props.ids.Comfort.id] = charComfort
+      }
+      form.characteristics = charObj
+    }
+      console.log('obj',charObj)
+  }, [charComfort])
 
-  })
+  useEffect(() => {
+    if (props.ids.Size) {
+      if(!charObj[props.ids.Size.id]) {
+        charObj[props.ids.Size.id] = charSize
+      } else {
+        charObj[props.ids.Size.id] = charSize
+      }
+      form.characteristics = charObj
+    }
+    console.log('obj',charObj)
+  }, [charSize])
+
+  useEffect(() => {
+    if (props.ids.Width) {
+      if(!charObj[props.ids.Width.id]) {
+        charObj[props.ids.Width.id] = charWidth
+      } else {
+        charObj[props.ids.Width.id] = charWidth
+      }
+      form.characteristics = charObj
+    }
+    console.log('obj',charObj)
+  }, [charWidth])
+
+  useEffect(() => {
+    if (props.ids.Quality) {
+      if(!charObj[props.ids.Quality.id]) {
+        charObj[props.ids.Quality.id] = charQuality
+      } else {
+        charObj[props.ids.Quality.id] = charQuality
+      }
+      form.characteristics = charObj
+    }
+    console.log('obj',charObj)
+  }, [charQuality])
+
+  useEffect(() => {
+    if (props.ids.Length) {
+      if(!charObj[props.ids.Length.id]) {
+        charObj[props.ids.Length.id] = charLength
+      } else {
+        charObj[props.ids.Length.id] = charLength
+      }
+      form.characteristics = charObj
+    }
+    console.log('obj',charObj)
+  }, [charLength])
+
+   useEffect(() => {
+    if (props.ids.Fit) {
+      if(!charObj[props.ids.Fit.id]) {
+        charObj[props.ids.Fit.id] = charFit
+      } else {
+        charObj[props.ids.Fit.id] = charFit
+      }
+      form.characteristics = charObj
+    }
+    console.log('obj',charObj)
+  }, [charFit])
+
+
+  const submitReviews = () => {
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/', form, {
+     headers: {
+        'Authorization': process.env.AUTH_KEY,
+        'content-type':'application:json'
+      },
+    })
+    .then(() => {props.close(); console.log('closed')})
+    .catch(err => console.log(err))
+  }
 
   useEffect(() => {setForm({
     product_id: props.id,
-    rating: starRating,
+    rating: Number(starRating),
     summary: summary,
     body: body,
-    recommend: recommend,
+    recommend: Boolean(recommend),
     name: nickname,
     email: email,
-    Size: charSize,
-    Width: charWidth,
-    Quality: charQuality,
-    Length: charLength,
-    Fit: charFit
+    photos: images
   });
   if (starRating === 0) {
     setError('Star Ratings')
@@ -80,14 +159,13 @@ const ModalForm = (props) => {
   } else {
     setError('')
   }
-  console.log(starRating);
-  console.log(images)
+  console.log('form char', form.characteristics)
 }
 
-  , [starRating, recommend, charSize, charWidth, charComfort, charQuality, charLength, charFit, summary, body, nickname, email])
+  , [starRating, recommend, charSize, charWidth, charComfort, charQuality, charLength, charFit, summary, body, nickname, email, images])
 
   return (
-    <form className="form-parent" onSubmit={(e) => {e.preventDefault(); console.log(form)}}>
+    <form className="form-parent" onSubmit={(e) => {e.preventDefault(); props.close(); submitReviews()}}>
       <div className="form-stars-parent">
         <p className="form-subtitle">Rating*</p>
         <div className="form-stars">
@@ -101,10 +179,10 @@ const ModalForm = (props) => {
       <div className="form-recommend">
         <p className="form-subtitle">Recommend?*</p>
         <label>
-          <input type="radio" value="yes" onChange={(e) => {setRecommend(e.target.value); setYNChecked(e.target.value)}} checked={YNchecked === 'yes'}/> Yes
+          <input type="radio" value={true} onChange={(e) => {setRecommend(e.target.value); setYNChecked('yes')}} checked={YNchecked === 'yes'}/> Yes
         </label>
         <label>
-          <input type="radio" value="no" onChange={(e) => {setRecommend(e.target.value); setYNChecked(e.target.value)}} checked={YNchecked === 'no'}/> No
+          <input type="radio" value={false} onChange={(e) => {setRecommend(e.target.value); setYNChecked('no')}} checked={YNchecked === 'no'}/> No
         </label>
       </div>
       <hr></hr>
@@ -456,7 +534,7 @@ const ModalForm = (props) => {
       <hr></hr>
       <div className="form-upload-image">
       <p className="form-subtitle">Images</p>
-        <label for="files"></label>
+        <label></label>
           <input id="files" type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg" onChange={(e) => {
             if (window.File && window.FileReader && window.FileList && window.Blob) {
               const files = e.target.files;
@@ -508,8 +586,8 @@ const ModalForm = (props) => {
       <div>
 
         {(clicked && error) ? <p style={{color: 'red'}}>You must enter the following: {error}</p> : null}
-        {error ? <button onClick={(e) => {e.preventDefault(); setClicked(true)}} type="submit">Submit</button> :
-        <button type="submit">Submit</button>}
+        {error ? <button onClick={(e) => {e.preventDefault(); setClicked(true)}} type="submit" className="reviews-submit-button">Submit</button> :
+        <button type="submit" className="reviews-submit-button">Submit</button>}
       </div>
     </form>
 

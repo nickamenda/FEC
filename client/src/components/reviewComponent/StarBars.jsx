@@ -32,7 +32,7 @@ const StarBars = (props) => {
   }
 
   return (
-    <div style={bars}>
+    <div style={bars} onClick={() => props.filterList(props.rating.number)}>
       <span><p className="stars-p">{props.rating.number} stars</p></span>
       <div style={containerStyles}>
         <div style={fillerStyles}>
