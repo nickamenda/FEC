@@ -10,6 +10,7 @@ const Reviews = (props) => {
   const [product, setProduct] = useState([])
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState("")
+  const [filter, setFilter] = useState([])
 
   function modal() {
     if (showModal) {
@@ -26,6 +27,7 @@ const Reviews = (props) => {
     })
     .then((response) => {
       setProduct(response.data.results)
+      console.log(response.data.results)
     })
 
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${props.product.id}`, {
@@ -59,7 +61,8 @@ const Reviews = (props) => {
       </div>
       <div className="row">
         <RatingBreakdown className="reviews-content" product={product} productId={props.product.id}/>
-        <ReviewsList className="reviews-content" product={product} showModal={() => modal()} sorting={(input) => sorting(input)}/>
+        <ReviewsList className="reviews-content" product={product} showModal={() => modal()} sorting={(input) => sorting(input)}
+        filter={filter}/>
       </div>
       {showModal ? <Modal className="modal" showModal={() => modal()} name={name}/> : null}
     </div>
