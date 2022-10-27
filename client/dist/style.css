@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+html,body{
+  overflow-x: hidden;
+}
+
+
 html {
   font-family: 'Lato', sans-serif;
   max-width: 1280px;
