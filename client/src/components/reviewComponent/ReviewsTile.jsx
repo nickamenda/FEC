@@ -7,13 +7,18 @@ import Helpful from './Helpful.jsx'
 const ReviewsTile = (props) => {
   const { showModal } = props;
   const [reviewsOpen, setReviewOpen] = useState(2)
+  let stars = '';
 
+  function filterMatch(data) {
+    if (data.rating) {
 
+    }
+  }
   // 66647
   return (
     <>
       <div className="reviews-scroll">
-      {props.product.filter((data, index) => index < reviewsOpen).map((data, i) => {
+      {props.product.filter((data, index) => index < reviewsOpen && filterMatch(data)).map((data, i) => {
         return (<div key={i} className="tile">
           <div className="tile-header">
             <div>

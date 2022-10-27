@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Sorting from './Sorting.jsx'
-import ReviewTile from './ReviewTile.jsx'
+import ReviewTile from './ReviewsTile.jsx'
 
 const ReviewsList = (props) => {
   return (

@@ -174,7 +174,39 @@ body {
 }
 
 .form-summary {
-  min-width: 90%;
-  max-width:100%;
+  min-width: 95%;
+  max-width: 95%;
+  max-height: 50%;
+}
+
+.form-body {
+  min-width: 95%;
+  max-width: 95%;
   max-height: 100%;
+}
+.form-nickname {
+  min-width: 95%;
+  max-width: 95%;
+  max-height: 100%;
+}
+.form-email {
+  min-width: 95%;
+  max-width: 95%;
+  max-height: 100%;
+}
+
+.form-description {
+  font-size:'8pt';
+  display: 'flex';
+  justify-content: 'flex-end';
+  margin-right: '20px'
+}
+
+#result{
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+}
+.thumbnail {
+  width: 80px;
 }
