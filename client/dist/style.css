@@ -357,8 +357,10 @@ select {
     left: 39px;
     top: 20px;
   }
-  .arrow.right {
-    left: 250px;
+  .arrow.right,
+  .product.enlarged-thumbnail,
+  .product.itemThumbnail {
+    visibility: hidden;
   }
   .product.bottom-info {
     margin-top: 20px;
