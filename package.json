@@ -11,6 +11,7 @@
     "test": "jest",
     "testWatch": "jest --watchAll",
     "test-coverage": "jest  --coverage",
+    "build": "webpack --config ./webpack.config.js",
     "startProd": "node server/index.js"
   },
   "repository": {

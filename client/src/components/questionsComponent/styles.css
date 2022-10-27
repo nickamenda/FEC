@@ -68,6 +68,7 @@
 
 .QA-entry-question {
   flex: 2;
+  flex-wrap: wrap;
   font-weight: bold;
   font-size: 18px;
   color: var(--dark-text-color);
@@ -329,3 +330,8 @@
   margin-top: 2em;
 }
 
+@media screen and (max-device-width: 510px) {
+  .QA-entry-header {
+    display: block;
+  }
+}
