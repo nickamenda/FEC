@@ -89,7 +89,25 @@ const StarsRating = (props) => {
 
   return (
     <>
+      <div className="ratings">
       <p className="rating-point">{(totalRatingPoints / totalNumReviews).toFixed(1)}</p>
+      <div className="rating">
+          <div className="rating-upper" style={{ width: (totalRatingPoints / totalNumReviews).toFixed(1) * 20 + '%' }}>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+          </div>
+          <div className="rating-lower">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+          </div>
+        </div>
+      </div>
       <p>{Math.ceil(((Number(recommend.true) / (Number(recommend.false) + Number(recommend.true))).toFixed(2) * 100))}% of reviews recommend this product</p>
       {arrOfRatings.length > 0 ? arrOfRatings.map((rating, id) => (
         <StarBars key={id} rating={rating} maxItem={maxItem}/>

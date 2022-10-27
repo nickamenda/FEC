@@ -217,3 +217,36 @@ body {
 .thumbnail {
   width: 80px;
 }
+
+.rating {
+  unicode-bidi: bidi-override;
+  color: #c5c5c5e1;
+  font-size: 20px;
+  height: 25px;
+  width: 100px;
+  position: relative;
+  text-shadow: 0px 1px 0 #000000;
+}
+
+.rating-upper {
+  color: #ffd416;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.rating-lower {
+  display: flex;
+  z-index: 0;
+}
+
+.ratings {
+  display: flex;
+  flex-direction: row;
+}
+
+.rating {
+  padding-top: 15px;
+  margin-left: 10px;
+}
