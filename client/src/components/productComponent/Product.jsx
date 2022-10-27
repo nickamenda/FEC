@@ -159,12 +159,12 @@ const Product = ({ product }) => {
           <RenderStyles styles={styles} handleStyles={handleStyles} handleCurrentPhoto={handleCurrentPhoto} currentStyle={currentStyle} handleThumbnails={handleThumbnails} />
           <CartInfo currentStyle={currentStyle} />
           <div className="share-buttons">
-            <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F&layout=button_count&size=small&width=77&height=20&appId" width="77" height="20" style={{ border: 'none', overflow: 'hidden' }} scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture;" ></iframe>
-            <iframe allowtransparency="true" frameBorder="0" scrolling="no"
+            <iframe title="facebook" src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F&layout=button_count&size=small&width=77&height=20&appId" width="77" height="20" style={{ border: 'none', overflow: 'hidden' }} scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture;" ></iframe>
+            <iframe title="twitter" allowtransparency="true" frameBorder="0" scrolling="no"
               src="https://platform.twitter.com/widgets/tweet_button.html?size=medium"
               style={{ width: '77px', height: '20px' }} ></iframe>
             <a href="http://pinterest.com/pin/create/button/?url={http%3A%2F%2F127.0.0.1%3A8080%2Fclient%2Fdist%2F%0A}" className="pin-it-button" count-layout="horizontal" >
-              <img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" />
+              <img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" height="20" width="43"/>
             </a>
           </div>
         </div>

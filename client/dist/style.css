@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+html,body{
+  overflow-x: hidden;
+}
+
+
 html {
   font-family: 'Lato', sans-serif;
   max-width: 1280px;
@@ -91,6 +96,7 @@ img:hover,
   bottom: 645px;
   margin: 5px;
   right: 90px;
+  object-fit: cover;
 }
 
 .product.enlarged-thumbnail {
@@ -134,6 +140,7 @@ img:hover,
   text-align: left;
   max-width: 300px;
   flex-wrap: wrap;
+  object-fit: cover;
 }
 
 .product.styles.all-styles img {
@@ -203,7 +210,7 @@ img:hover,
   width: 650px;
   right: 100px;
   position: relative;
-  object-fit: fill;
+  object-fit: cover;
 }
 
 .arrow.left {
@@ -334,4 +341,33 @@ select {
 }
 .product-zoom {
   object-fit: fill;
+}
+
+@media screen and (max-device-width: 510px) {
+  .product.container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .product.current-info {
+    justify-content: center;
+    align-items: center;
+  }
+  .product.arrows {
+    width: 325px;
+    height: 325px;
+  }
+  .product.mainPic {
+    width: 325px;
+    height: 325px;
+    left: 39px;
+    top: 20px;
+  }
+  .arrow.right,
+  .product.enlarged-thumbnail,
+  .product.itemThumbnail {
+    visibility: hidden;
+  }
+  .product.bottom-info {
+    margin-top: 20px;
+  }
 }
