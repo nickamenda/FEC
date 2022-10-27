@@ -11,7 +11,7 @@
     "test": "jest",
     "testWatch": "jest --watchAll",
     "test-coverage": "jest  --coverage",
-    "startProd": "node server/index.js"
+    "startProd": "webpack --config ./webpack.config.js & node server/index.js"
   },
   "repository": {
     "type": "git",
