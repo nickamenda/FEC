@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 html {
   font-family: 'Lato', sans-serif;
@@ -86,7 +86,7 @@ img:hover,
   position: relative;
   height: 50px;
   width: 50px;
-  bottom: 580px;
+  bottom: 645px;
   margin: 5px;
   right: 90px;
 }
@@ -96,34 +96,35 @@ img:hover,
   position: relative;
   height: 20px;
   width: 20px;
-  bottom: 70px;
+  bottom: 170px;
   margin: 5px;
-  left: 143px;
+  left: 50%;
   border-radius: 50%;
+  transform: translateX(-50%);
 }
 
 .downArrow {
-  display: inline-block;
   font-size: 40px;
   z-index: 10;
   position: relative;
-  bottom: 585px;
-  right: 75px;
+  bottom: 655px;
+  right: 72px;
   text-shadow: 0 0 3px rgb(255, 255, 255);
   user-select: none;
-  transform: rotate(-10deg);
+  width: fit-content;
+  height: fit-content;
 }
 
 .upArrow {
-  display: inline-block;
   z-index: 10;
   font-size: 40px;
   position: relative;
-  bottom: 855px;
-  right: 100px;
+  bottom: 965px;
+  right: 72px;
   text-shadow: 0 0 3px rgb(255, 255, 255);
   user-select: none;
-  transform: rotate(-8deg);
+  width: fit-content;
+  height: fit-content;
 }
 
 .product.product.styles.all-styles {
@@ -206,17 +207,21 @@ img:hover,
 .arrow.left {
   font-size: 50px;
   position: relative;
-  bottom: 350px;
+  width: fit-content;
+  height: fit-content;
+  bottom: 340px;
   text-shadow: 0 0 3px rgb(255, 255, 255);
   user-select: none;
 }
 
 .arrow.right {
   user-select: none;
+  width: fit-content;
+  height: fit-content;
   z-index: 10;
   font-size: 50px;
   position: relative;
-  bottom: 350px;
+  bottom: 400px;
   text-shadow: 0 0 3px rgb(255, 255, 255);
 }
 
@@ -327,4 +332,4 @@ select {
 }
 .product-zoom {
   object-fit: fill;
-} */
+}

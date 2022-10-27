@@ -21,6 +21,14 @@ const App = () => {
       .catch(err => console.log(err.message))
   }, [])
 
+  useEffect(() => {
+    window.addEventListener("click", (event) => {
+      event.preventDefault()
+      console.log(event.target)
+      console.log(new Date().toLocaleString())
+    })
+  }, [])
+
 
   return Object.keys(product).length !== 0 ? (
     <>

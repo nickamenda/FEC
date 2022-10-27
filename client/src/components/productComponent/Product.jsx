@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import ReactImageZoom from 'react-image-zoom';
 
 const Product = ({ product }) => {
+  Product.displayName = 'Product'
   const [currentProduct, setCurrentProduct] = useState(product);
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
@@ -35,13 +36,6 @@ const Product = ({ product }) => {
         setCurrentThumbnails(res.data.results[0].photos.slice(0, 7))
       })
   }, [])
-  // window.addEventListener("click", (event) => {
-  //   event.preventDefault()
-
-  //   console.log(event.target)
-  //   console.log(new Date().toLocaleString())
-  //   console.log('Product module was clicked!')
-  // })
 
   function changeStyling(zoom, styling) {
     if (zoom && styling === null) {
@@ -107,7 +101,7 @@ const Product = ({ product }) => {
                 setZoom(!zoom)
                 changeStyling(!zoom, styling)
               }}></img>
-              <i className="arrow left" style={{ visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '-80px' : '-20px' }} onClick={(e) => {
+              <div className="arrow left" style={{ visibility: currentStyle.photos[0].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '-80px' : '-20px' }} onClick={(e) => {
                 e.preventDefault();
                 for (let i = 0; i < currentStyle.photos.length; i++) {
                   if (currentStyle.photos[i].url === currentPhoto) {
@@ -117,8 +111,8 @@ const Product = ({ product }) => {
                     }
                   }
                 }
-              }}>&#8592;</i>
-              <i className="arrow right" style={{ 'visibility': currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '630px' : '440px' }} onClick={(e) => {
+              }}>&#8592;</div>
+              <div className="arrow right" style={{ 'visibility': currentStyle.photos[currentStyle.photos.length - 1].url === currentPhoto ? 'hidden' : null, zIndex: zoom ? 101 : 10, left: zoom ? '690px' : '495px' }} onClick={(e) => {
                 e.preventDefault();
                 for (let i = 0; i < currentStyle.photos.length; i++) {
                   if (currentStyle.photos[i].url === currentPhoto) {
@@ -128,7 +122,7 @@ const Product = ({ product }) => {
                     }
                   }
                 }
-              }}>&#8594;</i>
+              }}>&#8594;</div>
               {currentThumbnails.map((item, i) => {
                 return (!zoom && styling) === null ? (
                   (<img className="product itemThumbnail" style={{ borderBottom: currentPhoto === item.url ? '4px solid red' : null }} src={item.thumbnail_url} alt={currentStyle.style_id} key={i} onClick={(e) => {
@@ -141,14 +135,14 @@ const Product = ({ product }) => {
               })}
               {length > 7 ? (
                 <>
-                  <i className="downArrow" style={JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[0]) ? { visibility: null } : { visibility: 'hidden' }} onClick={(e) => {
+                  <div className="downArrow" style={JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[0]) ? { visibility: null } : { visibility: 'hidden' }} onClick={(e) => {
                     e.preventDefault();
                     setCurrentThumbnails(thumbnails[1])
-                  }}>&#8595;</i>
-                  <i className="upArrow" style={JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[1]) ? { visibility: null } : { visibility: 'hidden' }} onClick={(e) => {
+                  }}>&#8595;</div>
+                  <div className="upArrow" style={JSON.stringify(currentThumbnails) === JSON.stringify(thumbnails[1]) ? { visibility: null } : { visibility: 'hidden' }} onClick={(e) => {
                     e.preventDefault();
                     setCurrentThumbnails(thumbnails[0])
-                  }}>&#8593;</i>
+                  }}>&#8593;</div>
                 </>
               ) : null
               }
