@@ -7,6 +7,7 @@ import Stars from './Stars.jsx'
 
 const ReviewsTile = (props) => {
   const { showModal } = props;
+  const [count, setCount] = useState(2)
   const [reviewsOpen, setReviewOpen] = useState(2)
   let stars = '';
 
@@ -18,12 +19,22 @@ const ReviewsTile = (props) => {
     }
   }
 
+  useEffect(() => {
+    if (props.filter.length > 0) {
+      setReviewOpen(props.product.length)
+    } else {
+      setReviewOpen(count)
+    }
+    console.log('being used')
+    console.log(props.filter)
+  }, [props.filter])
+
   // 66647
   return (
     <>
       <div className="reviews-scroll">
       {props.product.filter((data, index) => (index < reviewsOpen && filtering(data))).map((data, i) => {
-        return (<div key={i} className="tile">
+        return (<div key={i + 1000000} className="tile">
           <div className="tile-header">
             <div>
               <Stars rating={data.rating}/>
@@ -49,7 +60,7 @@ const ReviewsTile = (props) => {
       )})}
 
       </div>
-      {reviewsOpen <= props.product.length ? <button className="reviews-button" onClick={(e) => {e.preventDefault(); setReviewOpen(reviewsOpen + 2)}}>MORE REVIEWS</button> : null}
+      {reviewsOpen <= props.product.length ? <button className="reviews-button" onClick={(e) => {e.preventDefault(); setReviewOpen(reviewsOpen + 2); setCount(count + 2)}}>MORE REVIEWS</button> : null}
       <button className="reviews-button" onClick={(e) => {e.preventDefault(); showModal()}}>ADD A REVIEW + </button>
     </>
   )

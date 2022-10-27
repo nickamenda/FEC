@@ -39,6 +39,8 @@ const StarsRating = (props) => {
     setCharQuality(characteristics.Quality);
     setCharWidth(characteristics.Width);
     setCharSize(characteristics.Size);
+    props.ids(characteristics)
+    console.log(characteristics)
     // console.log('car', characteristics)
   }, [characteristics])
 
@@ -110,7 +112,7 @@ const StarsRating = (props) => {
       </div>
       <p>{Math.ceil(((Number(recommend.true) / (Number(recommend.false) + Number(recommend.true))).toFixed(2) * 100))}% of reviews recommend this product</p>
       {arrOfRatings.length > 0 ? arrOfRatings.map((rating, id) => (
-        <StarBars key={id} rating={rating} maxItem={maxItem}/>
+        <StarBars key={id} rating={rating} maxItem={maxItem} filterList={(number) => props.filterList(number)}/>
       )) : null}
       {characteristics ? <Characteristics Fit={charFit} Length={charLength} Comfort={charComfort} Quality={charQuality} Size={charSize} Width={charWidth}/> : null}
     </>
