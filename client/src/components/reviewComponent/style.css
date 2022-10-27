@@ -142,6 +142,13 @@ body {
   overflow-y: scroll;
   max-height: 65vh;
 }
+.form-stars {
+  display:flex;
+  flex-direction: row;
+}
+.form-recommend {
+  font-size: 9pt;
+}
 .form-characteristics-size {
   display: flex;
   flex-direction: column;

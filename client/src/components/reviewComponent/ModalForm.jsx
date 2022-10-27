@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const ModalForm = () => {
-  const [starRating, setStarRating] = useState('')
+  const [starRating, setStarRating] = useState(0)
   const [recommend, setRecommend] = useState('')
   const [checked, setChecked] = useState('')
   const [YNchecked, setYNChecked] = useState('')
@@ -35,6 +35,10 @@ const ModalForm = () => {
   // images
   const [images, setImages] = useState()
 
+  useEffect(() => {
+
+  })
+
   useEffect(() => {setForm({
     starRating: starRating,
     recommend: recommend,
@@ -48,7 +52,7 @@ const ModalForm = () => {
     nickname: nickname,
     email: email
   });
-  if (!starRating) {
+  if (starRating === 0) {
     setError('Star Ratings')
   } else if (!recommend) {
     setError('Recommend')
@@ -74,64 +78,26 @@ const ModalForm = () => {
     setError('Email')
   } else {
     setError('')
-  }}
+  }
+  console.log(starRating)
+}
+
   , [starRating, recommend, charSize, charWidth, charComfort, charQuality, charLength, charFit, summary, body, nickname, email])
 
   return (
     <form className="form-parent" onSubmit={(e) => {e.preventDefault(); console.log(form)}}>
-      <div className="form-stars">
-        <div>
-          <label>
-            <input
-            type="radio"
-            value="1"
-            onChange={(e) => {setStarRating(e.target.value); setChecked(e.target.value)}}
-            checked={checked === '1'}
-            /> 1 star - “Poor”
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-            type="radio"
-            value="2"
-            onChange={(e) => {setStarRating(e.target.value); setChecked(e.target.value)}}
-            checked={checked === '2'}
-            /> 2 stars - “Fair”
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-            type="radio"
-            value="3"
-            onChange={(e) => {setStarRating(e.target.value); setChecked(e.target.value)}}
-            checked={checked === '3'}
-            /> 3 stars - “Average”
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-            type="radio"
-            value="4"
-            onChange={(e) => {setStarRating(e.target.value); setChecked(e.target.value)}}
-            checked={checked === '4'}
-            /> 4 stars - “Good”
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-            type="radio"
-            value="5"
-            onChange={(e) => {setStarRating(e.target.value); setChecked(e.target.value)}}
-            checked={checked === '5'}
-            /> 5 stars - “Great”
-          </label>
+      <div className="form-stars-parent">
+        <p className="form-subtitle">Rating*</p>
+        <div className="form-stars">
+          {starRating < 1 ? <div onClick={(e) => {setStarRating('1')}}>☆</div> : <div onClick={(e) => {setStarRating('1')}}>★</div>}
+          {starRating < 2 ? <div onClick={(e) => {setStarRating('2')}}>☆</div> : <div onClick={(e) => {setStarRating('2')}}>★</div>}
+          {starRating < 3 ? <div onClick={(e) => {setStarRating('3')}}>☆</div> : <div onClick={(e) => {setStarRating('3')}}>★</div>}
+          {starRating < 4 ? <div onClick={(e) => {setStarRating('4')}}>☆</div> : <div onClick={(e) => {setStarRating('4')}}>★</div>}
+          {starRating < 5 ? <div onClick={(e) => {setStarRating('5')}}>☆</div> : <div onClick={(e) => {setStarRating('5')}}>★</div>}
         </div>
       </div>
       <div className="form-recommend">
+        <p className="form-subtitle">Recommend?*</p>
         <label>
           <input type="radio" value="yes" onChange={(e) => {setRecommend(e.target.value); setYNChecked(e.target.value)}} checked={YNchecked === 'yes'}/> Yes
         </label>
@@ -139,6 +105,7 @@ const ModalForm = () => {
           <input type="radio" value="no" onChange={(e) => {setRecommend(e.target.value); setYNChecked(e.target.value)}} checked={YNchecked === 'no'}/> No
         </label>
       </div>
+      <hr></hr>
       <div className="form-characteristics-size">
         <p className="form-subtitle">Size*</p>
         <div className="form-wrapper">
@@ -457,6 +424,7 @@ const ModalForm = () => {
          <p className="form-p">Runs long</p>
         </div>
       </div>
+      <hr></hr>
       <div className="form-summary">
       <p className="form-subtitle">Summary</p>
         <label>
@@ -483,9 +451,10 @@ const ModalForm = () => {
         </label>
 
       </div>
+      <hr></hr>
       <div className="form-upload-image">
       <p className="form-subtitle">Images</p>
-        <label for="files">Select multiple files</label>
+        <label for="files"></label>
           <input id="files" type="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg" onChange={(e) => {
             if (window.File && window.FileReader && window.FileList && window.Blob) {
               const files = e.target.files;
@@ -534,9 +503,12 @@ const ModalForm = () => {
         </label>
 
       </div>
-      {(clicked && error) ? <p style={{color: 'red'}}>You must enter the following: {error}</p> : null}
-      {error ? <button onClick={(e) => {e.preventDefault(); setClicked(true)}} type="submit">Submit</button> :
-      <button type="submit" onClick={handleSubmitClick}>Submit</button>}
+      <div>
+
+        {(clicked && error) ? <p style={{color: 'red'}}>You must enter the following: {error}</p> : null}
+        {error ? <button onClick={(e) => {e.preventDefault(); setClicked(true)}} type="submit">Submit</button> :
+        <button type="submit">Submit</button>}
+      </div>
     </form>
 
 

@@ -3,26 +3,30 @@ import axios from 'axios';
 import './style.css';
 import { format, parseISO } from 'date-fns';
 import Helpful from './Helpful.jsx'
+import Stars from './Stars.jsx'
 
 const ReviewsTile = (props) => {
   const { showModal } = props;
   const [reviewsOpen, setReviewOpen] = useState(2)
   let stars = '';
 
-  function filterMatch(data) {
-    if (data.rating) {
-
+  function filtering(data) {
+    if (props.filter.includes(data.rating)) {
+      return true;
+    } else if (props.filter.length === 0) {
+      return true
     }
   }
+
   // 66647
   return (
     <>
       <div className="reviews-scroll">
-      {props.product.filter((data, index) => index < reviewsOpen && filterMatch(data)).map((data, i) => {
+      {props.product.filter((data, index) => (index < reviewsOpen && filtering(data))).map((data, i) => {
         return (<div key={i} className="tile">
           <div className="tile-header">
             <div>
-              <span>star rating: {data.rating} ★★★★★</span>
+              <Stars rating={data.rating}/>
             </div>
             <div>
               <small>{data.reviewer_name}, {format(parseISO(data.date), 'MMM d\, YYY')}</small>
