@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const ModalForm = () => {
+const ModalForm = (props) => {
   const [starRating, setStarRating] = useState(0)
   const [recommend, setRecommend] = useState('')
   const [checked, setChecked] = useState('')
@@ -40,17 +40,18 @@ const ModalForm = () => {
   })
 
   useEffect(() => {setForm({
-    starRating: starRating,
+    product_id: props.id,
+    rating: starRating,
+    summary: summary,
+    body: body,
     recommend: recommend,
+    name: nickname,
+    email: email,
     Size: charSize,
     Width: charWidth,
     Quality: charQuality,
     Length: charLength,
-    Fit: charFit,
-    summary: summary,
-    body: body,
-    nickname: nickname,
-    email: email
+    Fit: charFit
   });
   if (starRating === 0) {
     setError('Star Ratings')
@@ -79,7 +80,8 @@ const ModalForm = () => {
   } else {
     setError('')
   }
-  console.log(starRating)
+  console.log(starRating);
+  console.log(images)
 }
 
   , [starRating, recommend, charSize, charWidth, charComfort, charQuality, charLength, charFit, summary, body, nickname, email])

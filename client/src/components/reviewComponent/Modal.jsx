@@ -16,7 +16,7 @@ const Modal = (props) => {
           }}>Close</button>
         </div>
         <div className="reviews-modal-body">
-          <ModalForm />
+          <ModalForm id={props.id}/>
         </div>
 
       </div>

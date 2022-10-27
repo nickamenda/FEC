@@ -64,7 +64,7 @@ const Reviews = (props) => {
         <ReviewsList className="reviews-content" product={product} showModal={() => modal()} sorting={(input) => sorting(input)}
         filter={filter}/>
       </div>
-      {showModal ? <Modal className="modal" showModal={() => modal()} name={name}/> : null}
+      {showModal ? <Modal className="modal" showModal={() => modal()} name={name} id={props.product.id}/> : null}
     </div>
   ) : null
 }

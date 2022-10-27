@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 
 const StarBars = (props) => {
 
+  const [] = useState('')
+
   const containerStyles = {
     height: 10,
     width: '100%',
@@ -22,13 +24,16 @@ const StarBars = (props) => {
   }
 
   const bars = {
+
     display: 'flex',
-    justifyContent: 'space-between'
+    whiteSpace: 'nowrap',
+    justifyContent: 'space-between',
+    marginBottom: '5px'
   }
 
   return (
     <div style={bars}>
-      <p className="stars-p">{props.rating.number} stars</p>
+      <span><p className="stars-p">{props.rating.number} stars</p></span>
       <div style={containerStyles}>
         <div style={fillerStyles}>
           <span style={labelStyles}></span>

@@ -3,6 +3,7 @@
 html {
   max-width: 1280px;
   margin: 0 auto;
+  color: #000000;
 }
 
 body {
@@ -75,8 +76,6 @@ body {
 }
 
 .stars-p {
-  display: flex;
-  flex-direction: row;
   margin: 0;
   font-size: 10pt;
 }
