@@ -337,3 +337,30 @@ select {
 .product-zoom {
   object-fit: fill;
 }
+
+@media screen and (max-device-width: 510px) {
+  .product.container {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .product.current-info {
+    justify-content: center;
+    align-items: center;
+  }
+  .product.arrows {
+    width: 325px;
+    height: 325px;
+  }
+  .product.mainPic {
+    width: 325px;
+    height: 325px;
+    left: 39px;
+    top: 20px;
+  }
+  .arrow.right {
+    left: 250px;
+  }
+  .product.bottom-info {
+    margin-top: 20px;
+  }
+}
