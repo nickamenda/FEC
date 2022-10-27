@@ -23,7 +23,6 @@ const App = () => {
 
   useEffect(() => {
     window.addEventListener("click", (event) => {
-      event.preventDefault()
       console.log(event.target)
       console.log(new Date().toLocaleString())
     })
@@ -32,11 +31,11 @@ const App = () => {
 
   return Object.keys(product).length !== 0 ? (
     <>
-      {/* <div className="navbar">
+      <div className="navbar">
         <img src="https://static.vecteezy.com/system/resources/previews/007/556/142/original/ncj-letter-logo-design-on-black-background-ncj-creative-initials-letter-logo-concept-ncj-letter-design-vector.jpg" height="50" width="50" className="logo"></img>
       </div>
       <Product product={product} />
-      <Question product={product} /> */}
+      <Question product={product} />
       <Reviews product={product} />
     </>
   ) : null
