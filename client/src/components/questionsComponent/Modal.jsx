@@ -1,4 +1,3 @@
-// Third-party Packages
 import React, { useEffect, useImperativeHandle, useState, forwardRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
