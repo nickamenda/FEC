@@ -50,7 +50,7 @@ const StarBars = (props) => {
 
   return (
     <div style={bars} onClick={() => {props.filterList(props.rating.number); click()}}>
-      <span><p className="stars-p">{props.rating.number} stars</p></span>
+      <span className="reviews-body"><p className="stars-p">{props.rating.number} stars</p></span>
       {clicked ? <div style={containerStylesDS}>
         <div style={fillerStyles}>
           <span style={labelStyles}></span>

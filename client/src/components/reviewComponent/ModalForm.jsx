@@ -106,14 +106,14 @@ const ModalForm = (props) => {
 
 
   const submitReviews = () => {
-    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/', form, {
-     headers: {
-        'Authorization': process.env.AUTH_KEY,
-        'content-type':'application:json'
-      },
-    })
-    .then(() => {props.close()})
-    .catch(err => console.log(err))
+    // axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/', form, {
+    //  headers: {
+    //     'Authorization': process.env.AUTH_KEY,
+    //     'content-type':'application:json'
+    //   },
+    // })
+    // .then(() => {props.close()})
+    // .catch(err => console.log(err))
   }
 
   useEffect(() => {setForm({
@@ -579,8 +579,8 @@ const ModalForm = (props) => {
       <div>
 
         {(clicked && error) ? <p style={{color: 'red'}}>You must enter the following: {error}</p> : null}
-        {error ? <button onClick={(e) => {e.preventDefault(); setClicked(true)}} type="submit" className="reviews-submit-button">Submit</button> :
-        <button type="submit" className="reviews-submit-button">Submit</button>}
+        {error ? <button onClick={(e) => {e.preventDefault(); setClicked(true)}} type="submit" className="reviews-button">Submit</button> :
+        <button type="submit" className="reviews-button">Submit</button>}
       </div>
     </form>
 

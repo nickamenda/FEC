@@ -106,7 +106,7 @@ const StarsRating = (props) => {
           </div>
         </div>
       </div>
-      <p>{Math.ceil(((Number(recommend.true) / (Number(recommend.false) + Number(recommend.true))).toFixed(2) * 100))}% of reviews recommend this product</p>
+      <p className="reviews-body">{Math.ceil(((Number(recommend.true) / (Number(recommend.false) + Number(recommend.true))).toFixed(2) * 100))}% of reviews recommend this product</p>
       {arrOfRatings.length > 0 ? arrOfRatings.map((rating, id) => (
         <StarBars key={id} rating={rating} maxItem={maxItem} filterList={(number) => props.filterList(number)}/>
       )) : null}
