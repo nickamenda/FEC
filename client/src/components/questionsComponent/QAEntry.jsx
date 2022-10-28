@@ -2,8 +2,6 @@ import React, { useRef } from 'react';
 import Helpful from './QAEntryComponents/Helpful.jsx';
 import AnswerList from './QAEntryComponents/AnswerList.jsx';
 import AddAnswerBtn from './QAEntryComponents/AddAnswerBtn.jsx';
-// import Modal from './Modal.jsx';
-// import AddAnswer from './ModalViews/addAnswerView.jsx';
 
 const QAEntry = ({ question, productInfo }) => {
   return (
