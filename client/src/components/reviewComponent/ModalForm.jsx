@@ -47,7 +47,6 @@ const ModalForm = (props) => {
       }
       form.characteristics = charObj
     }
-      console.log('obj',charObj)
   }, [charComfort])
 
   useEffect(() => {
@@ -59,7 +58,6 @@ const ModalForm = (props) => {
       }
       form.characteristics = charObj
     }
-    console.log('obj',charObj)
   }, [charSize])
 
   useEffect(() => {
@@ -71,7 +69,6 @@ const ModalForm = (props) => {
       }
       form.characteristics = charObj
     }
-    console.log('obj',charObj)
   }, [charWidth])
 
   useEffect(() => {
@@ -83,7 +80,6 @@ const ModalForm = (props) => {
       }
       form.characteristics = charObj
     }
-    console.log('obj',charObj)
   }, [charQuality])
 
   useEffect(() => {
@@ -95,7 +91,6 @@ const ModalForm = (props) => {
       }
       form.characteristics = charObj
     }
-    console.log('obj',charObj)
   }, [charLength])
 
    useEffect(() => {
@@ -107,7 +102,6 @@ const ModalForm = (props) => {
       }
       form.characteristics = charObj
     }
-    console.log('obj',charObj)
   }, [charFit])
 
 
@@ -118,7 +112,7 @@ const ModalForm = (props) => {
         'content-type':'application:json'
       },
     })
-    .then(() => {props.close(); console.log('closed')})
+    .then(() => {props.close()})
     .catch(err => console.log(err))
   }
 
@@ -159,7 +153,6 @@ const ModalForm = (props) => {
   } else {
     setError('')
   }
-  console.log('form char', form.characteristics)
 }
 
   , [starRating, recommend, charSize, charWidth, charComfort, charQuality, charLength, charFit, summary, body, nickname, email, images])

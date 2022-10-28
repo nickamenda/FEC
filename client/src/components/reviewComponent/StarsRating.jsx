@@ -40,8 +40,6 @@ const StarsRating = (props) => {
     setCharWidth(characteristics.Width);
     setCharSize(characteristics.Size);
     props.ids(characteristics)
-    console.log(characteristics)
-    // console.log('car', characteristics)
   }, [characteristics])
 
   // ratings.characteristics
@@ -68,7 +66,6 @@ const StarsRating = (props) => {
         ratings[i] = '0'
       }
     }
-    // console.log('props.ratings:', ratings)
     // getting the largest value
     let maxNum = Number(ratings[1]);
     for (let key in ratings) {
@@ -84,7 +81,6 @@ const StarsRating = (props) => {
       obj['value'] = ratings[j];
       arrOfRatings.push(obj)
     }
-    // console.log(arrOfRatings)
   }
 
 
