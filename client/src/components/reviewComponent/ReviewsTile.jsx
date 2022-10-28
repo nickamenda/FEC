@@ -25,8 +25,6 @@ const ReviewsTile = (props) => {
     } else {
       setReviewOpen(count)
     }
-    console.log('being used')
-    console.log(props.filter)
   }, [props.filter])
 
   // 66647

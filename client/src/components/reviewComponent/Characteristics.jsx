@@ -24,21 +24,12 @@ const Characteristics = (props) => {
     if (props.Size !== undefined) { setCharSize(props.Size) }
   }, [props])
 
-  // useEffect(() => {
-  //   fitStyle = {
-  //     height: '100%',
-  //     width: `${charFit.value * 20}%`,
-  //     backgroundColor: 'gery'
-  //   }
-  // }, [charQuality])
-
   const labelStyles = {
     position: 'relative',
     top: '-2px',
     color: 'black',
     fontWeight: 'bold'
   }
-
 
   const fillerStyles = {
     height: '100%',

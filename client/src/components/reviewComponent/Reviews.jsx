@@ -27,7 +27,6 @@ const Reviews = (props) => {
       var index = filter.indexOf(number);
       filter.splice(index, 1)
     }
-    console.log(filter)
   }
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${props.product.id}&count=1000&sort=relative`, {
@@ -59,13 +58,13 @@ const Reviews = (props) => {
     .then((response) => {
       setProduct(response.data.results)
     })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
   const [ids, setIds] = useState()
 
-  useEffect(() => {
-    console.log('ids', ids)
-  }, [ids])
 
   return product.length !== 0 ? (
     <div id="reviews">

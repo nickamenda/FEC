@@ -47,7 +47,6 @@ const ModalForm = (props) => {
       }
       form.characteristics = charObj
     }
-      console.log('obj',charObj)
   }, [charComfort])
 
   useEffect(() => {
@@ -59,7 +58,6 @@ const ModalForm = (props) => {
       }
       form.characteristics = charObj
     }
-    console.log('obj',charObj)
   }, [charSize])
 
   useEffect(() => {
@@ -71,7 +69,6 @@ const ModalForm = (props) => {
       }
       form.characteristics = charObj
     }
-    console.log('obj',charObj)
   }, [charWidth])
 
   useEffect(() => {
@@ -83,7 +80,6 @@ const ModalForm = (props) => {
       }
       form.characteristics = charObj
     }
-    console.log('obj',charObj)
   }, [charQuality])
 
   useEffect(() => {
@@ -95,7 +91,6 @@ const ModalForm = (props) => {
       }
       form.characteristics = charObj
     }
-    console.log('obj',charObj)
   }, [charLength])
 
    useEffect(() => {
@@ -107,19 +102,18 @@ const ModalForm = (props) => {
       }
       form.characteristics = charObj
     }
-    console.log('obj',charObj)
   }, [charFit])
 
 
   const submitReviews = () => {
-    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/', form, {
-     headers: {
-        'Authorization': process.env.AUTH_KEY,
-        'content-type':'application:json'
-      },
-    })
-    .then(() => {props.close(); console.log('closed')})
-    .catch(err => console.log(err))
+    // axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/', form, {
+    //  headers: {
+    //     'Authorization': process.env.AUTH_KEY,
+    //     'content-type':'application:json'
+    //   },
+    // })
+    // .then(() => {props.close()})
+    // .catch(err => console.log(err))
   }
 
   useEffect(() => {setForm({
@@ -159,7 +153,6 @@ const ModalForm = (props) => {
   } else {
     setError('')
   }
-  console.log('form char', form.characteristics)
 }
 
   , [starRating, recommend, charSize, charWidth, charComfort, charQuality, charLength, charFit, summary, body, nickname, email, images])
@@ -586,8 +579,8 @@ const ModalForm = (props) => {
       <div>
 
         {(clicked && error) ? <p style={{color: 'red'}}>You must enter the following: {error}</p> : null}
-        {error ? <button onClick={(e) => {e.preventDefault(); setClicked(true)}} type="submit" className="reviews-submit-button">Submit</button> :
-        <button type="submit" className="reviews-submit-button">Submit</button>}
+        {error ? <button onClick={(e) => {e.preventDefault(); setClicked(true)}} type="submit" className="reviews-button">Submit</button> :
+        <button type="submit" className="reviews-button">Submit</button>}
       </div>
     </form>
 
