@@ -1,6 +1,6 @@
 :root {
-  --dark-text-color: rgb(117, 117, 117);
-  --light-text-color: rgb(136, 136, 136);
+  --dark-text-color: rgb(80, 80, 80);
+  --light-text-color: rgb(100, 100, 100);
 }
 
 * {
