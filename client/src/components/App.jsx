@@ -9,16 +9,13 @@ import Question from './questionsComponent/Question.jsx';
 const App = () => {
   const [product, setProduct] = useState({})
 
+
+
   useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/66646`, {
-      headers: {
-        'Authorization': process.env.AUTH_KEY
-      }
+    axios.get('http://localhost:3000/product', {params: {searchFor: 66646}})
+    .then((res) => {
+      setProduct(res.data)
     })
-      .then((res) => {
-        setProduct(res.data)
-      })
-      .catch(err => console.log(err.message))
   }, [])
 
   useEffect(() => {
@@ -35,8 +32,8 @@ const App = () => {
         <img src="https://static.vecteezy.com/system/resources/previews/007/556/142/original/ncj-letter-logo-design-on-black-background-ncj-creative-initials-letter-logo-concept-ncj-letter-design-vector.jpg" height="50" width="50" className="logo" alt="logo"></img>
       </div>
       <Product product={product} />
-      <Question product={product} />
-      <Reviews product={product} />
+      {/* <Question product={product} /> */}
+      {/* <Reviews product={product} /> */}
     </>
   ) : null
 }

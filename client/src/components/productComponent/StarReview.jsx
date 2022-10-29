@@ -11,22 +11,14 @@ const StarReview = (props) => {
   const [amtOfRevs, setAmtOfRevs] = useState(0)
 
   useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${currentId}`, {
-      headers: {
-        'Authorization': process.env.AUTH_KEY
-      }
-    })
+    axios.get('http://localhost:3000/PO-meta', {params: {currentId: currentId}})
       .then((res) => {
         setRatings(res.data.ratings)
       })
   }, [])
 
   useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${currentId}&count=100`, {
-      headers: {
-        'Authorization': process.env.AUTH_KEY
-      }
-    })
+    axios.get(`http://localhost:3000/PO-reviews`, {params: {currentId: currentId}})
       .then((res) => {
         setAmtOfRevs(res.data.results.length)
       })
