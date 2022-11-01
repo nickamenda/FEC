@@ -1,77 +1,50 @@
 require("dotenv").config();
-
+const PORT = process.env.PORT || 3000;
 const express = require("express");
 const path = require("path");
-const axios = require("axios")
-
-
-var headers = {
-  'access-control-allow-origin': '*',
-  'access-control-allow-methods': 'GET, POST, PUT, DELETE, OPTIONS',
-  'access-control-allow-headers': 'content-type, accept, authorization',
-  'access-control-max-age': 10 // Seconds.
-};
+const axios = require('axios')
 
 const app = express();
-app.use(express.static(path.join(__dirname, '../client/dist')));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const PORT = process.env.PORT || 3000;
 
-app.get('/product', (req, res) => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${req.query.searchFor}`, {
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+app.get('/api/*', async (req, res) => {
+  let apiUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc`;
+  let endpointUrl = req.url.slice(4)
+  let response = await axios.get(`${apiUrl}${endpointUrl}`, {
     headers: {
-      'Authorization': process.env.AUTH_KEY
+      "Authorization": process.env.AUTH_KEY
     }
-  })
-    .then((response) => {
-      res.writeHead(200, headers)
-      res.end(JSON.stringify(response.data))
-    })
-    .catch(err => console.log(err.message))
+  }).then((apiRes) => res.send(apiRes.data))
 })
 
-
-app.get('/PO-styles', (req, res) => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${req.query.id}/styles`, {
+app.post('/api/*', async (req, res) => {
+  let apiUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc`;
+  let endpointUrl = req.url.slice(4)
+  let response = await axios.post(`${apiUrl}${endpointUrl}`, req.body, {
     headers: {
-      'Authorization': process.env.AUTH_KEY
+      "Authorization": process.env.AUTH_KEY,
+      "Content-Type": "application/json"
     }
   })
-    .then((response) => {
-      res.writeHead(200, headers)
-      res.end(JSON.stringify(response.data))
-    })
-    .catch(err => console.log(err.message))
-
+    .then((apiRes) => res.send(apiRes.data))
+    .catch(err => console.log(err))
 })
-app.get('/PO-meta', (req, res) => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${req.query.currentId}`, {
+
+app.put('/api/*', async (req, res) => {
+  let apiUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc`;
+  let endpointUrl = req.url.slice(4)
+  let response = await axios.put(`${apiUrl}${endpointUrl}`, undefined, {
     headers: {
-      'Authorization': process.env.AUTH_KEY
+      "Authorization": process.env.AUTH_KEY
     }
   })
-    .then((response) => {
-      res.writeHead(200, headers)
-      res.end(JSON.stringify(response.data))
-    })
-    .catch(err => console.log(err.message))
+    .then((apiRes) => res.sendStatus(apiRes.status))
+    .catch(err => console.log(err))
 })
-
-app.get('/PO-reviews', (req, res) => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${req.query.currentId}&count=100`, {
-    headers: {
-      'Authorization': process.env.AUTH_KEY
-    }
-  })
-    .then((response) => {
-      res.writeHead(200, headers)
-      res.end(JSON.stringify(response.data))
-    })
-    .catch(err => console.log(err.message))
-})
-
-
 
 app.listen(PORT);
-console.log(`Server listening at http://localhost:${PORT}`);
+console.log(`Server listening at ${PORT}`);
