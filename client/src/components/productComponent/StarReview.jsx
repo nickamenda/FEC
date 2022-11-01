@@ -10,6 +10,19 @@ const StarReview = (props) => {
   const [ratings, setRatings] = useState({})
   const [amtOfRevs, setAmtOfRevs] = useState(0)
 
+  useEffect(() => {
+    axios.get(`api/reviews/meta?product_id=${currentId}`)
+      .then((res) => {
+        setRatings(res.data.ratings)
+      })
+  }, [])
+
+  useEffect(() => {
+    axios.get(`api/reviews?product_id=${currentId}&count=100`)
+      .then((res) => {
+        setAmtOfRevs(res.data.results.length)
+      })
+  }, [])
 
   var reviewAmt = 0;
   var reviewScores = 0;

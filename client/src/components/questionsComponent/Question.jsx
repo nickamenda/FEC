@@ -27,13 +27,10 @@ const Question = ({ product }) => {
   // Gets and sorts questions for product, sets questions, filteredQuestions, and productInfo
   useEffect(() => {
     setLoading(true);
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`, {
+    axios.get(`api/qa/questions`, {
       params: {
         product_id: product.id,
         count: 100
-      },
-      headers: {
-        'Authorization': process.env.AUTH_KEY
       }
     })
       .then(res => {

@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import ReactImageZoom from 'react-image-zoom';
 
 const Product = ({ product }) => {
+  Product.displayName = 'Product'
   const [currentProduct, setCurrentProduct] = useState(product);
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
@@ -21,17 +22,16 @@ const Product = ({ product }) => {
   const zoomProps = { width: 850, height: 570, img: currentPhoto, zoomPosition: 'original' };
 
   useEffect(() => {
-    axios.get('http://localhost:3000/PO-styles', {params: {id: 66646}})
-    .then((res) => {
-      setStyles(res.data.results)
-      setCurrentStyle(res.data.results[0])
-      handleCurrentPhoto(res.data.results[0].photos[0])
-      setLength(res.data.results[0].photos.length)
-      setThumbnails([res.data.results[0].photos.slice(0, 7), res.data.results[0].photos.slice(7, res.data.results[0].photos.length)])
-      setCurrentThumbnails(res.data.results[0].photos.slice(0, 7))
-    })
+    axios.get(`api/products/${product.id}/styles`)
+      .then((res) => {
+        setStyles(res.data.results)
+        setCurrentStyle(res.data.results[0])
+        handleCurrentPhoto(res.data.results[0].photos[0])
+        setLength(res.data.results[0].photos.length)
+        setThumbnails([res.data.results[0].photos.slice(0, 7), res.data.results[0].photos.slice(7, res.data.results[0].photos.length)])
+        setCurrentThumbnails(res.data.results[0].photos.slice(0, 7))
+      })
   }, [])
-
 
   function changeStyling(zoom, styling) {
     if (zoom && styling === null) {

@@ -11,15 +11,11 @@ const AddQuestion = ({productInfo, close}) => {
 
   const submitQuestion = event => {
     event.preventDefault();
-    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions',  {
+    axios.post('api/qa/questions', {
       body,
       name,
       email,
       product_id: productInfo.id
-    }, {
-     headers: {
-        'Authorization': process.env.AUTH_KEY
-      }
     })
     .then(() => close())
     .catch(err => setError(err.message))

@@ -19,11 +19,7 @@ const StarsRating = (props) => {
   const arrOfRatings = [];
 
   useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta?product_id=${props.productId}`, {
-      headers: {
-        'Authorization': process.env.AUTH_KEY
-      }
-    })
+    axios.get(`api/reviews/meta?product_id=${props.productId}`)
       .then((response) => {
         setMetaData(response.data)
         setRatings(response.data.ratings)

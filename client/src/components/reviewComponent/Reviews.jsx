@@ -29,20 +29,12 @@ const Reviews = (props) => {
     }
   }
   useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${props.product.id}&count=1000&sort=relative`, {
-      headers: {
-        'Authorization': process.env.AUTH_KEY
-      }
-    })
+    axios.get(`api/reviews?product_id=${props.product.id}&count=1000&sort=relative`)
     .then((response) => {
       setProduct(response.data.results)
     })
 
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${props.product.id}`, {
-      headers: {
-        'Authorization': process.env.AUTH_KEY
-      }
-    })
+    axios.get(`api/products/${props.product.id}`)
     .then((response) => {
       setName(response.data.name)
 
@@ -50,11 +42,7 @@ const Reviews = (props) => {
   }, [])
 
   function sorting(input) {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews?product_id=${props.product.id}&count=100&sort=${input}`, {
-      headers: {
-        'Authorization': process.env.AUTH_KEY
-      }
-    })
+    axios.get(`api/reviews?product_id=${props.product.id}&count=100&sort=${input}`)
     .then((response) => {
       setProduct(response.data.results)
     })

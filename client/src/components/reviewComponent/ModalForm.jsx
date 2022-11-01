@@ -106,12 +106,7 @@ const ModalForm = (props) => {
 
 
   const submitReviews = () => {
-    // axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/', form, {
-    //  headers: {
-    //     'Authorization': process.env.AUTH_KEY,
-    //     'content-type':'application:json'
-    //   },
-    // })
+    // axios.post('api/reviews/', form)
     // .then(() => {props.close()})
     // .catch(err => console.log(err))
   }

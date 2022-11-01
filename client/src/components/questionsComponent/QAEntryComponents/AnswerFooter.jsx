@@ -1,5 +1,4 @@
 import React from 'react';
-import Axios from 'axios';
 import { format, parseISO } from 'date-fns';
 import Helpful from './Helpful.jsx';
 import ReportBtn from './ReportBtn.jsx';

@@ -6,11 +6,7 @@ const ReportBtn = ({ options }) => {
   const [reported, setReported] = useState(false);
 
   const sendReport = () => {
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/${options.type}/${options.id}/report`, undefined ,{
-      headers: {
-        'Authorization': process.env.AUTH_KEY
-      }
-    })
+    axios.put(`api/qa/${options.type}/${options.id}/report`, undefined)
       .then(() => setReported(true))
       .catch(err => console.log('Error reporting: ', err.message))
   }

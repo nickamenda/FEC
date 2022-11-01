@@ -8,11 +8,7 @@ const Helpful = ({ helpfulCount, options }) => {
   const [count, setCount] = useState(helpfulCount)
 
   const increaseHelpfulCount = () => {
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/${options.type}/${options.id}/helpful`, undefined ,{
-      headers: {
-        'Authorization': process.env.AUTH_KEY
-      }
-    })
+    axios.put(`api/qa/${options.type}/${options.id}/helpful`, undefined)
       .then(res => {
         setMarked(true);
         setCount(count + 1)
