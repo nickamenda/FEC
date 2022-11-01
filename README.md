@@ -5,7 +5,7 @@ View my contributions at <br> [/client/src/components/productComponent](https://
 # Front End Capstone
 
 This was a group project we worked on while attending Hack Reactor. Our team was given only a wireframe and business requirements, and had to create a mock e-commerce product page.
-We had to create the entire frontend from scratch, create unit tests, set up webpack from scratch, and deploy the application
+We had to create the entire frontend from scratch, create unit tests, set up webpack, and deploy the application using AWS.
 
 > ### Group members<br>
 > Nick Amenda(Product Overview)<br>
@@ -24,7 +24,7 @@ We had to create the entire frontend from scratch, create unit tests, set up web
 
 ## Technical Overview
 
-This was the first Hack Reactor project we worked in that was more than a duo. We were tasked with creating the file structure from scratch(no create-react-app allowed) and installing all necessary dependencies ourselves. Over the course of this project we all got more experince with Webpack, node, npm, git workflow, Express, Jest, React, CSS, and plain JS.
+This was the first Hack Reactor project we worked in that was more than a duo. We were tasked with creating the file structure from scratch(no create-react-app allowed) and installing all necessary dependencies ourselves. Over the course of this project we all got more experience with Webpack, node, npm, git workflow, Express, Jest, React, CSS, and plain JS.
 
 ## Usage
 In order to run the project locally please read [Requirements](#requirements) section for instructions setting up a local .env and for installing dependencies. Find further instructions for setting up the project for development or production in the [Development](#development) and [Production](#production) sections.
