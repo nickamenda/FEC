@@ -1,18 +1,15 @@
-
 const path = require('path');
 const webpack = require('webpack')
-const Dotenv = require('dotenv-webpack')
 var SRC_DIR = path.join(__dirname, '/client/src');
 var DIST_DIR = path.join(__dirname, '/client/dist');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: `${SRC_DIR}/index.jsx`,
   output: {
     filename: 'bundle.js',
     path: DIST_DIR
   },
-  mode: 'production',
   devtool: 'source-map',
   module: {
     rules: [
@@ -40,11 +37,5 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       }
     ],
-  },
-  plugins: [
-    new Dotenv({
-      path: './.env',
-      systemvars: true
-    })
-  ]
+  }
 };

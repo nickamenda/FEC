@@ -10,19 +10,6 @@ const StarReview = (props) => {
   const [ratings, setRatings] = useState({})
   const [amtOfRevs, setAmtOfRevs] = useState(0)
 
-  useEffect(() => {
-    axios.get('http://localhost:3000/PO-meta', {params: {currentId: currentId}})
-      .then((res) => {
-        setRatings(res.data.ratings)
-      })
-  }, [])
-
-  useEffect(() => {
-    axios.get(`http://localhost:3000/PO-reviews`, {params: {currentId: currentId}})
-      .then((res) => {
-        setAmtOfRevs(res.data.results.length)
-      })
-  }, [])
 
   var reviewAmt = 0;
   var reviewScores = 0;
